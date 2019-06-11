@@ -15,22 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth']], function(){
- 
-    Route::get('/', 'AppController@index');
- 
-    Route::get('/search', 'AppController@search');
- 
-    Route::get('/instagram', 'InstagramController@redirectToInstagramProvider');
- 
-    Route::get('/instagram/callback', 'InstagramController@handleProviderInstagramCallback');
-});
+// Route::group(['prefix' => 'admin', 'middleware' => 'auth'] , function (){
 
-
-Route::group(['middleware' => ['auth', 'instagram']], function(){
-    // routes
+// });
+Route::group(['prefix' => 'profile', 'middleware' => 'verified'] , function (){
+    Route::get('/test', function () {
+        return 'Profile route';
+    });
 });
