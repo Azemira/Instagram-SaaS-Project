@@ -83,33 +83,43 @@
 </body> --}}
 
 
-
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+@if(\Auth::check())
+ <body class="hold-transition skin-blue sidebar-mini">
+   <div class="wrapper">
+@else
+ <body>
+  <div id="app">
+@endif
+    
      <!-- Authentication Links -->
      @if(\Auth::check())
-      @include('navigation.top')
-      <!-- Left side column. contains the logo and sidebar -->
-      @include('navigation.aside')
-      @endif
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-            @if(\Auth::check())
+        @include('navigation.top')
+        <!-- Left side column. contains the logo and sidebar -->
+        @include('navigation.aside')
+     @endif
+        
+       
+     @if(\Auth::check())
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         @include('breadcrumb.breadcrumb')
-     @endif
-        <!-- Main content -->
+        <!-- Main content Authenticated -->
         <section class="content">
-
+     @else
+        <!-- Main content Anon -->
+        <section class="anon">
+     @endif
+        
             @yield('content')
-    
         </section>
         <!-- /.content -->
     
-      </div>
+      
       @if(\Auth::check())
-      <!-- /.content-wrapper -->
-      @include('footer.footer')
+        </div>
+        <!-- /.content-wrapper -->
+        @include('footer.footer')
       @endif
     </div>
     </body>
