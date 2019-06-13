@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Instagram Saas') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,8 +21,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body>
+{{-- <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -76,5 +80,37 @@
             @yield('content')
         </main>
     </div>
-</body>
+</body> --}}
+
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+     <!-- Authentication Links -->
+     @if(\Auth::check())
+      @include('navigation.top')
+      <!-- Left side column. contains the logo and sidebar -->
+      @include('navigation.aside')
+      @endif
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+            @if(\Auth::check())
+        <!-- Content Header (Page header) -->
+        @include('breadcrumb.breadcrumb')
+     @endif
+        <!-- Main content -->
+        <section class="content">
+
+            @yield('content')
+    
+        </section>
+        <!-- /.content -->
+    
+      </div>
+      @if(\Auth::check())
+      <!-- /.content-wrapper -->
+      @include('footer.footer')
+      @endif
+    </div>
+    </body>
 </html>

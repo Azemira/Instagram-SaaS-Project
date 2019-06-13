@@ -1,32 +1,37 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+// require('./bootstrap');
 
-require('./bootstrap');
+// import 'admin-lte/bower_components/jquery/dist/jquery.min.js';
 
-window.Vue = require('vue');
+// import 'admin-lte/bower_components/jquery-ui/jquery-ui.min.js';
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+// import 'admin-lte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js';
+// import 'admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js';
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+// import 'admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js';
+// import 'admin-lte/bower_components/jquery-knob/dist/jquery.knob.min.js';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// import 'admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js';
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import 'admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js';
 
-const app = new Vue({
-    el: '#app',
-});
+// import 'admin-lte/bower_components/raphael/raphael.min.js';
+
+// import 'admin-lte/bower_components/raphael/raphael.min.js';
+// import 'admin-lte/bower_components/morris.js/morris.min.js';
+
+
+
+// import 'admin-lte/bower_components/moment/min/moment.min.js';
+// import 'admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.js';
+
+// import 'admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js';
+// // import 'admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js';
+
+// import 'admin-lte/bower_components/fastclick/lib/fastclick.js';
+
+import 'admin-lte/dist/js/adminlte.min.js';
+import 'admin-lte/dist/js/pages/dashboard.js';
+import 'admin-lte/dist/js/demo.js';
+
+
+
