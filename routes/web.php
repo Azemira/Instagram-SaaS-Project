@@ -17,15 +17,14 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', 'Auth\LoginController@logout');
 
-// Route::group(['prefix' => 'admin', 'middleware' => 'auth'] , function (){
+Route::group(['middleware' => 'verified-user'] , function (){
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
-// });
-Route::group(['prefix' => 'profile', 'middleware' => 'verified'] , function (){
-    Route::get('/test', function () {
-        return 'Profile route';
-    });
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'] , function (){
+   
+    Route::get('/dashboard', 'HomeController@adminDashboard');
 });
