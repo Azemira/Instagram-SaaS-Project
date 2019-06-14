@@ -28,7 +28,7 @@ import 'admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js';
 // // import 'admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js';
 
 // import 'admin-lte/bower_components/fastclick/lib/fastclick.js';
-
+import 'admin-lte/plugins/iCheck/icheck.min.js';
 import 'admin-lte/dist/js/adminlte.min.js';
 import 'admin-lte/dist/js/pages/dashboard.js';
 import 'admin-lte/dist/js/demo.js';
