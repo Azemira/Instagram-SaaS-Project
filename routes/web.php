@@ -27,5 +27,11 @@ Route::group(['middleware' => 'verified-user'] , function (){
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'] , function (){
    
     Route::get('/dashboard', 'HomeController@adminDashboard')->name('admin-dashboard');
+
+    // User Routes 
     Route::get('/users', 'UserController@getAllUsers')->name('users-list');
+    Route::get('/users/create', 'UserController@createUserPage')->name('create-user');
+    Route::post('/user/store', ['uses' => 'UserController@store', 'as' => 'user.store']);
+
+
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use app\User;
+use app\Role;
 
 class UserController extends Controller
 {
@@ -22,14 +23,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createUserPage()
     {
-        //
+        return view('admin.users.create');
     }
 
     public function getAllUsers() {
         $users = User::all()->sortByDesc('created_at');
-        return view('admin.users', compact('users'));
+        return view('admin.users.users', compact('users'));
     }
 
     /**
@@ -40,7 +41,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        $role_user  = Role::where('name', 'user')->first();
+        $user = User::create([
+ 
+            'name' => $request->name,
+ 
+            'email' => $request->email,
+ 
+            'password' => $request->password,
+ 
+        ]);
+
+        $user->roles()->attach($role_user);
+ 
+ 
+        // Session::flash('success','User created successfully');
+ 
+ 
+        return redirect()->route('users-list');
+ 
     }
 
     /**
