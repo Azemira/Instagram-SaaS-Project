@@ -15,17 +15,28 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
+
+            <li>
+              <a href="/admin/dashboard">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              </a>
+            </li>
             <li class="active treeview">
               <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <i class="fa fa-users"></i> <span>Users</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <li class="active"><a href="/admin/users"><i class="fa fa-circle-o"></i> All Users</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Create User</a></li>
               </ul>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-tripadvisor"></i> <span>Logs</span>
+              </a>
             </li>
             {{-- <li class="treeview">
               <a href="#">

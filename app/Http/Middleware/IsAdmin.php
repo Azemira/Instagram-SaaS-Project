@@ -20,7 +20,7 @@ class IsAdmin
                 return $next($request);
          }
         if (Auth::user() &&  !Auth::user()->authorizeRoles(['admin'])) {
-            return $next($request);
+            return redirect('/404');
          }
     
          return redirect('/login');

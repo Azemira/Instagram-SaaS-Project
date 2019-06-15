@@ -20,11 +20,6 @@ class IsUser
     {
 
         if(Auth::user() && Auth::user()->authorizeRoles(['user']) ) {
-            // if (!$request->user()->hasVerifiedEmail()) {
-            //     return redirect('/not-verified');
-            // } else {
-            //     Redirect::route($redirectToRoute ?: 'verification.notice');
-            // }
             return $next($request);
         }
 

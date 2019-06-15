@@ -26,5 +26,6 @@ Route::group(['middleware' => 'verified-user'] , function (){
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'] , function (){
    
-    Route::get('/dashboard', 'HomeController@adminDashboard');
+    Route::get('/dashboard', 'HomeController@adminDashboard')->name('admin-dashboard');
+    Route::get('/users', 'UserController@getAllUsers')->name('users-list');
 });
