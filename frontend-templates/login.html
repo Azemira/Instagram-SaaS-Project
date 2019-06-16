@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <title>AutoDimes</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/libs/fontawesome/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <header class="header_area blue_bg">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">Logo</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav justify-content-end">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Packages</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Package 1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Package 2</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Package 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Subscribe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                            <li class="nav-item button-item">
+                                <a href="#" class="std_btn">Login</a>
+                            </li>
+                            <li class="nav-item button-item">
+                                <a href="#" class="std_btn">Sign up</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="login_area">
+        <div class="container form-wrap">
+            <div class="row form-content">
+                <div class="login-form">
+                    <div class="col-12 form-wrapper show" id="login-form-wrapper">
+                        <form class="row login_form" id="loginForm">
+                            <h1 class="col-12">Login</h1>
+                            <div class="col-12 text-center">
+                                <div class="form-group">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username / Email">
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <div class="form-group">
+                                    <i class="fas fa-key"></i>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" value="submit" class="btn submit_btn">Login</button>
+                            </div>
+                            <div class="col-12 text-center">
+                                <div class="btn-wrapper">
+                                    <a href="javascript:void(0)" data-openformid="forgot-form-wrapper" class="btn-rotate-form forgot-password">Forgot password?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 form-wrapper" id="forgot-form-wrapper">
+                        <form class="row forgot_form" id="forgotPasswordForm">
+                            <h2 class="col-12">Forgot password?</h2>
+                            <p class="col-12 text">Enter your username or email in the field below and click Send button. An email with instructions
+                                on how to reset your password will be sent to you.</p>
+                            <div class="col-12 text-center">
+                                <div class="form-group">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username / Email">
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" value="submit" class="btn submit_btn">Send</button>
+                            </div>
+                            <div class="col-12 text-center">
+                                <div class="btn-wrapper">
+                                    <a href="javascript:void(0)" data-openformid="login-form-wrapper" class="btn-rotate-form forgot-password">Back to login</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer_area">
+        <div class="container-fluid">
+            <div class="row footer_inner">
+                <div class="col-12 col-md-4">
+                    <aside class="f_widget widget-1">
+                        <div class="f_title">
+                            <h3>Lorem ipsum</h3>
+                        </div>
+                        <p>Copyright ©
+                            <script>
+                            document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | Lorem ipsum</p>
+                    </aside>
+                </div>
+                <div class="col-12 col-md-4">
+                    <aside class="f_widget widget-2">
+                        <div class="f_title">
+                            <h3>Lorem ipsum</h3>
+                        </div>
+                        <p>Nulla varius dui aliquet, pulvinar orci et, faucibus purus. Mauris sodales massa lacus, vitae dignissim
+                            felis laoreet eu. Suspendisse vitae nulla non massa mattis facilisis vitae porttitor ex.
+                        </p>
+                    </aside>
+                </div>
+                <div class="col-12 col-md-4">
+                    <aside class="f_widget social_widget">
+                        <div class="f_title">
+                            <h3>Lorem ipsum</h3>
+                        </div>
+                        <p>Etiam ac magna ac lorem ornare rhoncus eu aliquet est.</p>
+                        <ul class="list">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/libs/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
