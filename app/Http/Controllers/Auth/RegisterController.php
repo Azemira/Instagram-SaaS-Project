@@ -7,6 +7,7 @@ use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -29,7 +30,17 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    public function redirectTo(){
+        if(Auth::user()->authorizeRoles(['user'])) {
+            if(!\Auth::user()->hasVerifiedEmail()) {
+               return'/email-verify';
+            } else {
+               return'/home';
+            }
+        } else {
+            return'/admin/dashboard';
+        }
+    }
 
     /**
      * Create a new controller instance.

@@ -32,7 +32,9 @@ class UserController extends Controller
         $users = User::all()->sortByDesc('created_at');
         return view('admin.users.users', compact('users'));
     }
-
+    public function verify() {
+        return view('auth.verify');
+    }
     /**
      * Store a newly created resource in storage.
      *

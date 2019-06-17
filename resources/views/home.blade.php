@@ -2,7 +2,7 @@
 
 @section('content')
 @if(Auth::user()->authorizeRoles(['user']) && !\Auth::user()->hasVerifiedEmail())
- Please Verify Your Email.
+ @include('auth.verify')
 @else
 <div class="container">
     <div class="row justify-content-center">

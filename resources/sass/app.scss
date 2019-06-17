@@ -2,13 +2,25 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+// @import 'variables';
+// @import '_main';
+// @import '_reset';
 
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+// @import "../admin/assets/css/font-awesome.min.css";
+// @import "../admin/assets/css/themify-icons.css";
+// // @import "../admin/assets/css/metisMenu.css";
+// // @import "../admin/assets/css/owl.carousel.min.css";
+// // @import "../admin/assets/css/slicknav.min.css";
 
+// @import "../admin/assets/css/bootstrap.min.css";
+// @import "../admin/assets/css/typography.css";
+// @import "../admin/assets/css/default-css.css";
+// @import "../admin/assets/css/styles.css";
+// @import "../admin/assets/css/responsive.css";
 
 @import "~admin-lte/bower_components/bootstrap/dist/css/bootstrap.min.css";
 @import "~admin-lte/bower_components/font-awesome/css/font-awesome.min.css";

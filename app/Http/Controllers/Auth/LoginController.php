@@ -26,7 +26,15 @@ class LoginController extends Controller
      * @var string
      */
     public function redirectTo(){
-        return Auth::user()->authorizeRoles(['user']) ? '/home' : '/admin/dashboard';
+        if(Auth::user()->authorizeRoles(['user'])) {
+            if(!\Auth::user()->hasVerifiedEmail()) {
+               return'/email-verify';
+            } else {
+               return'/home';
+            }
+        } else {
+            return'/admin/dashboard';
+        }
     }
 
     /**
