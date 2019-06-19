@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="content">
+<div class="content maintenance-page">
     <div class="loader">
         <div class="lds-grid">
             <div></div>

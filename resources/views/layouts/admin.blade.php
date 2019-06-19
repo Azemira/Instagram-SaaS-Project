@@ -57,7 +57,7 @@
     
         </div>
         <!-- /.content-wrapper -->
-        @include('footer.footer')
+        @include('footer.admin.footer')
    
     </div>
     </body>

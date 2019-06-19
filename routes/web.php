@@ -20,7 +20,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::group(['as'=>'client.','middleware' => 'verified-user'] , function (){
+Route::group(['as'=>'client','middleware' => 'verified-user'] , function (){
+    Route::get('/404', 'HomeController@page404')->name('404');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/email-verify', 'UserController@verify')->name('verify');
 });

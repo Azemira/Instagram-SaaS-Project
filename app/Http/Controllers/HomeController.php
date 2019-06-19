@@ -29,4 +29,8 @@ class HomeController extends Controller
     {
         return view('admin.admin-dashboard');
     }
+    public function page404()
+    {
+        return view('errors.404');
+    }
 }
