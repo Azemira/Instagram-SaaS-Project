@@ -65,13 +65,13 @@
             </nav>
         </div>
     </header>
-    <section class="login_area">
+    <section class="signup_area">
         <div class="container form-wrap">
             <div class="row form-content">
-                <div class="login-form">
-                    <div class="col-12 form-wrapper show" id="login-form-wrapper">
-                        <form class="row login_form" id="loginForm">
-                            <h1 class="col-12">Login</h1>
+                <div class="signup-form">
+                    <div class="col-12 form-wrapper show" id="signup-form-wrapper">
+                        <form class="row signup_form" id="signupForm">
+                            <h1 class="col-12">Sign up</h1>
                             <div class="col-12 text-center">
                                 <div class="form-group">
                                     <i class="fas fa-user"></i>
@@ -85,33 +85,14 @@
                                 </div>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" value="submit" class="btn submit_btn">Login</button>
-                            </div>
-                            <div class="col-12 text-center">
-                                <div class="btn-wrapper">
-                                    <a href="javascript:void(0)" data-openformid="forgot-form-wrapper" class="btn-rotate-form forgot-password">Forgot password?</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-12 form-wrapper" id="forgot-form-wrapper">
-                        <form class="row forgot_form" id="forgotPasswordForm">
-                            <h2 class="col-12">Forgot password?</h2>
-                            <p class="col-12 text">Enter your username or email in the field below and click Send button. An email with instructions
-                                on how to reset your password will be sent to you.</p>
-                            <div class="col-12 text-center">
                                 <div class="form-group">
-                                    <i class="fas fa-user"></i>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username / Email" required>
+                                    <i class="fas fa-key"></i>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Repeat password" required>
                                 </div>
                             </div>
+                            <div class="g-recaptcha col-12 text-center" data-sitekey="6LfovKkUAAAAAKNX0CcF2n9fAf36uFt8GDa246Ue"></div>
                             <div class="col-12 text-center">
-                                <button type="submit" value="submit" class="btn submit_btn">Send</button>
-                            </div>
-                            <div class="col-12 text-center">
-                                <div class="btn-wrapper">
-                                    <a href="javascript:void(0)" data-openformid="login-form-wrapper" class="btn-rotate-form forgot-password">Back to login</a>
-                                </div>
+                                <button type="submit" value="submit" class="btn submit_btn">Sign up</button>
                             </div>
                         </form>
                     </div>
@@ -180,6 +161,7 @@
             </div>
         </div>
     </footer>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="assets/libs/jQuery/jquery-3.4.1.min.js"></script>
     <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>

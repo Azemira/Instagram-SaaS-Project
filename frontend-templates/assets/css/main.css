@@ -337,13 +337,15 @@ body {
 }
 
 /*Login and forgot password style*/
-.login_area {
+.login_area,
+.signup_area {
     display: flex;
     flex: 1;
     margin: 25px 0;
 }
 
-.login_area form {
+.login_area form,
+.signup_area form {
     position: relative;
     z-index: 1;
     background: #FFFFFF;
@@ -355,12 +357,14 @@ body {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.login_area .form-group {
-    width: 320px;
+.login_area .form-group,
+.signup_area .form-group {
+    width: 100%;
     margin-bottom: 20px;
 }
 
-.login_area .form-group i {
+.login_area .form-group i,
+.signup_area .form-group i {
     color: #3bacf0;
     font-family: 'FontAwesome';
     position: absolute;
@@ -386,7 +390,8 @@ body {
     box-shadow: none
 }
 
-.login_area .submit_btn {
+.login_area .submit_btn,
+.signup_area .submit_btn {
     min-width: 125px;
     width: auto;
     display: inline-block;
@@ -412,14 +417,16 @@ body {
     color: #fff;
 }
 
-.login_area .btn-wrapper {
+.login_area .btn-wrapper,
+.signup_area .btn-wrapper {
     float: left;
     width: 100%;
     margin-top: 20px;
     font-size: 12px
 }
 
-.login_area .forgot-password {
+.login_area .forgot-password,
+.signup_area .forgot-password {
     margin-top: 25px;
     color: #3bacf0;
     text-decoration: none;
@@ -430,7 +437,8 @@ body {
     position: relative;
 }
 
-.login_area .forgot-password:after {
+.login_area .forgot-password:after,
+.signup_area .forgot-password:after {
     border-bottom: solid 1px #3bacf0;
     position: absolute;
     bottom: 0;
@@ -448,19 +456,22 @@ body {
     transform: scaleX(1);
 }
 
-.login_area form h1 {
+.login_area form h1,
+.signup_area form h1 {
     font-size: 32px;
     color: #3bacf0;
     margin-bottom: 30px;
 }
 
-.login_area form h2 {
+.login_area form h2,
+.signup_area form h2 {
     font-size: 26px;
     color: #3bacf0;
     margin-bottom: 20px;
 }
 
-.login_area form p.text {
+.login_area form p.text,
+.signup_area form p.text {
     margin-bottom: 20px;
     line-height: 1.4em
 }
@@ -470,6 +481,10 @@ body {
     margin: auto;
     min-height: 350px;
     position: relative;
+}
+
+.signup_area .form-wrap {
+    min-height: 450px;
 }
 
 .form-content {
@@ -493,16 +508,23 @@ body {
     backface-visibility: hidden;
 }
 
-.login-form {
+.login-form,
+.signup-form {
     width: 100%;
     position: relative;
     perspective: 1000px;
     transform-style: preserve-3d;
 }
 
+#signup-form-wrapper.show,
 #login-form-wrapper.show,
 #forgot-form-wrapper.show {
     transform: rotate(0) !important;
+}
+
+.g-recaptcha>div {
+    width: 100% !important;
+    margin: 0 auto;
 }
 
 /*404 page style*/
