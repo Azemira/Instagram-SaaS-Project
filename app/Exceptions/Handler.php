@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -48,7 +49,11 @@ class Handler extends ExceptionHandler
     {
         if ($this->isHttpException($exception)) {
             if ($exception->getStatusCode() == 404) {
-                return response()->view('errors.' . '404', [], 404);
+                if(Auth::check()){
+                    return response()->view('errors.' . '404', [], 404);
+                } else {
+                    return redirect('/login');
+                }
             }
         }
         return parent::render($request, $exception);
