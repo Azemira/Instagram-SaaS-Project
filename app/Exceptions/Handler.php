@@ -49,13 +49,16 @@ class Handler extends ExceptionHandler
     {
         if ($this->isHttpException($exception)) {
             if ($exception->getStatusCode() == 404) {
-                if(Auth::check()){
-                    return response()->view('errors.' . '404', [], 404);
-                } else {
-                    return redirect('/login');
-                }
+                    // return response()view('errors.404');
+                    return redirect('/404');
+            }
+        } else {
+            if(Auth::check()){
+                return parent::render($request, $exception);
+            } else {
+                return redirect('/404');
             }
         }
-        return parent::render($request, $exception);
+        
     }
 }

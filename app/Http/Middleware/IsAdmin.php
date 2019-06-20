@@ -23,6 +23,6 @@ class IsAdmin
             return redirect('/404');
          }
     
-         return redirect('/login');
+         return redirect('/404');
     }
 }

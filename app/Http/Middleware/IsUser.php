@@ -27,6 +27,6 @@ class IsUser
             return $next($request);
         }
       
-        return redirect('/');
+        return redirect('/404');
     }
 }
