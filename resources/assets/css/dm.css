@@ -1,0 +1,43 @@
+.btn-clean {
+    border-color: transparent;
+    box-shadow: none;
+}
+.alert {
+    padding: 0.45rem 1.25rem;
+}
+.dropdown-item {
+    padding: 0.25rem 1rem;
+}
+.emoji-wysiwyg-editor {
+    height: inherit;
+    max-height: inherit;
+    min-height: 86px;
+}
+.input-group.emoji-picker-container .emoji-wysiwyg-editor {
+    min-height: 40px;
+    line-height: 26px;
+}
+.input-group.emoji-picker-container .emoji-wysiwyg-editor:empty:before {
+    left: 4px;
+    position: relative;
+}
+.input-group.emoji-picker-container .emoji-picker-icon {
+    right: 60px;
+    top: 8px;
+}
+.footer .dropdown-item.active, .footer .dropdown-item:active, .dropdown-item.active .dropdown-icon, .dropdown-item:active .dropdown-icon {
+    color: #fff;
+}
+.dropdown-item.active .text-muted, .dropdown-item:active .text-muted {
+    color: #fff !important;
+}
+.dimmer.active .dimmer-content {
+    opacity: .5;
+}
+.card-list-group .list-group-item {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.col-login {
+    max-width: 24.5rem;
+}

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Role;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -21,7 +19,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -30,17 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    public function redirectTo(){
-        if(Auth::user()->authorizeRoles(['user'])) {
-            if(!\Auth::user()->hasVerifiedEmail()) {
-               return'/email-verify';
-            } else {
-               return'/home';
-            }
-        } else {
-            return'/admin/dashboard';
-        }
-    }
+    protected $redirectTo = 'dashboard';
 
     /**
      * Create a new controller instance.
@@ -60,11 +48,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        $rules = [
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ];
+
+        if (config('recaptcha.api_site_key') && config('recaptcha.api_secret_key')) {
+            $rules['g-recaptcha-response'] = 'recaptcha';
+        }
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -76,13 +70,55 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
-          ]);
-        $user
-            ->roles()
-            ->attach(Role::where('name', 'user')->first());
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'password'      => Hash::make($data['password']),
+            'trial_ends_at' => now()->addDays(config('pilot.TRIAL_DAYS')),
+        ]);
+
+        // Pre-loaded messages list
+        $templates = __('templates');
+
+        foreach ($templates['messages'] as $group => $messages) {
+
+            $messages_list = $user->lists()->create([
+                'type' => 'messages',
+                'name' => $group,
+            ]);
+
+            foreach ($messages as $message) {
+
+                $messages_list->items()->create([
+                    'text' => $message,
+                ]);
+
+            }
+        }
+
+        // Pre-loaded users list
+        $users_list = $user->lists()->create([
+            'type' => 'users',
+            'name' => 'Most followed accounts on Instagram',
+        ]);
+
+        foreach ($templates['users'] as $username) {
+
+            $users_list->items()->create([
+                'text' => $username,
+            ]);
+
+        }
+
         return $user;
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('skins.' . config('pilot.SITE_SKIN') . '.auth.register');
     }
 }

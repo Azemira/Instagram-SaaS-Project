@@ -24,8 +24,24 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        if (config('pilot.SCHEDULE_TYPE') == 'cron') {
+            $schedule->command('queue:work --queue=autopilot,message --sleep=3 --tries=3 --stop-when-empty')
+                ->everyMinute()
+                ->withoutOverlapping();
+        }
+
+        $schedule->command('pilot:get-follower followers')
+            ->everyFiveMinutes()
+            ->withoutOverlapping();
+
+        $schedule->command('pilot:get-follower following')
+            ->everyFiveMinutes()
+            ->withoutOverlapping();
+
+        $schedule->command('queue:retry all')
+            ->hourly()
+            ->withoutOverlapping();
+
     }
 
     /**
@@ -35,8 +51,18 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
+    }
+
+    /**
+     * Get the timezone that should be used by default for scheduled events.
+     *
+     * @return \DateTimeZone|string|null
+     */
+    protected function scheduleTimezone()
+    {
+        return config('app.timezone');
     }
 }
