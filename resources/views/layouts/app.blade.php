@@ -62,12 +62,8 @@
                             <i class="fe fe-alert-triangle mr-2"></i> {!! session('error') !!}
                         </div>
                     @endif
-                    @if(!\Auth::user()->hasVerifiedEmail())
-                     {{-- Verify Email --}}
-                    @include('auth.verify')
-                    @else
+
                     @yield('content')
-                    @endif
                 </div>
             </div>
         </div>
