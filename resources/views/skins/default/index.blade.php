@@ -27,7 +27,10 @@
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="{{ url('/') }}"><img src="{{ asset('skins/default/img/logo.png') }}" alt=""></a>
+						
+						<a class="navbar-brand logo_h" style="    text-transform: uppercase;color: #fff;" href="{{ url('/') }}">{{ __(config('app.name')) }}</a>
+
+						{{-- <a class="navbar-brand logo_h" href="{{ url('/') }}"><img src="{{ asset('skins/default/img/logo.png') }}" alt=""></a> --}}
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -54,19 +57,19 @@
         <!--================Header Menu Area =================-->
 
         <!--================Home Banner Area =================-->
-        <section class="home_banner_area" id="home">
+        <section class="home_banner_area" id="home" style="height:870px">
             <div class="banner_inner">
 				<div class="container">
 					<div class="row banner_content">
-						<div class="col-lg-8">
-							<h2>@lang('Most wanted automation tool for Instagram Direct Message.')</h2>
-							<p>@lang('Greet with warm welcome message your new followers by sending customized text message. Create your own list of users and send them text message with emoji, post, hashtag, video or photo.')</p>
-							<a class="banner_btn" href="{{ route('billing.index') }}">@lang('Try now')</a>
-						</div>
-						<div class="col-lg-4">
-							<div class="banner_map_img">
-								<img class="img-fluid" src="{{ asset('skins/default/img/dm-landing.png') }}" alt="">
-							</div>
+						<div class="col-lg-8" >
+							<h2>@lang('Instagram SaaS is coming soon')</h2>
+							<p>@lang('It\'s almost ready.')</p>
+							{{-- <a class="banner_btn" href="{{ route('billing.index') }}">@lang('Try now')</a> --}}
+						{{-- </div>
+						<div class="col-lg-4"> --}}
+							{{-- <div class="banner_map_img"> --}}
+								{{-- <img class="img-fluid" src="{{ asset('skins/default/img/dm-landing.png') }}" alt=""> --}}
+							{{-- </div> --}}
 						</div>
 					</div>
 				</div>
@@ -75,7 +78,7 @@
         <!--================End Home Banner Area =================-->
 
         <!--================Feature Area =================-->
-        <section class="feature_area p_120" id="feature">
+        {{-- <section class="feature_area p_120" id="feature">
         	<div class="container">
 
                 @if (session('success'))
@@ -119,11 +122,11 @@
         			</div>
         		</div>
         	</div>
-        </section>
+        </section> --}}
         <!--================End Feature Area =================-->
 
         <!--================Price Area =================-->
-        <section class="price_area p_120" id="price">
+        {{-- <section class="price_area p_120" id="price">
         	<div class="container">
         		<div class="main_title">
         			<h2>@lang('Pricing table')</h2>
@@ -167,7 +170,7 @@
                     @endforeach
         		</div>
         	</div>
-        </section>
+        </section> --}}
         <!--================End Price Area =================-->
 
         <!--================ start footer Area  =================-->

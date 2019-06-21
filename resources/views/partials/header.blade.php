@@ -1,6 +1,7 @@
 <div class="d-flex">
     <a class="header-brand" href="{{ route('dashboard') }}">
-        <img src="{{ asset('assets/img/logo.svg') }}" class="header-brand-img" alt="DM Pilot">
+        {{ __(config('app.name')) }}
+        {{-- <img src="{{ asset('assets/img/logo.svg') }}" class="header-brand-img" alt="DM Pilot"> --}}
     </a>
     <div class="d-flex order-lg-2 ml-auto">
 
