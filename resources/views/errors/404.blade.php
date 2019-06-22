@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        @includeWhen(config('pilot.GOOGLE_ANALYTICS'), 'partials.google-analytics')
-
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,8 +60,9 @@
 				<div class="container">
 					<div class="row banner_content">
 						<div class="col-lg-8" >
-							<h2>@lang('Instagram SaaS is coming soon')</h2>
-							<p>@lang('It\'s almost ready.')</p>
+							<h2>@lang('Oops! Nothing was found')</h2>
+							<p> "The page you are looking for might have been removed had its name changed or is temporarily unavailable."
+                                    <a href="/">Return to homepage</a></p>
 							{{-- <a class="banner_btn" href="{{ route('billing.index') }}">@lang('Try now')</a> --}}
 						{{-- </div>
 						<div class="col-lg-4"> --}}
@@ -75,103 +74,6 @@
 				</div>
             </div>
         </section>
-        <!--================End Home Banner Area =================-->
-
-        <!--================Feature Area =================-->
-        {{-- <section class="feature_area p_120" id="feature">
-        	<div class="container">
-
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        <i class="fe fe-check mr-2"></i> {!! session('success') !!}
-                    </div>
-                @endif
-
-        		<div class="main_title">
-        			<h2>@lang('Unique Features')</h2>
-        			<p>@lang('Features you will definently love.')</p>
-        		</div>
-        		<div class="feature_inner row">
-        			<div class="col-lg-3 col-md-6">
-        				<div class="feature_item text-center">
-        					<img src="{{ asset('skins/default/img/icon/f-icon-1.png') }}" alt="">
-        					<h4>@lang('Welcome new followers')</h4>
-        					<p>@lang('Greet with warm welcome message your new followers by sending customized text message.')</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-3 col-md-6">
-        				<div class="feature_item text-center">
-        					<img src="{{ asset('skins/default/img/icon/f-icon-1.png') }}" alt="">
-        					<h4>@lang('Keep unfollowers')</h4>
-        					<p>@lang('Automatically send promocode or any other catchy message to keep your followers and don\'t let them to unfollow you.')</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-3 col-md-6">
-        				<div class="feature_item text-center">
-        					<img src="{{ asset('skins/default/img/icon/f-icon-1.png') }}" alt="">
-        					<h4>@lang('Message any content to any size of users list')</h4>
-        					<p>@lang('Create your own list of users and send them text message with emoji, post, hashtag, video or photo even disappearing.')</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-3 col-md-6">
-        				<div class="feature_item text-center">
-        					<img src="{{ asset('skins/default/img/icon/f-icon-1.png') }}" alt="">
-        					<h4>@lang('Web-Based Direct Messenger')</h4>
-        					<p>@lang('Chat without touching your device and chat with your customers directly from the browser.')</p>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </section> --}}
-        <!--================End Feature Area =================-->
-
-        <!--================Price Area =================-->
-        {{-- <section class="price_area p_120" id="price">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>@lang('Pricing table')</h2>
-        			<p>@lang('Affordable prices will surprise you!')</p>
-        		</div>
-        		<div class="price_item_inner row">
-                    @foreach($packages as $package)
-        			<div class="col-md-6 col-lg-{{ 12 / count($packages) }}">
-        				<div class="price_item">
-        					<div class="price_head">
-        						<div class="text-center">
-        							<h3>{{ $package->title }}</h3>
-        						</div>
-        						<div class="text-center">
-        							<h2 class="mt-4 mb-4">{{ $currency_symbol }}{{ $package->wholeprice }}.<sup>{{ $package->fraction_price }}</sup></h2>
-                                    <h3><span class="badge badge-pill badge-primary">{{ __(':num days FREE trial', ['num' => config('pilot.TRIAL_DAYS')]) }}</span></h3>
-        						</div>
-        					</div>
-        					<div class="price_body">
-        						<p><strong>{{ trans_choice('pilot.package_accounts', $package->accounts_count, ['num' => $package->accounts_count]) }}</strong></p>
-        						<ul class="list">
-                                    <li><i class="fa fa-check text-success mr-1"></i> @lang('Web Based Direct Messenger')</li>
-                                    <li><i class="fa fa-check text-success mr-1"></i> @lang('Send Bulk Messages')</li>
-                                    <li><i class="fa fa-check text-success mr-1"></i> @lang('Custom users lists')</li>
-                                    <li><i class="fa fa-check text-success mr-1"></i> @lang('Scheduled Autopilot')</li>
-                                    <li><i class="fa fa-check text-success mr-1"></i> @lang('Pre-defined messages lists')</li>
-                                    <li><i class="fa fa-check text-success mr-1"></i> @lang('Detect Unfollowers')</li>
-                                    <li><i class="fa fa-check text-success mr-1"></i> @lang('Spintax Support')</li>
-        						</ul>
-                                <br>
-                                <small class="text-muted">
-                                    @lang('Prices shown in:') {{ $currency_code }}<br>
-                                    @lang('pilot.interval_' . $package->interval)
-                                </small>
-        					</div>
-        					<div class="price_footer">
-                                <a class="main_btn2" href="{{ route('billing.index') }}">@lang('Try now')</a>
-        					</div>
-        				</div>
-        			</div>
-                    @endforeach
-        		</div>
-        	</div>
-        </section> --}}
-        <!--================End Price Area =================-->
 
         <!--================ start footer Area  =================-->
         <footer class="footer-area p_30">
@@ -185,12 +87,12 @@
                     <div class="col-md-4 text-right">
                         <div class="btn-group dropup">
                             <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ $active_language['native'] }}
+                                {{-- {{ $active_language['native'] }} --}}
                             </button>
                             <div class="dropdown-menu">
-                                @foreach($languages as $code => $language)
+                                {{-- @foreach($languages as $code => $language)
                                     <a href="{{ route('localize', $code) }}" rel="alternate" hreflang="{{ $code }}" class="dropdown-item">{{ $language['native'] }}</a>
-                                @endforeach
+                                @endforeach --}}
                             </div>
                         </div>
                     </div>

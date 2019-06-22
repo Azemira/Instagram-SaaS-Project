@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -46,6 +47,25 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        // return parent::render($request, $exception);
+        if ($this->isHttpException($exception)) {
+            if ($exception->getStatusCode() == 404) {
+                if(Auth::check()){
+                    return response()->view('errors.page-not-found', [], 404);
+                } else {
+                    return response()->view('errors.404', [], 404);
+                }
+            }
+        }
+        if(Auth::check()){
+            if(Auth::user()->is_admin){
+              return parent::render($request, $exception);
+            } else {
+              return response()->view('errors.page-not-found', [], 404);
+            }
+        } else {
+            return response()->view('errors.404', [], 404);
+        }
+
     }
 }
