@@ -12,7 +12,7 @@
  */
 
 // Authorization
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 // Localization
 Route::get('lang/{locale}', 'DMController@localize')->name('localize');
