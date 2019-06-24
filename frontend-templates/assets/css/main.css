@@ -75,7 +75,15 @@ body {
     border-radius: 0px;
     width: 100%;
 }
-
+.header_area .navbar .navbar-toggler{
+    font-size: 14px;
+    color:#fff;
+    border-color: #fff;
+    outline: none
+}
+.header_area .navbar .navbar-toggler .navbar-toggler-icon{
+    color: #fff
+}
 .header_area .navbar-brand {
     margin-right: 30px;
     color: #fff
@@ -801,7 +809,6 @@ body {
 }
 
 .about_area .about-details-box .box-text {
-    height: 115px;
     line-height: 1.4em;
     overflow: auto;
     margin-top: 15px;
