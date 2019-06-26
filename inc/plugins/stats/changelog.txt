@@ -1,0 +1,23 @@
+1.0.6   2019-01-30
+  - integrated with View Stories
+----------
+1.0.5   2018-10-26
+  - integrated with Boost
+----------
+1.0.4   2018-09-25
+  - change last 30 days to last 30 registers
+----------
+1.0.4   2018-09-22
+  - fix bug "on line 587 of indexController.php"
+----------
+1.0.3   2018-07-31
+  - fix bug "Trying to get property of non-object in /home/Website/public_html/app/inc/plugins/stats/stats.php on line 249"
+----------
+1.0.2   2018-07-18
+  - fix bug that show all actions even if not installed
+----------
+1.0.1   2018-07-16
+  - fix bug when account has no data or has login_required
+----------
+1.0.0   2018-07-15
+  - initial release

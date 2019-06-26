@@ -1,0 +1,49 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Nextpost v3.0 - Default Theme\n"
+"Language: pt-br\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#:
+msgid: "Please select an account from left side list."
+msgstr: "Selecione uma conta da listagem ao lado"
+
+#:
+msgid: "Instagram user"
+msgstr: "Usuário do Instagram"
+
+#:
+msgid: "Open chat"
+msgstr: "Abrir conversa"
+
+#:
+msgid: "liked a message you sent"
+msgstr: "curtiu uma mensagem que você enviou"
+
+#:
+msgid: "send a media"
+msgstr: "enviou uma mídia"
+
+#:
+msgid: "reacted to your story"
+msgstr: "reagiu ao seu story"
+
+#:
+msgid: "replied your story"
+msgstr: "curtiu uma mensagem que você enviou"
+
+#:
+msgid: "shared a link"
+msgstr: "compartilhou um link"
+
+#:
+msgid: "type your message"
+msgstr: "escreva sua mensagem"
+
+#:
+msgid: "liked a photo you sent"
+msgstr: "curtiu a foto que você enviou"
