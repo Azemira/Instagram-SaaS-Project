@@ -730,17 +730,58 @@ class AccountController extends Controller
         }
 
         try {
+            // $api_path = $e->getResponse()->getChallenge()->getApiPath();
+    
+            // // Try to send challenge code via SMS.
+            // $choice = InstagramAPI\Constants::CHALLENGE_CHOICE_SMS;
+            // $challenge_resp = $Instagram->sendChallangeCode($api_path, $choice);
+
+            // if ($challenge_resp->status != "ok") {
+            //     // Failed to send challenge code via SMS. Try with email.
+            //     $choice = InstagramAPI\Constants::CHALLENGE_CHOICE_EMAIL;
+            //     $challenge_resp = $Instagram->sendChallangeCode($api_path, $choice);
+            // }
+
+            // PATCH START
             $api_path = $e->getResponse()->getChallenge()->getApiPath();
     
-            // Try to send challenge code via SMS.
-            $choice = InstagramAPI\Constants::CHALLENGE_CHOICE_SMS;
+            // Try to send challenge code via email.
+            $api_path = $e->getResponse()->getChallenge()->getApiPath();
+            // Get selected verification method. 1 - Email, 2 - SMS. 
+            $verifymethod = Input::post("choice");
+            // Send challenge code via email or via SMS
+            if ($verifymethod == 1) {
+               $choice = \InstagramAPI\Constants::CHALLENGE_CHOICE_EMAIL;
+            } else {
+               $choice = \InstagramAPI\Constants::CHALLENGE_CHOICE_SMS;
+            } 
             $challenge_resp = $Instagram->sendChallangeCode($api_path, $choice);
-
-            if ($challenge_resp->status != "ok") {
-                // Failed to send challenge code via SMS. Try with email.
-                $choice = InstagramAPI\Constants::CHALLENGE_CHOICE_EMAIL;
-                $challenge_resp = $Instagram->sendChallangeCode($api_path, $choice);
+            // Failed to send challenge code via email. Try with SMS.
+            if (($challenge_resp->status != "ok") && ($verifymethod == 1)) {
+               $choice = InstagramAPI\Constants::CHALLENGE_CHOICE_SMS;
+               $challenge_resp = $Instagram->sendChallangeCode($api_path, $choice);
             }
+            if ($challenge_resp->status != "ok") {
+               $this->resp->msg = __("Couldn't send a verification code for the login challenge. Please try again later.");
+               $this->jsonecho();
+            }
+            if (isset($_SESSION['retry_count'.$this->username])) {
+               $_SESSION['retry_count'.$this->username] += 1;
+            } else {
+               $_SESSION['retry_count'.$this->username] = 1;
+            }
+            if (empty($challenge_resp->step_data->contact_point)) {   
+               if ($_SESSION['retry_count'.$this->username] > 10){ 
+                  unset($_SESSION['retry_count'.$this->username]);
+                  $this->resp->msg = __("Instagram sent us empty contact data more than 10 times. Please contact our Support for help.");
+                  $this->jsonecho();                        
+               } else {
+                  $this->resp->msg = __("Instagram sent us empty contact data. We will request verification code automatically within 60 seconds. Don't close or refresh this page.");
+                  sleep(random_int(0, 1) . '.' . random_int(3, 99));
+                  $this->save();   
+               }  
+            }
+            // PATCH END
 
             if ($challenge_resp->status != "ok") {
                 $this->resp->msg = __("Could't send verification code for the login challenge! Please try again later!");

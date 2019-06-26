@@ -28,7 +28,7 @@
                                                    maxlength="30">
                                         </div>
 
-                                        <div class="">
+                                        <!-- <div class="">
                                             <label class="form-label">
                                                 <?= __("Password") ?>
                                                 <span class="compulsory-field-indicator">*</span>    
@@ -38,7 +38,33 @@
                                                    name="password" 
                                                    type="password" 
                                                    placeholder="<?= __("Enter password") ?>">
+                                        </div> -->
+
+                                        <!-- PATCH START -->
+                                        <div class="mb-20">
+                                        <label class="form-label">
+                                            <?= __("Password") ?>
+                                                <span class="compulsory-field-indicator">*</span>    
+                                        </label>
+                                        <input class="input js-required"
+                                            name="password" 
+                                            type="password" 
+                                            placeholder="<?= __("Enter password") ?>">
                                         </div>
+                                        <div class="mb-20">
+                                        <label class="form-label">
+                                            <?= __("Verification") ?> 
+                                        </label>
+                                        <select class="input" name="choice">
+                                            <option value="1"><?= __("E-mail") ?></option>
+                                            <option value="2"><?= __("Mobile phone") ?></option> 
+                                        </select> 
+                                            <ul class="field-tips">
+                                                <li><?= __("Sometimes Instagram can ask you to verify your identity, choose preferred verification method.") ?></li>
+                                                <li><?= __("Email method is used by default.") ?></li>
+                                            </ul>
+                                        </div>
+                                        <!-- PATCH END -->
 
                                         <?php if ($Settings->get("data.proxy") && $Settings->get("data.user_proxy")): ?>
                                             <div class="mt-20">
