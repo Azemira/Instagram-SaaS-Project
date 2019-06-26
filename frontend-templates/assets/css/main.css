@@ -47,6 +47,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+a{
+    color:#3bacf0;
+}
 
 .list {
     list-style: none;
@@ -369,14 +372,13 @@ body {
     margin-bottom: 20px;
 }
 
-.login_area .form-group i, .signup_area .form-group i {
+.login_area .form-group i, .signup_area .form-group i, .contact_area .form-group i  {
     color: #3bacf0;
     position: absolute;
     left: 25px;
-    top: 8px;
+    top: 10px;
     font-size: 18px;
 }
-
 .form-group .form-control {
     font-size: 13px;
     line-height: 26px;
@@ -727,9 +729,9 @@ body {
     margin-top: 1rem;
 }
 
-/*about page*/
+/*about page, contact page*/
 
-.about_area {
+.about_area, .contact_area {
     flex: 1;
     align-items: center;
 }
@@ -742,7 +744,7 @@ body {
     margin-left: auto;
 }
 
-.about_area .about-intro-box {
+.about_area .about-intro-box, .contact_area .contact-intro-box{
     text-align: center;
 }
 
@@ -813,7 +815,30 @@ body {
     overflow: auto;
     margin-top: 15px;
 }
-
+/*contact-us*/
+.contact_area .contact_info{
+    box-sizing: border-box;
+}
+.contact_area .contact_info .info_item {
+    position: relative;
+    padding-left: 45px;
+}
+.contact_area .contact_info .info_item i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 20px;
+    line-height: 24px;
+    color: #3bacf0;
+    font-weight: 600;
+}
+.contact_area .contact_form .form-group {
+    margin-bottom: 1.5rem;
+    position:relative;
+}
+.contact_area .form-group i{
+    left:10px;
+}
 /*loader*/
 
 .lds-grid {

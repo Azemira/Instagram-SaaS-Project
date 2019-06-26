@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <title>AutoDimes</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <header class="header_area blue_bg">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">Logo</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav justify-content-end">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">Packages</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Package 1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Package 2</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Package 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Subscribe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                            <li class="nav-item button-item">
+                                <a href="#" class="std_btn">Login</a>
+                            </li>
+                            <li class="nav-item button-item">
+                                <a href="#" class="std_btn">Sign up</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="contact_area d-flex">
+        <div class="container py-5 about-page-wrap">
+            <div class="contact-intro-box mb-5">
+                <h2>Contact us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus vulputate libero et ex rhoncus, non consequat tellus molestie.
+                    Fusce elit quam, lacinia vel porta non, rhoncus in est. Integer suscipit lectus ex, et aliquam metus
+                    tincidunt nec.</p>
+            </div>
+            <div class="row px-5 px-lg-0 contact-details-box-wrapper">
+                <div class="col-lg-3">
+
+                    <div class="contact_info">
+                        <div class="info_item">
+                            <i class="fas fa-home"></i>
+                            <h6>Sarajevo, Bosna and Herzegovina</h6>
+                            <p>Muje Mujica 65</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="fas fa-phone-alt"></i>
+                            <h6>0038760 335 335</h6>
+                            <p>Mon to Fri 8 am to 5 pm</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="fas fa-envelope"></i>
+                            <h6>
+                                <a href="#">support@autodimes.com</a>
+                            </h6>
+                            <p>Send us yout query anytime</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter email address" required>
+                            </div>
+                            <div class="form-group">
+                                    <i class="fas fa-paper-plane"></i>
+                                <input type="text" class="form-control" id="subject" name="subject"
+                                    placeholder="Enter Subject" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                    <i class="fas fa-comment-alt"></i>
+                                <textarea class="form-control" name="message" id="message" rows="6"
+                                    placeholder="Enter Message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <button type="submit" value="submit" class="btn auto-dimes-btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer_area">
+        <div class="container-fluid">
+            <div class="row footer_inner">
+                <div class="col-12 col-md">
+                    <aside class="f_widget widget-1">
+                        <div class="f_title">
+                            <h3>Lorem ipsum</h3>
+                        </div>
+                        <div class="f_menu_wrapper list-group">
+                            <ul class="f_menu">
+                                <li class="f_menu_item"><a href="#">Contact Us</a></li>
+                                <li class="f_menu_item"><a href="#">Terms of Service</a></li>
+                                <li class="f_menu_item"><a href="#">Privacy Policy</a></li>
+                                <li class="f_menu_item"><a href="#">Sitemap</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-12 col-md-6">
+                    <aside class="f_widget widget-2">
+                        <div class="f_title">
+                            <h3>Lorem ipsum</h3>
+                        </div>
+                        <p>Nulla varius dui aliquet, pulvinar orci et, faucibus purus. Mauris sodales massa lacus, vitae
+                            dignissim
+                            felis laoreet eu.
+                        </p>
+                        <p>Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | Lorem ipsum</p>
+                    </aside>
+                </div>
+                <div class="col-12 col-md">
+                    <aside class="f_widget social_widget">
+                        <div class="f_title">
+                            <h3>Lorem ipsum</h3>
+                        </div>
+                        <p>Etiam ac magna ac lorem.</p>
+                        <ul class="list">
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/libs/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/libs/tilt/tilt.jquery.js"></script>
+    <script src="assets/libs/fontawesome/fontawesome-kit.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
