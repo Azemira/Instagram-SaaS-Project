@@ -1,0 +1,171 @@
+.ac-tab-heads {
+  padding: 0 25px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 17px;
+  background-color: #3b7cff;
+  color: #fff; }
+  .ac-tab-heads a {
+    float: left;
+    margin-top: 15px;
+    margin-right: 40px;
+    padding: 10px 0;
+    position: relative;
+    color: inherit; }
+    .ac-tab-heads a:last-child {
+      margin-right: 0; }
+  .ac-tab-heads a.active:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ff3d3d;
+    content: ""; }
+
+.new-comment-input {
+  min-height: 132px;
+  height: auto; }
+
+.ac-comment-list {
+  margin-top: 30px; }
+
+.ac-comment-list-item {
+  float: left;
+  clear: both;
+  position: relative;
+  padding: 16px 21px 16px 48px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #9b9b9b;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px; }
+  .ac-comment-list-item .remove-comment-btn {
+    position: absolute;
+    font-size: 20px;
+    top: 16px;
+    left: 18px;
+    color: #3b7cff; }
+    .ac-comment-list-item .remove-comment-btn:hover {
+      color: #ff3d3d; }
+
+/* Log list */
+.ac-log-list-item {
+  position: relative;
+  padding: 12px 44px 12px 128px;
+  border-bottom: 1px solid #e0e0e0;
+  -webkit-transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+  .ac-log-list-item:hover {
+    background-color: rgba(59, 124, 255, 0.1); }
+
+.ac-log-list-item .circle {
+  position: absolute;
+  top: 12px;
+  left: 44px;
+  width: 60px;
+  height: 60px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+  .ac-log-list-item .circle .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-position: center;
+    background-size: cover; }
+  .ac-log-list-item .circle .text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    margin-top: -9px;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase; }
+
+.ac-log-list-item.error .circle {
+  color: #fff;
+  background-color: #ff3d3d; }
+
+.ac-log-list-item .inner {
+  position: relative;
+  padding-right: 240px;
+  min-height: 60px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #212121; }
+
+.ac-log-list-item .action {
+  margin-top: 9px;
+  line-height: 22px; }
+  .ac-log-list-item .action a {
+    font-weight: 500;
+    color: inherit; }
+    .ac-log-list-item .action a:hover {
+      color: #3b7cff; }
+  .ac-log-list-item .action .date {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #9b9b9b; }
+  .ac-log-list-item .action .comment {
+    margin: 3px 0 10px;
+    max-width: 420px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 300; }
+  .ac-log-list-item .action .error-details {
+    margin: 3px 0 10px;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: monospace; }
+
+.ac-log-list-item .meta {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #9b9b9b; }
+  .ac-log-list-item .meta .icon {
+    color: #3b7cff; }
+  .ac-log-list-item .meta:hover {
+    color: #212121; }
+
+.ac-log-list-item .buttons {
+  position: absolute;
+  top: 9px;
+  right: 0; }
+  .ac-log-list-item .buttons .button {
+    float: left;
+    margin-right: 12px; }
+    .ac-log-list-item .buttons .button:last-child {
+      margin-right: 0; }
+
+@media screen and (max-width: 768px) {
+  .ac-log-list-item {
+    padding: 12px 26px 12px 110px; }
+  .ac-log-list-item .circle {
+    left: 28px; }
+  .ac-log-list-item .inner {
+    padding-right: 0; }
+  .ac-log-list-item .buttons {
+    position: relative;
+    top: 0;
+    margin-top: 14px; } }
+
+.ac-next-schedule,
+.ac-amount-of-action {
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #9b9b9b;
+  border-bottom: 1px solid #e0e0e0; }
