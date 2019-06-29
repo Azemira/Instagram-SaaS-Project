@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
-<body>
+<body class="homepage_area">
     <header class="header_area blue_bg">
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -65,10 +65,29 @@
             </nav>
         </div>
     </header>
-    <section class="about_area d-flex">
+    <section class="welcome_area d-flex py-10">
+        <div class="container welcome-wrap d-flex px-0">
+            <div class="welcome_box col-12 col-md-5">
+                <div class="welcome_title col-12 mb-4 px-0">
+                    <h1>Lorem Ipsum pellentesque morbi</h1>
+                </div>
+                <div class="welcome_text col-12 mb-4 px-0">
+                    <p>Suspendisse malesuada condimentum congue. Morbi et lectus eu nulla pretium iaculis a ac nisl.
+                        Nullam eu velit risus. Ut mauris sem, ullamcorper ac laoreet vitae, pellentesque at odio. </p>
+                </div>
+                <div class="button-wrapper col-12 px-0">
+                    <a class="welcome_btn mr-3" href="#">Login</a>
+                    <a class="welcome_btn white" href="#">Sign up</a>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-12 col-md-7">
+                <img src="assets/img/welcome-image.png">
+            </div>
+    </section>
+    <section class="about_area d-flex py-5">
         <div class="container py-5 about-page-wrap">
             <div class="about-intro-box mb-5">
-                <h1>How it work for you</h1>
+                <h2>How it work for you</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus vulputate libero et ex rhoncus, non consequat tellus molestie.
                     Fusce elit quam, lacinia vel porta non, rhoncus in est. Integer suscipit lectus ex, et aliquam metus
@@ -123,6 +142,94 @@
                             </div>
                         </div>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="subscribe_area d-flex py-5">
+        <div class="container py-5 subscribe-page-wrap">
+            <div class="subscribe-intro-box">
+                <h2>Newsletter</h2>
+                <p>Join our email list to stay up-to-date with our latest trends and news.</p>
+            </div>
+            <div class="row px-5 px-lg-0 subscribe-details-box-wrapper">
+                <form class=" col-12 subscribe_form" id="subscribeForm">
+                    <div class="col-12 col-md-6 offset-md-3">
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter email address" required>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" value="submit" class="btn auto-dimes-btn">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="contact_area d-flex py-5">
+        <div class="container py-5 about-page-wrap">
+            <div class="contact-intro-box mb-5">
+                <h2>Contact us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus vulputate libero et ex rhoncus, non consequat tellus molestie.
+                    Fusce elit quam, lacinia vel porta non, rhoncus in est. Integer suscipit lectus ex, et aliquam metus
+                    tincidunt nec.</p>
+            </div>
+            <div class="row px-5 px-lg-0 contact-details-box-wrapper">
+                <div class="col-lg-3">
+
+                    <div class="contact_info">
+                        <div class="info_item">
+                            <i class="fas fa-home"></i>
+                            <h6>Sarajevo, Bosna and Herzegovina</h6>
+                            <p>Muje Mujica 65</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="fas fa-phone-alt"></i>
+                            <h6>0038760 335 335</h6>
+                            <p>Mon to Fri 8 am to 5 pm</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="fas fa-envelope"></i>
+                            <h6>
+                                <a href="#">support@autodimes.com</a>
+                            </h6>
+                            <p>Send us yout query anytime</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <form class="row contact_form" id="contactForm">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter email address" required>
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-paper-plane"></i>
+                                <input type="text" class="form-control" id="subject" name="subject"
+                                    placeholder="Enter Subject" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fas fa-comment-alt"></i>
+                                <textarea class="form-control" name="message" id="message" rows="6"
+                                    placeholder="Enter Message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <button type="submit" value="submit" class="btn auto-dimes-btn">Send Message</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
