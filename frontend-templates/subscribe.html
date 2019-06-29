@@ -65,42 +65,25 @@
             </nav>
         </div>
     </header>
-    <section class="signup_area">
-        <div class="container form-wrap">
-            <div class="row form-content">
-                <div class="signup-form">
-                    <div class="col-12 form-wrapper show" id="signup-form-wrapper">
-                        <form class="row signup_form" id="signupForm">
-                            <h1 class="col-12">Sign up</h1>
-                            <div class="col-12 text-center">
-                                <div class="form-group">
-                                    <i class="fas fa-user"></i>
-                                    <input type="text" class="form-control" id="username" name="username"
-                                        placeholder="Username / Email" required>
-                                </div>
-                            </div>
-                            <div class="col-12 text-center">
-                                <div class="form-group">
-                                    <i class="fas fa-key"></i>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Password" required>
-                                </div>
-                            </div>
-                            <div class="col-12 text-center">
-                                <div class="form-group">
-                                    <i class="fas fa-key"></i>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Repeat password" required>
-                                </div>
-                            </div>
-                            <div class="g-recaptcha col-12 text-center"
-                                data-sitekey="6LfovKkUAAAAAKNX0CcF2n9fAf36uFt8GDa246Ue"></div>
-                            <div class="col-12 text-center">
-                                <button type="submit" value="submit" class="btn submit_btn">Sign up</button>
-                            </div>
-                        </form>
+    <section class="subscribe_area d-flex">
+        <div class="container py-5 subscribe-page-wrap">
+            <div class="subscribe-intro-box">
+                <h2>Newsletter</h2>
+                <p>Join our email list to stay up-to-date with our latest trends and news.</p>
+            </div>
+            <div class="row px-5 px-lg-0 subscribe-details-box-wrapper">
+                <form class=" col-12 subscribe_form" id="subscribeForm">
+                    <div class="col-12 col-md-6 offset-md-3">
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter email address" required>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" value="submit" class="btn auto-dimes-btn">Subscribe</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -128,10 +111,10 @@
                             <h3>Subscribe</h3>
                         </div>
                         <p class="col-12 mb-3">
-                            Join our email list to stay up-to-date with our latest trends and news.
+                                Join our email list to stay up-to-date with our latest trends and news.
                         </p>
                         <div class="col-12 col-md-6 offset-md-3">
-
+                            
                             <div class="col-12">
                                 <form target="_blank" class="subscribe_form relative">
                                     <div class="input-group justify-content-center">
@@ -178,9 +161,9 @@
             </div>
         </div>
     </footer>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="assets/libs/jQuery/jquery-3.4.1.min.js"></script>
     <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/libs/tilt/tilt.jquery.js"></script>
     <script src="assets/libs/fontawesome/fontawesome-kit.js"></script>
     <script src="assets/js/main.js"></script>
 </body>

@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm">
+                    <form class="row contact_form" id="contactForm">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <i class="fas fa-user"></i>
@@ -111,14 +111,14 @@
                                     placeholder="Enter email address" required>
                             </div>
                             <div class="form-group">
-                                    <i class="fas fa-paper-plane"></i>
+                                <i class="fas fa-paper-plane"></i>
                                 <input type="text" class="form-control" id="subject" name="subject"
                                     placeholder="Enter Subject" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                    <i class="fas fa-comment-alt"></i>
+                                <i class="fas fa-comment-alt"></i>
                                 <textarea class="form-control" name="message" id="message" rows="6"
                                     placeholder="Enter Message"></textarea>
                             </div>
@@ -152,17 +152,29 @@
                 <div class="col-12 col-md-6">
                     <aside class="f_widget widget-2">
                         <div class="f_title">
-                            <h3>Lorem ipsum</h3>
+                            <h3>Subscribe</h3>
                         </div>
-                        <p>Nulla varius dui aliquet, pulvinar orci et, faucibus purus. Mauris sodales massa lacus, vitae
-                            dignissim
-                            felis laoreet eu.
+                        <p class="col-12 mb-3">
+                            Join our email list to stay up-to-date with our latest trends and news.
                         </p>
-                        <p>Copyright ©
+                        <div class="col-12 col-md-6 offset-md-3">
+
+                            <div class="col-12">
+                                <form target="_blank" class="subscribe_form relative">
+                                    <div class="input-group justify-content-center">
+                                        <input name="EMAIL" placeholder="Email Address " onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Email Address '" required="" type="email"
+                                            class="error">
+                                        <button class="btn sub-btn"><i class="fas fa-arrow-right"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <p class="col-12 mt-3">Copyright ©
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
-                            All rights reserved | Lorem ipsum</p>
+                            All rights reserved | AutoDimes</p>
                     </aside>
                 </div>
                 <div class="col-12 col-md">
