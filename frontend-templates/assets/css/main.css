@@ -56,7 +56,18 @@ img{
 .py-10{
     padding: 10rem 0!important;
 }
-
+.py-9{
+    padding: 9rem 0!important;
+}
+.py-8{
+    padding: 8rem 0!important;
+}
+.py-7{
+    padding: 7rem 0!important;
+}
+.py-6{
+    padding: 6rem 0!important;
+}
 .list {
     list-style: none;
     margin: 0px;
@@ -449,12 +460,39 @@ img{
     cursor: pointer;
     transition: all 300ms linear 0s;
 }
-
 .auto-dimes-btn:focus, .auto-dimes-btn:hover, .submit_btn:focus, .submit_btn:hover {
     background-position: right center;
     color: #fff;
 }
-
+.welcome-wrap .nav-tabs .nav-item .auto-dimes-btn.white {
+    background-image: none !important; 
+    background-color: #fff;
+    color:#222222;
+    border:0;
+    padding: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0ms linear 0s;
+}
+.welcome-wrap .nav-tabs .nav-item .auto-dimes-btn.white:hover, 
+.welcome-wrap .nav-tabs .nav-item .auto-dimes-btn.white:focus {
+    border:0;
+}
+.welcome-wrap .nav-tabs .nav-item .auto-dimes-btn.white.active{
+    background-image: linear-gradient(to right, #4dabff 0%, #62ddff 48%, #4dabff 100%) !important;
+    color: #fff;
+    border:0;
+}
+.welcome_area .nav-tabs {
+    border:0;
+}
+.welcome_area .nav-tabs .nav-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 0px 15px;
+    box-sizing: border-box
+}
 .login_area .btn-wrapper, .signup_area .btn-wrapper {
     float: left;
     width: 100%;
@@ -880,6 +918,25 @@ img{
 .welcome_area{
     background-image: -webkit-linear-gradient(0deg, #4dabff 0%, #62ddff 100%);
 }
+.welcome_area.white{
+    background-image: none;
+}
+.welcome_area.white .welcome_box{
+    color: #222222;
+
+}
+.welcome_area.white .welcome_box .welcome_text{
+    color: #777777;
+
+}
+.welcome_area.white .welcome_box .welcome_text .subtitle{
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+
 .welcome_area .welcome_box{
     color:#fff;
     vertical-align: middle;
