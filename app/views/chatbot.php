@@ -1,4 +1,3 @@
-<?php if (!defined('APP_VERSION')) die("Yo, what's up?");  ?>
 <!DOCTYPE html>
 <html lang="<?= ACTIVE_LANG ?>">
     <head>
@@ -15,17 +14,15 @@
 
         <link rel="stylesheet" type="text/css" href="<?= APPURL."/assets/css/plugins.css?v=".VERSION ?>">
         <link rel="stylesheet" type="text/css" href="<?= APPURL."/assets/css/core.css?v=".VERSION ?>">
-        
-      
 
         <title><?= __("Chatbot") ?></title>
     </head>
 
     <body>
         <?php 
-            $Nav = new stdClass;
-            $Nav->activeMenu = $idname;
-            require_once(APPPATH.'/views/fragments/navigation.fragment.php');
+             $Nav = new stdClass;
+             $Nav->activeMenu = "chatbot";
+             require_once(APPPATH.'/views/fragments/navigation.fragment.php');
         ?>
 
         <?php 
