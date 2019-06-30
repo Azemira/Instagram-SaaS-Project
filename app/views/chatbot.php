@@ -1,3 +1,4 @@
+<?php if (!defined('APP_VERSION')) die("Yo, what's up?");  ?>
 <!DOCTYPE html>
 <html lang="<?= ACTIVE_LANG ?>">
     <head>
@@ -14,6 +15,8 @@
 
         <link rel="stylesheet" type="text/css" href="<?= APPURL."/assets/css/plugins.css?v=".VERSION ?>">
         <link rel="stylesheet" type="text/css" href="<?= APPURL."/assets/css/core.css?v=".VERSION ?>">
+        
+      
 
         <title><?= __("Chatbot") ?></title>
     </head>
@@ -21,29 +24,22 @@
     <body>
         <?php 
             $Nav = new stdClass;
-            $Nav->activeMenu = "accounts";
+            $Nav->activeMenu = $idname;
             require_once(APPPATH.'/views/fragments/navigation.fragment.php');
         ?>
-         <?php 
+
+        <?php 
             $TopBar = new stdClass;
-            $TopBar->title = __("CHATBOT");
+            $TopBar->title = __("Chatbot");
             $TopBar->btn = false;
             require_once(APPPATH.'/views/fragments/topbar.fragment.php'); 
         ?>
-            <div class="skeleton" id="chatbot">
-                <div class="container-1200">
-                    <div class="row clearfix">
-                    
-                        <div class="col s12 m12 l12 mt-30">
-                            <section class="section">
-                                CHATBOT
-                            </section>
-                        </div>
-                    </div>
-                </div> 
-            </div>
 
+        <?php require_once(APPPATH.'/views/fragments/chatbot.fragment.php'); ?>
+        
+        
 
+        <!-- GOOGLE ANALYTICS -->
         <?php require_once(APPPATH.'/views/fragments/google-analytics.fragment.php'); ?>
     </body>
 </html>
