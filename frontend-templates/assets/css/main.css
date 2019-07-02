@@ -1063,3 +1063,32 @@ line-height: 54px;
         opacity: 0.5;
     }
 }
+
+@media (max-width: 991px) { 
+    .py-10{
+        padding: 5rem 0!important;
+    }
+    
+    .header_area .navbar .nav .nav-item .nav-link{
+        font: 600 18px/50px"Roboto", sans-serif;
+    }
+    .header_area .navbar .nav .nav-item{
+        margin-right: 0;
+    }
+    .header_area .menu_nav{
+        text-align: center;
+    }
+    .header_area .navbar .nav .nav-item.submenu ul.dropdown-menu{
+        position: relative;
+        display: block
+    }
+    .header_area .navbar .nav .nav-item.submenu ul .nav-item{
+        text-align: center;
+        border: 0
+    }
+    .header_area .navbar .nav .nav-item.submenu ul.dropdown-menu .nav-item .nav-link{
+        line-height: 32px;
+        font-size: 14px;
+        color: #fff
+    }
+}
