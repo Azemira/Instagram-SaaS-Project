@@ -1079,6 +1079,12 @@ line-height: 54px;
         text-align: center;
     }
     .header_area .navbar .nav .nav-item.submenu ul.dropdown-menu{
+        transition: all 0ms ease-in;
+        display: none;
+        box-shadow: none;
+        background: transparent
+    }
+    .header_area .navbar .nav .nav-item.submenu ul.dropdown-menu.show{
         position: relative;
         display: block
     }
