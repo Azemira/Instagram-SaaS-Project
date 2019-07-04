@@ -47,9 +47,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-.body.safari {
-    display:grid;
-}
 a{
     color:#3bacf0;
 }
@@ -405,7 +402,6 @@ img{
     flex: 1;
     margin: 25px 0;
 }
-
 .login_area form, .signup_area form {
     position: relative;
     z-index: 1;
@@ -1073,6 +1069,18 @@ line-height: 54px;
     50% {
         opacity: 0.5;
     }
+}
+
+/*Safari fixes*/
+.body.safari {
+    display:grid;
+}
+body.safari .login_area,
+body.safari .signup_area{
+    display: block
+}
+body.safari .d-flex{
+    display: -webkit-box !important;
 }
 @media (max-width: 1600px) {
     .error_area #notfound {
