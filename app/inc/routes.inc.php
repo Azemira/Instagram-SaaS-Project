@@ -70,8 +70,6 @@ App::addRoute("GET|POST", "/captions/new/?", "Caption");
 // Edit Caption Template
 App::addRoute("GET|POST", "/captions/[i:id]/?", "Caption");
 
-App::addRoute("GET|POST", "/chatbot/?", "AutoDimesChatBot");
-
 // Settings
 $settings_pages = [
   "site", "logotype", "other", "experimental",

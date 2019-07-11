@@ -386,3 +386,22 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-06-24  7:02:02
+
+
+--
+-- Table structure for table `np_chatbot_message`
+--
+DROP TABLE IF EXISTS `np_chatbot_messages`;
+CREATE TABLE `np_chatbot_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `message_order` int(11) NOT NULL,
+  `title` varchar(255),
+  `message` LONGTEXT,
+  PRIMARY KEY (`id`),
+  KEY `account_id` (`account_id`),
+  CONSTRAINT `chatbot_message_ibfk_2` FOREIGN KEY (`account_id`) REFERENCES `np_accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+

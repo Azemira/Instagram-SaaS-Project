@@ -8,6 +8,7 @@
                 <div class="aside-list js-loadmore-content" data-loadmore-id="1">
                     <?php foreach ($Accounts->getDataAs("Account") as $a): ?>
                         <div class="aside-list-item js-list-item <?= $active_item_id == $a->get("id") ? "active" : "" ?>">
+                        <a href="/chatbot/account/<?=  $a->get('id')  ?>">
                             <div class="clearfix">
                               <img class="circle" src="<?= 'https://avatars.io/instagram/' . $a->get("username");?>">
                                 <div class="inner">
@@ -24,9 +25,10 @@
                                     </div>
                                 </div>
 
-                                <?php $url = APPURL."/e/".$idname."/".$a->get("id");?>
-                                <a  href="#"></a>
+                               
+                                
                             </div>
+                            </a>
                         </div>
                     <?php endforeach ?>
                 </div>
@@ -67,10 +69,16 @@
         </aside>
 
         <section class="skeleton-content hide-on-medium-and-down" style="height: 876px;">
+
+           <?php if(empty($Route->params->id)) {?>
             <div class="no-data">
                 <span class="no-data-icon sli sli-social-instagram"></span>
                 <p><?= __("Chatbot is comming soon.") ?></p>
+                
             </div>
+           <?php } else {?>
+            <?php require_once(__DIR__.'/chatbot-messages.fragment.php'); ?>
+            <?php } ?>
         </section>
     </div>
 </div>

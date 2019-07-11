@@ -79,20 +79,6 @@
                             </a>
                         </li>
 
-                        <li class="<?= $Nav->activeMenu == "chatbot" ? "active" : "" ?>">
-                            <a href="<?= APPURL."/chatbot" ?>">
-                                <span class="sli sli-earphones-alt menu-icon" style="background-color: #CCE5FF; border-radius: 5px; background: linear-gradient(-135deg, #CCE5FF 0%, #4c0099 100%); color: #fff; font-size: 18px;"></span>
-                                <span class="label"><?= __('Chatbot') ?></span>
-
-                                <span class="tooltip tippy" 
-                                      data-position="right"
-                                      data-delay="100" 
-                                      data-arrow="true"
-                                      data-distance="-1"
-                                      title="<?= __('Chatbot') ?>"></span>
-                            </a>
-                        </li>
-
                         <?php \Event::trigger("navigation.add_menu", $Nav, $AuthUser) ?>
                     </ul>
 
