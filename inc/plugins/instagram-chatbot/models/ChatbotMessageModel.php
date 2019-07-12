@@ -96,7 +96,6 @@ namespace Plugins\InstagramChatbot;
 					"account_id" => $this->get("account_id"),
 					"message_order" => 1,
 					"title" => $this->get("title"),
-					"is_deleted" => $this->get("is_deleted"),
 		    		"message" => $this->get("message"),
 		    	));
 
