@@ -38,6 +38,7 @@ var $form = '';
         emojiLoad('.meessageinput');
         enableInputField();
         messageUpdate();
+        messageDelete();
     }, 1000);
     
 
@@ -56,8 +57,7 @@ var $form = '';
         }
         message = unicodeEscape(message);
         $.ajax({
-            url: '/chatbot/message/new',
-            // url: $form.attr("action"),
+            url: $form.attr("action"),
             type: 'POST',
             dataType: 'jsonp',
             data: {
@@ -69,7 +69,7 @@ var $form = '';
             success: function(resp) {
                 console.log(resp);
                 console.log('success save');
-                insertNewMessage(resp.message, resp.id);
+                insertNewMessage(resp.message, resp.id, true, resp.title);
                 enableInputField();
                 messageUpdate();
                 $('#closeModal').click();
@@ -127,9 +127,10 @@ var $form = '';
                 }
                 let identifier = this.id;
                 message = unicodeEscape(message);
+                console.log($form.attr("action"));
                 $.ajax({
-                    url: '/chatbot/message/new',
-                    // url: $form.attr("action"),
+                    // url: '/chatbot/message/new',
+                    url: $form.attr("action"),
                     type: 'POST',
                     dataType: 'jsonp',
                     data: {
@@ -140,7 +141,7 @@ var $form = '';
                     },
                     success: function(resp) {
                        
-                        insertNewMessage(resp.message, resp.id, false);
+                        insertNewMessage(resp.message, resp.id, false, resp.title);
                         enableInputField();
                         messageUpdate();
                         console.log(resp);
@@ -155,14 +156,14 @@ var $form = '';
             });
         });
     }
-    function insertNewMessage(message, id, insert = true) {
+    function insertNewMessage(message, id, insert = true, title) {
         let mesageRow = '';
         if(insert) {
             mesageRow += '<div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list" id="message-main-'+id+'" style="background-color: #F8F8F8">';
         }
         
         mesageRow += '<div class="mb-20">';
-        mesageRow += '<label class="form-label">Message '+id+'</label>';
+        mesageRow += '<label class="form-label">'+title+'</label>';
         mesageRow += '<div class="clearfix">';
 
         mesageRow += '<div class="col s12 m12 l10 mb-20">';
@@ -192,7 +193,7 @@ var $form = '';
         mesageRow += ' </li>';
         mesageRow += '</ul>';
         if(insert) {
-        $('.messages-list-content').prepend(mesageRow);
+        $('.messages-list-content').append(mesageRow);
         mesageRow += '</div>';
         console.log('no');
         } else {
@@ -201,6 +202,39 @@ var $form = '';
         }
         
      }
+     function messageDelete() {
+        $(".chatbot-message-delete").each(function(i){
+            $(this).click(function(){
+                event.preventDefault();
+                let identifier = this.id;
+                $.ajax({
+                    // url: '/chatbot/message/new',
+                    url: $form.attr("action"),
+                    type: 'POST',
+                    dataType: 'jsonp',
+                    data: {
+                        action: "delete", id : identifier
+                    },
+                    error: function(resp) {
+              
+                    },
+                    success: function(resp) {
+                       
+                        // insertNewMessage(resp.message, resp.id, false, resp.title);
+                        // enableInputField();
+                        // messageUpdate();
+                        console.log(resp);
 
+                        console.log('success');
+                        $('#message-main-'+resp.id).remove();
+                    }
+                });
+        
+                return false;
+                
+
+            });
+        });
+    }
 })();
   

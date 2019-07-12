@@ -92,10 +92,11 @@ namespace Plugins\InstagramChatbot;
 	    	$id = \DB::table('np_chatbot_messages')
 		    	->insert(array(
 		    		"id" => null,
-					"user_id" => 1,
-					"account_id" => 1,
+					"user_id" => $this->get("user_id"),
+					"account_id" => $this->get("account_id"),
 					"message_order" => 1,
-		    		"title" => $this->get("title"),
+					"title" => $this->get("title"),
+					"is_deleted" => $this->get("is_deleted"),
 		    		"message" => $this->get("message"),
 		    	));
 
@@ -121,7 +122,8 @@ namespace Plugins\InstagramChatbot;
 		    		"user_id" => 1,
 					"account_id" => 1,
 					"message_order" => 1,
-		    		"title" => $this->get("title"),
+					"title" => $this->get("title"),
+					"is_deleted" => $this->get("is_deleted"),
 		    		"message" => $this->get("message"),
 		    	));
 

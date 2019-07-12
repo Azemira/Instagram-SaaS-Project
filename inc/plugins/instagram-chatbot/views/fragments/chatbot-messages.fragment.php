@@ -1,7 +1,4 @@
         <section class="content">
-            <form class=""
-                  action="<?= APPURL."/chatbot/message/new/" ?>"
-                  method="POST">
 
                 <input type="hidden" name="action" value="save">
 
@@ -10,7 +7,7 @@
                     <div class="clearfix">
                                 <div class="col s12 m12 l8 pt-15">
                                 <i class="mdi mdi-settings"></i>
-                                <h2 class="section-title"><?= htmlchars($Account->get("username")) ?></h2>
+                                <h2 class="section-title logged-user-account" id="<?= $Account->get("id"); ?>"><?= htmlchars($Account->get("username")) ?></h2>
                                 </div>
                                 <div class="col s12 m6 l4 l-last">
                                         <a id="myBtn" href="javascript:void(0)" class="fluid button button--light-outline js-add-new-comment-btn">
@@ -28,10 +25,10 @@
                     <div class="clearfix">
                         <div class="col s12 messages-list-content">
                         <?php if ($ChatbotMessages->getTotalCount() > 0): ?>
-                        <?php foreach($ChatbotMessages->getDataAs("Caption") as $message): ?>
+                        <?php foreach($ChatbotMessages->getDataAs("Caption") as $key => $message): ?>
                         <div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list" id="message-main-<?= $message->get("id"); ?>" style="background-color: #F8F8F8">          
                             <div class="mb-20">
-                                <label class="form-label"><?= __("Message ") ?><?= $message->get("id"); ?></label>
+                                <label class="form-label"><?= $message->get("title"); ?> <p  style="float:right;margin:0;">Sending order [<?= $key + 1; ?>]</p></label>
                                 
                                 <div class="clearfix">
                                     <div class="col s12 m12 l10 mb-20">
@@ -42,6 +39,9 @@
                                     </div>
 
                                     <div class="col s12 m12 l2 l-last">
+                                    <a href="javascript:void(0)" id="<?= $message->get("id"); ?>" style="background-color:#D45F5F !important; color:white;" class="chatbot-message-delete fluid button button--light-outline mb-15 js-add-new-comment-btn">
+                                            <?= __("Delete") ?>    
+                                        </a>
                                         <a href="javascript:void(0)" id="message-<?= $message->get("id"); ?>"  class="chatbot-message-item fluid button button--light-outline mb-15 js-add-new-comment-btn">
                                             <?= __("Edit") ?>    
                                         </a>
@@ -79,12 +79,11 @@
                         </div>
                     </div>
                 </div>
-            </form>
         </section>
 <!-- The Modal -->
     <div id="myModal" class="Modal is-hidden is-visuallyHidden">
   <!-- Modal content -->
-  <form class="js-chatbot-message-form"  action="<?= APPURL."/chatbot/message/new/" ?>" method="POST">
+  <form class="js-chatbot-message-form"  action="<?= "/chatbot/message/new/". $Account->get("id");?>" method="POST">
 
          <input type="hidden" name="action" value="save">
         <div class="Modal-content">

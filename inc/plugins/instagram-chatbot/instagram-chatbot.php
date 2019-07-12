@@ -22,6 +22,7 @@ function install($Plugin)
                 `account_id` int(11) NOT NULL,
                 `message_order` int(11) NOT NULL,
                 `title` varchar(255),
+                `is_deleted` BOOLEAN DEFAULT FALSE,
                 `message` LONGTEXT,
                 PRIMARY KEY (`id`), 
                 INDEX (`account_id`)
@@ -108,7 +109,7 @@ function route_maps($global_variable_name)
     ]);
 
     // save message
-    $GLOBALS[$global_variable_name]->map("GET|POST", "/chatbot/message/new/?", [
+    $GLOBALS[$global_variable_name]->map("GET|POST", "/chatbot/message/new/[i:id]/?", [
         PLUGINS_PATH . "/". IDNAME ."/controllers/ChatbotController.php",
         __NAMESPACE__ . "\ChatbotController"
     ]);
