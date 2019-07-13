@@ -11,6 +11,7 @@ $(function() {
 
     NextPost.RemoveListItem();
     NextPost.AsideList();
+    NextPost.ReConnect();
 });
 
 
@@ -1605,4 +1606,51 @@ function getCaretPosition(element) {
         end = preCaretTextRange.text.length;
     }
     return { start: start, end: end };
+}
+
+/**
+ * Re-connect Account
+ * 
+ * Sends re-connect request to the backend 
+ * for selected account (data entry)
+ */
+NextPost.ReConnect = function() 
+{
+    $("body").on("click", "a.js-re-connect", function() {
+        var id = $(this).data("id"); 
+        var url = $(this).data("url");
+        $("body").addClass("onprogress");
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'jsonp',
+            data: {
+                action: "reconnect", 
+                id: id   
+            },  
+            success: function(resp) {
+                if (resp.result == 1) {
+                    $("body").removeClass("onprogress");
+                    NextPost.Alert({
+                        title: __("Success"), 
+                        content: __("We successfully re-connected your account to our service. Thanks!"),
+                        confirmText: __("Great"),
+                        confirm: function() {
+                            window.location.href = resp.redirect; 
+                        }
+                    }); 
+                } else {
+                    $("body").removeClass("onprogress"); 
+                    NextPost.Alert({ 
+                        title: resp.title,
+                        content: resp.msg,
+                        confirmText: __("Close"),
+                        confirm: function() {
+                            window.location.href = resp.redirect; 
+                        }
+                    });
+                }
+            }
+        }); 
+    });
 }

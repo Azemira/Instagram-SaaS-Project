@@ -9,6 +9,10 @@
                                     <div class="inner">
                                         <div class="circle"><span><?= $number++ ?></span></div>
                                         <div class="title"><?= htmlchars($a->get("username")) ?></div>
+                                        <?php if ($a->get("login_required")): ?>
+                                        <a href="javascript:void(0)" class="js-re-connect re-connect" data-id="<?= $a->get("id") ?>" data-url="<?= APPURL."/accounts"?>"></a> 
+                                        <?php endif ?>
+
                                         <?php 
                                             $date = new Moment\Moment($a->get("date"), date_default_timezone_get());
                                             $date->setTimezone($AuthUser->get("preferences.timezone"));
@@ -19,13 +23,13 @@
                                         </div>
 
                                         <div class="quick-info">
-                                            <?php if ($a->get("login_required")): ?>
-                                                <a class="color-danger" href="<?= APPURL."/accounts/".$a->get("id") ?>">
-                                                    <span class='mdi mdi-information'></span>
-                                                    <?= __("Re-login required!") ?>
-                                                </a>
-                                            <?php endif ?>
-                                        </div>    
+                                        <?php if ($a->get("login_required")): ?>
+                                            <a class="color-danger js-re-connect" href="javascript:void(0)" data-id="<?= $a->get("id") ?>" data-url="<?= APPURL."/accounts"?>">
+                                                <span class='mdi mdi-information'></span>
+                                                <?= __("Re-login required!") ?>
+                                            </a>
+                                        <?php endif ?>
+                                        </div>     
                                     </div>
 
                                     <div class="options context-menu-wrapper">

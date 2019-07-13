@@ -3099,3 +3099,34 @@ nav {
 
 #account .resend-btn .timer {
   font-size: 10px; }
+
+  /**
+* Re-connect styles
+*/
+.re-connect { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  margin: 17px auto;
+  border-radius: 50%;
+  background-color: #ff3c3dc7;
+  transition: transform .7s ease-in-out;
+  -webkit-transition: -webkit-transform .7s ease-in-out;
+  -moz-transition: -webkit-transform .7s ease-in-out;
+}
+.re-connect::before {
+  content: "\e098";
+  color: #ffffff;
+  font: bold normal normal 24px/1 simple-line-icons;
+  display: inline-block;
+  line-height: 80px;
+}
+.re-connect:hover {
+  box-shadow: 0 0 40px #ff3c3d4d;
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}  

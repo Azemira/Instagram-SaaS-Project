@@ -61,24 +61,79 @@ class InstagramController extends Controller
             $Instagram->setProxy($Account->get("proxy"));
         }
 
-        // Login to instagram
-        try {
-            $last_login_timestamp = strtotime($Account->get("last_login"));
-            if ($last_login_timestamp && $last_login_timestamp + 15 * 60 > time()) {
-                // Recent login, there is no need to re-send login flow
-                \InstagramAPI\Instagram::$sendLoginFlow = false;
-            }
-            $Instagram->login($Account->get("username"), $password);
-        } catch (InstagramAPI\Exception\InstagramException $e) {
-            // Couldn't login to Instagram account
-            $msg = $e->getMessage();
-            $msg = explode(":", $msg, 2);
-            $msg = isset($msg[1]) ? $msg[1] : $msg[0];
-            $Account->set("login_required", 1)->update();
-            throw new \Exception($msg);
-        } catch (\Exception $e) {
-            throw $e;
-        }
+     // Login to instagram
+try {
+    $last_login_timestamp = strtotime($Account->get("last_login"));
+    if ($last_login_timestamp && $last_login_timestamp + 15 * 60 > time()) { 
+       // Recent login, there is no need to re-send login flow
+       \InstagramAPI\Instagram::$sendLoginFlow = false;
+    }
+    $login_resp = $Instagram->login($Account->get("username"), $password);
+    if ($login_resp !== null && $login_resp->isTwoFactorRequired()) {
+       $Account->set("login_required", 1)->update();
+       $text[0] = __("2FA not supported");
+       $text[1] = __("Two Factor Auth (2FA) enabled in you account. Please disable 2FA in account setting in Instagram. At the moment this function not supported in our service.");
+       $separated = implode(" | ", $text);
+       throw new Exception($separated);
+    } 
+ } catch (InstagramAPI\Exception\CheckpointRequiredException $e) {
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("Checkpoint Required");
+    $text[1] = __("Please go to <a href='http://instagram.com' target='_blank'>Instagram</a> website or mobile app and pass checkpoint. After that try re-connect your account again.");
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (InstagramAPI\Exception\ChallengeRequiredException $e) {
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("Challenge Required");
+    $text[1] = __("Please pass the verification challenge. Fill the login form and connect your account again by saving changes.");
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (InstagramAPI\Exception\AccountDisabledException $e) {
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("Account Disabled");
+    $text[1] = __("Your account has been disabled for violating Instagram terms. <a href='%s'>Click here</a> to learn how you may be able to restore your account.","https://help.instagram.com/366993040048856");
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (InstagramAPI\Exception\ConsentRequiredException $e) {
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("Instagram updated Terms and Data Policy");
+    $text[1] = __("Please go to <a href='http://instagram.com' target='_blank'>Instagram</a> website or mobile app to review these changes and accept them. After that try re-connect your account again.");
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (InstagramAPI\Exception\IncorrectPasswordException $e) {
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("You changed account password?");
+    $text[1] = __("Fill the login form and connect your account again by saving changes.");
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (InstagramAPI\Exception\InvalidUserException $e) {
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("You changed account username?");
+    $text[1] = __("Fill the login form and connect your account again by saving changes."); 
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (InstagramAPI\Exception\LoginRequiredException $e) {
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("Login Required");
+    $text[1] = __("Fill the login form and connect your account again by saving changes."); 
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (InstagramAPI\Exception\InstagramException $e) {
+    // Couldn't login to Instagram account
+    $Account->set("login_required", 1)->update(); 
+    $text[0] = __("Instagram Response"); 
+    $msg = $e->getMessage();
+    $msg = explode(":", $msg, 2);
+    $text[1] = isset($msg[1]) ? $msg[1] : $msg[0];
+    $separated = implode(" | ", $text);
+    throw new Exception($separated);
+ } catch (\Exception $e) { 
+    // Couldn't login to Instagram account
+    $text[0] = __("Internal Error");
+    $text[1] = $e->getMessage();
+    $e = implode(" | ", $text);
+    throw $e; 
+ }
 
         // Logged in successfully
         $Account->set("last_login", date("Y-m-d H:i:s"))->update();
