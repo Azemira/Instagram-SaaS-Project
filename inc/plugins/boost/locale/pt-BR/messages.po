@@ -1,0 +1,683 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Nextpost v3.0 - Default Theme\n"
+"Language: pt-br\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Auto Like"
+msgstr "Auto Curtir"
+
+#: 
+msgid "Auto Follow"
+msgstr "Seguir Automático"
+
+#: 
+msgid "Invalid parameter"
+msgstr "Parâmetro inválido"
+
+#: 
+msgid "%s public post"
+msgid_plural "%s public posts"
+msgstr[0] "%s post público"
+msgstr[1] "%s posts público"
+
+#: 
+msgid "Instagram user"
+msgstr "Usuário do Instagram"
+
+#: 
+msgid "Please select an account from left side list."
+msgstr "Por favor, selecione uma conta da lista do lado esquerdo."
+
+#: 
+msgid "Target & Settings"
+msgstr "Alvo & Configurações"
+
+#: 
+msgid "Activity Log"
+msgstr "Log Atividades"
+
+#: 
+msgid "Next request will be sent %s approximately"
+msgstr "O próximo pedido será enviado aproximadamente em %s"
+
+#: 
+msgid "Next request will be sent in a few moments"
+msgstr "O próximo pedido será enviado em alguns momentos"
+
+#: 
+msgid "Something is wrong on the system"
+msgstr "Algo está errado no sistema"
+
+#: 
+msgid "Liked {username}'s {post}"
+msgstr "Curtida {username}'s {post}"
+
+#: 
+msgid "Timeline Feed"
+msgstr "Feed da linha do tempo"
+
+#: 
+msgid "View Post"
+msgstr "Ver Post"
+
+#: 
+msgid "Total %s actions"
+msgstr "Total %s ações"
+
+#: 
+msgid "Auto Like activity log for %s is empty"
+msgstr "Log de atividades do Auto curtir para %s está vazio"
+
+#: 
+msgid "Hashtags"
+msgstr "Hashtags"
+
+#: 
+msgid "Places"
+msgstr "Localizações"
+
+#: 
+msgid "People"
+msgstr "Perfis"
+
+#: 
+msgid "Speed"
+msgstr "Velocidade"
+
+#: 
+msgid "Auto"
+msgstr "Auto"
+
+#: 
+msgid "Recommended"
+msgstr "Lento"
+
+#: 
+msgid "Very Slow"
+msgstr "Muito lento"
+
+#: 
+msgid "Slow"
+msgstr "Lento"
+
+#: 
+msgid "Medium"
+msgstr "Médio"
+
+#: 
+msgid "Fast"
+msgstr "Rápido"
+
+#: 
+msgid "Very Fast"
+msgstr "Muito rápido"
+
+#: 
+msgid "Pause actions everyday"
+msgstr "Pausar ações todos os dias"
+
+#: 
+msgid "To"
+msgstr "Até"
+
+#: 
+msgid "Like the feed from the timeline"
+msgstr "Curtir o feed pela linha do tempo"
+
+#: 
+msgid "Speeds"
+msgstr "Velocidades"
+
+#: 
+msgid "%s request/hour"
+msgid_plural "%s requests/hour"
+msgstr[0] "%s requisição/hora"
+msgstr[1] "%s requisições/hora"
+
+#: 
+msgid "These values indicates maximum amount of the requests per hour. They are not exact values. Depending on the server overload and delays between the requests, actual number of the requests might be less than these values."
+msgstr "Esses valores indicam o valor máximo das solicitações por hora. Eles não são valores exatos. Dependendo da sobrecarga do servidor e dos atrasos entre as solicitações, o número real das solicitações pode ser menor que esses valores."
+
+#: 
+msgid "High speeds might be risky"
+msgstr "Altas velocidades podem ser arriscadas"
+
+#: 
+msgid "Developers are not responsible for any issues related to the Instagram accounts."
+msgstr "Os desenvolvedores não são responsáveis por quaisquer problemas relacionados às contas do Instagram."
+
+#: 
+msgid "Timeline Feed Settings"
+msgstr "Configurações do Feed da Linha do tempo"
+
+#: 
+msgid "Refresh Interval"
+msgstr "Intervalo de atualização"
+
+#: 
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s hora"
+msgstr[1] "%s horas"
+
+#: 
+msgid "Max. amount of posts"
+msgstr "Máximo de posts"
+
+#: 
+msgid "Maximum amount of the posts to be liked in each refresh. Post will be selected in descending order."
+msgstr "Máximo de posts para serem curtidos em cada atualização."
+
+#: 
+msgid "Enable Random Delays"
+msgstr "Autorizar intervalos aleatórios"
+
+#: 
+msgid "If you enable this option, script will add random delays automatically between each requests."
+msgstr "Se habilitada essa opção o sistema vai colocar intervalos aleatórios entre as ações."
+
+#: 
+msgid "Delays could be up to 5 minutes."
+msgstr "Intervalos aleatórios podem ser de até 5 minutos."
+
+#: 
+msgid "Auto Like Module Settings"
+msgstr "Configurações do auto curtir"
+
+#: 
+msgid "Activity has been stopped"
+msgstr "As atividades foram paradas"
+
+#: 
+msgid "Re-login is required for the account."
+msgstr "Re-login solicitado para a conta."
+
+#: 
+msgid "User account is either disabled or expired."
+msgstr "Conta do usuário foi desabilitada ou expirou."
+
+#: 
+msgid "Action re-scheduled"
+msgstr "Ação reagendada"
+
+#: 
+msgid "Couldn't find any target to search for the feed."
+msgstr "Não foi possível encontrar um alvo pelo feed."
+
+#: 
+msgid "Couldn't get the feed"
+msgstr "Não foi possível buscar o feed"
+
+#: 
+msgid "Couldn't find the new media to like"
+msgstr "Não foi possível encontrar uma nova mídia para curtir"
+
+#: 
+msgid "Something went wrong"
+msgstr "Algo deu errado"
+
+#: 
+msgid "Couldn't like the new media"
+msgstr "Não foi possível curtir uma mídia nova"
+
+#: 
+msgid "Couldn't get the timeline feed"
+msgstr "Não foi possível buscar o feed"
+
+#: 
+msgid "Couldn't find any new media to like in the timeline feed"
+msgstr "Não foi possível encontrar uma nova mídia para curtir"
+
+#: 
+msgid "Module is not accessible to your account."
+msgstr "Esse módulo não está liberado para sua conta."
+
+#: 
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minuto"
+msgstr[1] "%s minutos"
+
+
+#: 
+msgid "Select the actions"
+msgstr "Selecione as ações"
+
+#: 
+msgid "Turn on/off the actions that your account will run!"
+msgstr "Ligue ou desligue as ações que a sua conta irá executar"
+
+#: 
+msgid "Choose the source"
+msgstr "Selecione as fontes"
+
+#: 
+msgid "Choose here where your new followers will come from. Our platform will interage (like, comment,follow and more) with what you select here!"
+msgstr "Escolha aqui de onde os seus novos seguidores virão. Nossa plataforma irá interagir (curtir, comentar, seguir e outros) com os alvos que você selecionar aqui."
+
+#: 
+msgid "Growth your profile"
+msgstr "Crescimento do seu perfil"
+
+#: 
+msgid "How fast our system should work? Set it here, but be careful."
+msgstr "O quão rápido nosso sistema deve interagir? Aqui você escolhe, seja cauteloso no início."
+
+#: 
+msgid "Do you want to interact with only certain genders?"
+msgstr "Você quer interagir com algum gênero apenas?"
+
+#: 
+msgid "Everyone"
+msgstr "Todos os gêneros"
+
+#: 
+msgid "Ignore Private Accounts?"
+msgstr "Ignorar perfis privados?"
+
+#: 
+msgid "Do you want to send a follow request to private accounts? (follow only)"
+msgstr "Você quer enviar solicitação de seguir para contas privadas? (somente o seguir)"
+
+#: 
+msgid "No"
+msgstr "Não"
+
+#: 
+msgid "Has Profile Picture?"
+msgstr "Tem foto de perfil?"
+
+#: 
+msgid "Do you only want to interact ONLY with accounts that have a profile picture?"
+msgstr "Você quer interagir SOMENTE com contas que tenham imagem de perfil?"
+
+#: 
+msgid "Business Accounts"
+msgstr "Tipo de contas que deseja seguir"
+
+#: 
+msgid "Unfollow settings"
+msgstr "Configurações de deixar de seguir"
+
+#: 
+msgid "Source"
+msgstr "Fonte"
+
+#: 
+msgid "Anyone"
+msgstr "Todos"
+
+#: 
+msgid "People followed by us"
+msgstr "Pessoas seguidas por nós"
+
+#: 
+msgid "Who should we be allowed to unfollow?"
+msgstr "Quem devemos deixar de seguir?"
+
+#: 
+msgid "Don't unfollow my followers"
+msgstr "Não deixe de seguir quem me segue"
+
+#: 
+msgid "White list"
+msgstr "Lista segura"
+
+#: 
+msgid "Adding accounts will insure we never unfollows them. We recommend adding your family, friends, and the people that engage with your content the most"
+msgstr "Adicione contas que irão ficar seguras e quem não deixaremos de seguir. Recomendamos colocar seus amigos, familiares e pessoas que você interage com frequência."
+
+#: 
+msgid "Auto comment"
+msgstr "Comentários automáticos"
+
+#: 
+msgid "Comment"
+msgstr "Comentário"
+
+#: 
+msgid "Add comment"
+msgstr "Add comentário"
+
+#: 
+msgid "Black list"
+msgstr "Lista negra"
+
+#: 
+msgid "Account Blacklist"
+msgstr "Contas para não interagir"
+
+#: 
+msgid "We will never follow or engage with content posted by any of the selected accounts."
+msgstr "Não vamos nunca seguir ou interagir com os perfis que você colocar aqui."
+
+#: 
+msgid "Keywords Blacklist"
+msgstr "Palavras em lista negra"
+
+#: 
+msgid "Skip media (caption and tags) and accounts (username, full name, biography, website) that match any of the selected keywords."
+msgstr "Não interagir com imagens e perfis que contenham essas palavras abaixo"
+
+#: 
+msgid "Use comma , to separe the keywords."
+msgstr "Use vírgula para separar as palavras."
+
+#: 
+msgid "These values indicates maximum amount of the requests per hour. They are not exact values. Depending on the server overload and delays between the requests, actual number of the requests might be less than these values."
+msgstr "Esses valores indicam o máximo de requisições por hora. Não são valores exatos, pois dependem do servidor e outros fatores."
+
+#: 
+msgid "Disable"
+msgstr "Desabilitado"
+
+#: 
+msgid "Let user set"
+msgstr "Deixei o usuário definir"
+
+#: 
+msgid "Use defined here"
+msgstr "Usar o definido aqui"
+
+#: 
+msgid "Default Values"
+msgstr "Valores padrão"
+
+#: 
+msgid "Other Settings"
+msgstr "Outras configurações"
+
+#: 
+msgid "Minimum of targets"
+msgstr "Mínimo de alvos"
+
+#: 
+msgid "Minimum of comments"
+msgstr "Mínimo de comentários"
+
+#: 
+msgid "Random Delay MIN"
+msgstr "Invervalo aleatório MIN"
+
+#: 
+msgid "Random Delay MAX"
+msgstr "Invervalo aleatório MAX"
+
+#: 
+msgid "Minimum of People, Hashtags or Places that user should select."
+msgstr "Mínimo de perfis, hashtags e localizações para o usuário colocar"
+
+#: 
+msgid "Use 0 to no limit."
+msgstr "Coloque 0 para sem limites."
+
+#: 
+msgid "Minimum of comments user should set."
+msgstr "Mínimo de comentarios para o usuário colocar"
+
+#: 
+msgid "In seconds"
+msgstr "Em segundos"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Configurações avançadas"
+
+#: 
+msgid "Follow Cicle"
+msgstr "Ciclo de seguir"
+
+#: 
+msgid "Number of Follow/unfollow request performed before switch to other action."
+msgstr "Número de seguir/deixar de seguir executados antes de trocar de ação."
+
+#: 
+msgid "Recomended: 1 to 10"
+msgstr "Recomendado: 1 to 10"
+
+
+#: 
+msgid "Like Cicle"
+msgstr "Ciclo de curtir"
+
+
+#: 
+msgid "Number of likes request performed before switch to other action."
+msgstr "Número de curtidas executadas antes de trocar de ação."
+
+
+#: 
+msgid "Number of comments request performed before switch to other action."
+msgstr "Número de comentários executados antes de trocar de ação."
+
+
+#: 
+msgid "If the account get checkpoint required from Instagram, actions will be stopped for the time above"
+msgstr "Se a conta tiver checkpoint do instagram, ações serão paradas pelo tempo definido aqui"
+
+
+#: 
+msgid "Time in Seconds"
+msgstr "Tempo em segundos"
+
+#: 
+msgid "Comment Cicle"
+msgstr "Ciclo de comentários"
+
+#: 
+msgid "Automatically switch to unfollow when follow the number of accounts discribed here"
+msgstr "Trocar automaticamente entre seguir e deixar de seguir quando chegar no número selecionado aqui"
+
+#: 
+msgid "Choose if these modules will be available for users."
+msgstr "Selecione os módulos que estarão disponíveis para os usuários."
+
+#: 
+msgid "<span>Select </span> the actions"
+msgstr "<span>Selecione </span> as ações"
+
+#: 
+msgid "<span>Choose</span> the source"
+msgstr "<span>Escolha </span> as fontes"
+
+#: 
+msgid "<span>Growth</span> your profile"
+msgstr "<span>Cresça </span> o seu perfil"
+
+#: 
+msgid "<span>Unfollow</span> settings"
+msgstr "<span>Deixar de seguir - </span> configurações"
+
+#: 
+msgid "<span>Auto</span> comment"
+msgstr "<span>Comentário</span> automático"
+
+#: 
+msgid "<span>Black</span> list"
+msgstr "<span>Lista</span> negra"
+
+#: 
+msgid "Both"
+msgstr "Todos os tipos"
+
+#: 
+msgid "Business"
+msgstr "Somente contas comerciais"
+
+#: 
+msgid "Personal"
+msgstr "Somentes contas pessoais"
+
+#: 
+msgid "Gender"
+msgstr "Gênero"
+
+#: 
+msgid "Male"
+msgstr "Masculino"
+
+#: 
+msgid "Female"
+msgstr "Feminino"
+
+#: 
+msgid "Yes"
+msgstr "Sim"
+
+#: 
+msgid "Auto Unfollow"
+msgstr "Deixar de Seguir"
+
+#: 
+msgid "Auto Comment"
+msgstr "Comentário Automático"
+
+#:
+msgid "Add words that will be blocked"
+msgstr "Adicione palavras que serão bloqueadas"
+
+#: 
+msgid "Use comma <strong>,</strong> to separe the keywords."
+msgstr "Use <strong>vírgula</strong> para separar as palavras."
+
+#: 
+msgid "Resting an account will allow it to run longer without issues."
+msgstr "Utilizar pausas diárias irá ajudar para sua conta funcionar sem problemas."
+
+#: 
+msgid "Unfollow Everyone!"
+msgstr "Deixar de seguir todos!"
+
+#: 
+msgid "Caution: If you check this box we will remove ALL your followers (except those in White list)"
+msgstr "Cuidado: ao marcar esse box iremos deixar de seguir TODOS os seguidores (respeitando a velocidade colocada), exceto os que estiverem na lista segura."
+
+#: 
+msgid "Max speed in trial"
+msgstr "Velocidade máxima em teste"
+
+#: 
+msgid "Speeds of unfollow are the same of follow."
+msgstr "As velocidades do deixar de seguir são as mesmas do seguir"
+
+#: 
+msgid "Enable"
+msgstr "Ativar."
+
+#: 
+msgid "Keep followers?"
+msgstr "Manter seguidores?"
+
+#: 
+msgid "Bad Words"
+msgstr "Palavras negativas"
+
+#: 
+msgid "Enabling bad words may slow down the actions"
+msgstr "Habilitando as palavras negativas pode deixar as atividades mais lentas"
+
+#: 
+msgid "Checkpoint Required"
+msgstr "Feedback required"
+
+#: 
+msgid "Integrate with stats plugin?"
+msgstr "Integrar com o plugin stats?"
+
+#: 
+msgid "Check this and stats plugin will get data from boost instead others plugins (only for actions enabled in this page.)"
+msgstr "Marque isso e o stats começará a pegar dados do boost ao invés dos outros plugins (apenas para as ações habilitadas aqui)."
+
+#: 
+msgid "Max Paginations"
+msgstr "Paginação máxima"
+
+#: 
+msgid "Number max of paganation when getting data for linkin, commenting, following..."
+msgstr "Máximo de paginação quando estiver puxando dados para curtir, comentar, seguir..."
+
+#: 
+msgid "Choose a value between: 1 and 10"
+msgstr "Escolha um valor entre: 1 e 10"
+
+#: 
+msgid "seen {username}'s {post}"
+msgstr "visualizou {username}'s {post}"
+
+#: 
+msgid "View Stories"
+msgstr "Visualizar stories"
+
+#: 
+msgid "Enable this and we'll like some post from the followed user"
+msgstr "Habilite e seu perfil irá curtir e seguir junto os perfis"
+
+#: 
+msgid "Like Count"
+msgstr "Quantidade de curtidas junto ao seguir"
+
+#: 
+msgid "You can use following variables in the messages:"
+msgstr "Você pode usar as seguintes variações para mensagens:"
+
+#: 
+msgid "Best sources"
+msgstr "Melhores perfis utilizados"
+
+#: 
+msgid "Best Sources"
+msgstr "Melhores perfis utilizados"
+
+#: 
+msgid "New Followers"
+msgstr "Novos seguidores"
+
+#: 
+msgid "Running"
+msgstr "Ativa"
+
+#: 
+msgid "Source"
+msgstr "Alvo"
+
+#: 
+msgid "Empty feed"
+msgstr "Não encontramos novos"
+
+#: 
+msgid "Searching... wait"
+msgstr "Procurando, aguarde..."
+
+#: 
+msgid "No result found"
+msgstr "Nenhum resultado encontrado..."
+
+#: 
+msgid "Previous"
+msgstr "Anterior"
+
+#: 
+msgid "Next"
+msgstr "Próximo"
+
+#: 
+msgid "Wizard"
+msgstr "Configuração"
+
+#: 
+msgid "You are not following anyone right now"
+msgstr "Você não segue ninguém nesse momento"
+
+#: 
+msgid "<span>Follow</span> + Like"
+msgstr "<span>Deixar likes</span> ao seguir?"
+
+#: 
+msgid "Like Count"
+msgstr "Quantos Likes?"
