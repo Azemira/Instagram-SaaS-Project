@@ -8,7 +8,7 @@ namespace Plugins\InstagramChatbot;
 	 * 
 	 */
 	
-	class ChatbotMessageModel extends \DataEntry
+	class ChatbotLogModel extends \DataEntry
 	{	
 		/**
 		 * Extend parents constructor and select entry
@@ -36,7 +36,7 @@ namespace Plugins\InstagramChatbot;
 	    	}
 
 	    	if ($col) {
-		    	$query = \DB::table('np_chatbot_messages')
+		    	$query = \DB::table('np_chatbotlog')
 			    	      ->where($col, "=", $uniqid)
 			    	      ->limit(1)
 			    	      ->select("*");
@@ -89,14 +89,16 @@ namespace Plugins\InstagramChatbot;
 
 	    	$this->extendDefaults();
 
-	    	$id = \DB::table('np_chatbot_messages')
+	    	$id = \DB::table('np_chatbot_log')
 		    	->insert(array(
 		    		"id" => null,
 					"user_id" => $this->get("user_id"),
 					"account_id" => $this->get("account_id"),
-					"message_order" => $this->get("message_order"),
-					"title" => $this->get("title"),
-		    		"message" => $this->get("message"),
+                    "user_id" => $this->get("user_id"),
+                    "recipient_id" => $this->get("recipient_id"),
+                    "message_id" => $this->get("message_id"),
+                    "sent_message" => $this->get("sent_message"),
+                    "sent_date" => $this->get("sent_date"),
 		    	));
 
 	    	$this->set("id", $id);
@@ -118,9 +120,9 @@ namespace Plugins\InstagramChatbot;
 	    	$id = \DB::table('np_chatbot_messages')
 	    		->where("id", "=", $this->get("id"))
 		    	->update(array(
-		    		"user_id" => $this->get("user_id"),
-					"account_id" => $this->get("account_id"),
-					"message_order" => $this->get("message_order"),
+		    		"user_id" => 1,
+					"account_id" => 1,
+					"message_order" => 1,
 					"title" => $this->get("title"),
 					"is_deleted" => $this->get("is_deleted"),
 		    		"message" => $this->get("message"),

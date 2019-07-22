@@ -8,7 +8,7 @@ namespace Plugins\InstagramChatbot;
 	 * 
 	 */
 	
-	class ChatbotMessageModel extends \DataEntry
+	class SettingModel extends \DataEntry
 	{	
 		/**
 		 * Extend parents constructor and select entry
@@ -36,7 +36,7 @@ namespace Plugins\InstagramChatbot;
 	    	}
 
 	    	if ($col) {
-		    	$query = \DB::table('np_chatbot_messages')
+		    	$query = \DB::table(TABLE_PREFIX.'chatbot_settings')
 			    	      ->where($col, "=", $uniqid)
 			    	      ->limit(1)
 			    	      ->select("*");
@@ -89,14 +89,12 @@ namespace Plugins\InstagramChatbot;
 
 	    	$this->extendDefaults();
 
-	    	$id = \DB::table('np_chatbot_messages')
+	    	$id = \DB::table(TABLE_PREFIX.'chatbot_settings')
 		    	->insert(array(
 		    		"id" => null,
 					"user_id" => $this->get("user_id"),
-					"account_id" => $this->get("account_id"),
-					"message_order" => $this->get("message_order"),
-					"title" => $this->get("title"),
-		    		"message" => $this->get("message"),
+                    "account_id" => $this->get("account_id"),
+                    "chatbot_status" => $this->get("chatbot_status"),
 		    	));
 
 	    	$this->set("id", $id);
@@ -115,15 +113,10 @@ namespace Plugins\InstagramChatbot;
 
 	    	$this->extendDefaults();
 
-	    	$id = \DB::table('np_chatbot_messages')
+	    	$id = \DB::table(TABLE_PREFIX.'chatbot_settings')
 	    		->where("id", "=", $this->get("id"))
 		    	->update(array(
-		    		"user_id" => $this->get("user_id"),
-					"account_id" => $this->get("account_id"),
-					"message_order" => $this->get("message_order"),
-					"title" => $this->get("title"),
-					"is_deleted" => $this->get("is_deleted"),
-		    		"message" => $this->get("message"),
+                    "chatbot_status" => $this->get("chatbot_status"),
 		    	));
 
 	    	return $this;
