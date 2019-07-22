@@ -77,7 +77,15 @@
                 
             </div>
            <?php } else {?>
+            <?php require_once(__DIR__.'/chatbot-tabs.fragment.php'); ?>
+            <div id="chatbot-messages-tab" class="tabcontent" >
             <?php require_once(__DIR__.'/chatbot-messages.fragment.php'); ?>
+            </div>
+            <div id="chatbot-settings-tab" class="tabcontent">
+            <?php require_once(__DIR__.'/chatbot-settings.fragment.php'); ?>
+            </div>
+
+
             <?php } ?>
         </section>
     </div>

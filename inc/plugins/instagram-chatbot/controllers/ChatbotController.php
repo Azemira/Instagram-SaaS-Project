@@ -17,27 +17,30 @@ class ChatbotController extends \Controller
         $Accounts->setPageSize(20)
                  ->setPage(\Input::get("page"))
                  ->where("user_id", "=", $AuthUser->get("id"))
-                 ->orderBy("id","DESC")
+                 ->orderBy("id","ASC")
                  ->fetchData();
 
 
         // Messages
         $ChatbotMessages = 'no messages';
         if (isset($Route->params->id)) {
-            // $ChatbotMessages = \Controller::model(PLUGINS_PATH."/".self::IDNAME."/models/ChatbotMessagesModel.php");
             require_once PLUGINS_PATH."/".self::IDNAME."/models/ChatbotMessagesModel.php";
             $ChatbotMessages = new ChatbotMessagesModel;
             $ChatbotMessages->setPageSize(20)
                      ->setPage(\Input::get("page"))
                      ->where("account_id", "=", $Route->params->id)
                      ->where("is_deleted", "=", false)
-                     ->orderBy("id","ASC")
+                     ->orderBy("message_order","ASC")
                      ->fetchData();
 
             $this->setVariable("ChatbotMessages", $ChatbotMessages);
 
             $Account = \Controller::model("Account", $Route->params->id);
             $this->setVariable("Account", $Account);
+
+            require_once PLUGINS_PATH."/".self::IDNAME."/models/SettingsModel.php";
+            $Settings  =  $this->getChatBotStatus($Route->params->id);
+            $this->setVariable("Settings", $Settings);
         } 
         
         $this->setVariable("Accounts", $Accounts);
@@ -47,10 +50,13 @@ class ChatbotController extends \Controller
             $this->save();
         }
         if (\Input::post("action") == "update") {
-            $this->update();
+            $this->update('update');
         }
         if (\Input::post("action") == "delete") {
-            $this->update(true);
+            $this->update('delete');
+        }
+        if (\Input::post("action") == 'update-order') {
+            $this->update('update-order');
         }
         $this->view(PLUGINS_PATH."/".self::IDNAME."/views/chatbot.php", null);
     }
@@ -93,7 +99,7 @@ class ChatbotController extends \Controller
         
         $this->jsonecho();
     }
-    private function update($delete = false)
+    private function update($action)
     {
         $this->resp->result = 0;
         $AuthUser = $this->getVariable("AuthUser");
@@ -101,6 +107,8 @@ class ChatbotController extends \Controller
        
         $message = \Input::post("message");
         $messageId = \Input::post("id");
+        $messageOrder = \Input::post("message_order");
+
         $title = 'test';
 
         if (!$title) {
@@ -115,17 +123,16 @@ class ChatbotController extends \Controller
 
             
         }
-        if ($delete) {
-            $Message->set("is_deleted", 1)
-            ->save();
+        if ($action == 'delete') {
+            $Message->set("is_deleted", 1)->save();
+            
             $this->resp->result = 1;
             $this->resp->redirect = APPURL."/chatbot";
             $this->resp->deleted = $Message->get("is_deleted");
             $this->resp->id = $Message->get("id");
-        } else {
-            $Message->set("message_order", 1)
-            ->set("message", $message)
-            ->save();
+        } 
+        if ($action == 'update') {
+            $Message->set("message", $message)->save();
 
             $this->resp->result = 1;
             $this->resp->redirect = APPURL."/chatbot";
@@ -133,7 +140,14 @@ class ChatbotController extends \Controller
             $this->resp->title = $Message->get("title");
             $this->resp->message = json_decode('"'.$Message->get("message").'"');
         }
-    
+        if ($action == 'update-order') {
+            $Message->set("message_order", intval($messageOrder))->save();
+
+            $this->resp->result = 1;
+            $this->resp->redirect = APPURL."/chatbot";
+            $this->resp->id = $Message->get("id");
+            $this->resp->order = $Message->get("message_order");
+        }
         
         $this->jsonecho();
     }
@@ -165,19 +179,27 @@ class ChatbotController extends \Controller
 
         return $query->count();
     }
-    public function full_path()
-{
-    $s = &$_SERVER;
-    $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
-    $sp = strtolower($s['SERVER_PROTOCOL']);
-    $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
-    $port = $s['SERVER_PORT'];
-    $port = ((!$ssl && $port=='80') || ($ssl && $port=='443')) ? '' : ':'.$port;
-    $host = isset($s['HTTP_X_FORWARDED_HOST']) ? $s['HTTP_X_FORWARDED_HOST'] : (isset($s['HTTP_HOST']) ? $s['HTTP_HOST'] : null);
-    $host = isset($host) ? $host : $s['SERVER_NAME'] . $port;
-    $uri = $protocol . '://' . $host . $s['REQUEST_URI'];
-    $segments = explode('?', $uri, 2);
-    $url = $segments[0];
-    return $url;
-}
+    public function full_path(){
+        $s = &$_SERVER;
+        $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
+        $sp = strtolower($s['SERVER_PROTOCOL']);
+        $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
+        $port = $s['SERVER_PORT'];
+        $port = ((!$ssl && $port=='80') || ($ssl && $port=='443')) ? '' : ':'.$port;
+        $host = isset($s['HTTP_X_FORWARDED_HOST']) ? $s['HTTP_X_FORWARDED_HOST'] : (isset($s['HTTP_HOST']) ? $s['HTTP_HOST'] : null);
+        $host = isset($host) ? $host : $s['SERVER_NAME'] . $port;
+        $uri = $protocol . '://' . $host . $s['REQUEST_URI'];
+        $segments = explode('?', $uri, 2);
+        $url = $segments[0];
+        return $url;
+    }
+
+    public function getChatBotStatus($account_id){
+        $query = \DB::table('np_chatbot_settings')
+        ->where("account_id", "=", $account_id)
+        ->limit(1)
+        ->select("*")
+        ->get();
+        return $query[0];
+    }
 }

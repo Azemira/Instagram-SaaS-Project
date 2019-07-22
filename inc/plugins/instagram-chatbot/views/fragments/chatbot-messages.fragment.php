@@ -26,9 +26,14 @@
                         <div class="col s12 messages-list-content">
                         <?php if ($ChatbotMessages->getTotalCount() > 0): ?>
                         <?php foreach($ChatbotMessages->getDataAs("Caption") as $key => $message): ?>
-                        <div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list" id="message-main-<?= $message->get("id"); ?>" style="background-color: #F8F8F8">          
-                            <div class="mb-20">
-                                <label class="form-label"><?= $message->get("title"); ?> <p  style="float:right;margin:0;">Sending order [<?= $key + 1; ?>]</p></label>
+                        <div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list"  data-order-id="<?= $key ?>" data-id="<?= $message->get("id"); ?>" id="message-main-<?= $message->get("id"); ?>" style="background-color: #F8F8F8">          
+                        <div class="messages-order-up">
+                            <?php if ($key !== 0) : ?>
+                            <a href="javascript:void(0)" class="message-sent-up" id="<?= $message->get("id"); ?>"><?= __("up") ?></a>
+                            <?php endif ?>
+                        </div>  
+                          <div class="mb-20 mt-10">
+                                <label class="form-label chatbot-form-label"><?= $key ?> </label>
                                 
                                 <div class="clearfix">
                                     <div class="col s12 m12 l10 mb-20">
@@ -65,6 +70,14 @@
                                     </div>
                                 </li>
                             </ul>
+                            <?php $messages = $ChatbotMessages->getDataAs("Caption")?>
+                            
+                            <div class="messages-order-down">
+                            <?php if ($key + 1 !== sizeOf($messages)) : ?>
+                            <a href="javascript:void(0)" class="message-sent-down" id="<?= $message->get("id"); ?>"><?= __("down") ?></a>
+                            <?php endif ?>
+                            </div>
+                           
                             </div>
                             <?php endforeach; ?>
                             <?php else: ?>

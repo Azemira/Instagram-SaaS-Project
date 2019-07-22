@@ -34,6 +34,42 @@ function install($Plugin)
                 REFERENCES `".TABLE_PREFIX."accounts`(`id`) 
                 ON DELETE CASCADE ON UPDATE CASCADE;";
   
+    $sql .= "DROP TABLE IF EXISTS `".TABLE_PREFIX."chatbot_settings`;";
+    $sql .= "CREATE TABLE `".TABLE_PREFIX."chatbot_settings` ( 
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `user_id` int(11) NOT NULL,
+                `account_id` int(11) NOT NULL,
+                `chatbot_status` int(11) NOT NULL,
+                PRIMARY KEY (`id`), 
+                INDEX (`account_id`)
+            ) ENGINE = InnoDB;";
+
+   $sql .= "ALTER TABLE `".TABLE_PREFIX."chatbot_settings` 
+            ADD CONSTRAINT `".uniqid("ibfk_")."` FOREIGN KEY (`account_id`) 
+            REFERENCES `".TABLE_PREFIX."accounts`(`id`) 
+            ON DELETE CASCADE ON UPDATE CASCADE;";
+
+
+    $sql  .= "DROP TABLE IF EXISTS `".TABLE_PREFIX."chatbot_finished_requests`;";
+    $sql .= "CREATE TABLE `".TABLE_PREFIX."chatbot_finished_requests` ( 
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `user_id` int(11) NOT NULL,
+                `account_id` int(11) NOT NULL,
+                `recipient_id` BIGINT NOT NULL,
+                PRIMARY KEY (`id`) 
+            ) ENGINE = InnoDB;";
+
+$sql  .= "DROP TABLE IF EXISTS `".TABLE_PREFIX."chatbot_log`;";
+$sql .= "CREATE TABLE `".TABLE_PREFIX."chatbot_log` ( 
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` int(11) NOT NULL,
+            `account_id` int(11) NOT NULL,
+            `recipient_id` BIGINT NOT NULL,
+            `message_id` int(11) NOT NULL,
+            `sent_message` LONGTEXT,
+            `sent_date` datetime NOT NULL,
+            PRIMARY KEY (`id`)
+        ) ENGINE = InnoDB;";
 
     $pdo = \DB::pdo();
     $stmt = $pdo->prepare($sql);
@@ -114,6 +150,16 @@ function route_maps($global_variable_name)
         __NAMESPACE__ . "\ChatbotController"
     ]);
 
+    // save settings
+    $GLOBALS[$global_variable_name]->map("GET|POST", "/chatbot/settings/[i:id]/?", [
+        PLUGINS_PATH . "/". IDNAME ."/controllers/SettingsController.php",
+        __NAMESPACE__ . "\SettingsController"
+    ]);
+        // save settings
+        $GLOBALS[$global_variable_name]->map("GET|POST", "/chatbot/cron/?", [
+            PLUGINS_PATH . "/". IDNAME ."/controllers/CronTestController.php",
+            __NAMESPACE__ . "\CronTestController"
+        ]);
 
 }
 \Event::bind("router.map", __NAMESPACE__ . '\route_maps');
