@@ -294,21 +294,25 @@ function messagesOrderEvents(){
         $(this).click(function(){
             let elem = $('#message-main-'+ this.id);
             elem.prev().insertAfter(elem);
+           
             checkFirstAndLastElement();
             setTimeout(() => {
                 checkiFNotFirstOrLastElement();
             }, 500);
+            
         });
     });
     $(".message-sent-down").each(function(i){
         $(this).click(function(){
             let elem = $('#message-main-'+ this.id);
-            
+            console.log(elem.next().attr('data-order-id'));
             elem.next().insertBefore(elem);
+            
             checkFirstAndLastElement();
             setTimeout(() => {
                 checkiFNotFirstOrLastElement();
             }, 500);
+           
         });
     });
 }
@@ -316,7 +320,6 @@ function messagesOrderEvents(){
 function checkFirstAndLastElement(){
     $( ".chatbot-messages-list" ).first().find('.message-sent-up').remove();
     $( ".chatbot-messages-list" ).last().find('.message-sent-down').remove();
-    // console.log(last);
 }
 function checkiFNotFirstOrLastElement(){
     $(".chatbot-messages-list").each(function(key, value){
@@ -327,15 +330,18 @@ function checkiFNotFirstOrLastElement(){
         }
         if($(this).find('.message-sent-down').length == 0  && key + 1 !== messages.length){
             $(this).find('.messages-order-down').html('<a href="javascript:void(0)" class="message-sent-down" id="'+message_id+'">down</a>');
+            
         }
         $(this).find('.chatbot-form-label').text(key);
         $(this).attr('data-order-id', key);
      });
+     unbindEvents();
      messagesOrderEvents();
      saveNewMessagesOrder();
 }
 
 function saveNewMessagesOrder(){
+    showHideShiftButtons('hide');
     $(".chatbot-messages-list").each(function(key, value){
         let message_id = $(this).attr('data-id');
         let order = $(this).attr('data-order-id');
@@ -356,12 +362,41 @@ function saveNewMessagesOrder(){
                 // enableInputField();
                 // messageUpdate();
                 // messageDelete();
-                console.log(resp);
+                // console.log(resp);
                 console.log('success');
             
             }
         });
     });
+    showHideShiftButtons('show');
+}
+function unbindEvents(){
+    $(".message-sent-up").each(function(i){
+        $(this).unbind( "click" );
+    });
+    $(".message-sent-down").each(function(i){
+        $(this).unbind( "click" );
+    });
+}
+function showHideShiftButtons(action){
+if(action == 'show'){
+    $(".message-sent-up").each(function(i){
+        $(this).show();
+    });
+    $(".message-sent-down").each(function(i){
+        $(this).show();
+    });
+}
+
+if(action == 'hide'){
+    $(".message-sent-up").each(function(i){
+        console.log($(this))
+        $(this).hide();
+    });
+    $(".message-sent-down").each(function(i){
+        $(this).hide();
+    });
+}
 }
 
 function openCity(evt, cityName) {
