@@ -200,6 +200,6 @@ class ChatbotController extends \Controller
         ->limit(1)
         ->select("*")
         ->get();
-        return $query[0];
+        return  sizeOf($query) > 0 ? $query[0] : true ;
     }
 }

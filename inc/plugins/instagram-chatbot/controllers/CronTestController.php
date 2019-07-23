@@ -71,11 +71,10 @@ class CronTestController extends \Controller
              $last_msg_sent = $this->checkForSentMessages($Account->get('id'), $Account->get('user_id'), $message['last_item']->getUserId());
              if ($last_msg_sent) {
                $next_message = $this->getNextMessage($Account, $last_msg_sent);
-              //  var_dump($next_message);
-              //  die();
                if($next_message) {
                  $this->generateNewMessage($Account, $message['thread_id'], $next_message, $recipient_id);
-               } else {
+               } 
+               else {
                  $this->terminateChatbotForThisUser($Account->get('id'), $Account->get('user_id'), $message['last_item']->getUserId());
                }
              } else {
@@ -176,11 +175,8 @@ class CronTestController extends \Controller
    private function generateNewMessage($Account, $threadId, $msg_data, $recipient_id){  
     $decoded_msg = json_decode('"'.$msg_data[0]->message.'"');
     $generated_msg = $this->spinText($decoded_msg);
-  
     $this->sendMessage($Account, $threadId, $generated_msg);
     $this->logSentMessage($Account->get('id'), $Account->get('user_id'), $recipient_id, $msg_data[0]->message, $msg_data[0]->id);
-
-    // $this->terminateChatbotForThisUser($Account->get('id'), $Account->get('user_id'), $recipient_id);
    }
 
    public function logSentMessage($account_id, $user_id, $recipient_id, $msg, $msg_id) {
