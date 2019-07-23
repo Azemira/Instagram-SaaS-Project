@@ -41,12 +41,8 @@
         messageDelete();
         settings_form();
         document.getElementById("chatbot-messages-tab-button").click();
+        messagesOrderEvents();
     }, 1000);
-    
-
-        setTimeout(() => {
-            messagesOrderEvents();
-        }, 500);
 
 })();
     // Submit the form
@@ -82,8 +78,9 @@
                     messageUpdate();
                     messageDelete();
                     $('#closeModal').click();
+                    checkFirstAndLastElement();
                     setTimeout(() => {
-                        messagesOrderEvents();
+                        checkiFNotFirstOrLastElement();
                     }, 500);
                 }
             });
@@ -157,6 +154,7 @@ function messageUpdate() {
                     messageDelete();
                     console.log(resp);
                     console.log('success');
+                    checkFirstAndLastElement();
                 
                 }
             });
@@ -171,9 +169,11 @@ function messageUpdate() {
 function insertNewMessage(message, id, insert = true, title) {
     let mesageRow = '';
     if(insert) {
-        mesageRow += '<div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list" id="message-main-'+id+'" style="background-color: #F8F8F8">';
+        mesageRow += '<div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list" data-order-id="" data-id="'+id+'" id="message-main-'+id+'" style="background-color: #F8F8F8">';
     }
-    
+    mesageRow += '<div class="messages-order-up">';
+    mesageRow += '<a href="javascript:void(0)" class="message-sent-up" id="'+id+'">up</a>';
+    mesageRow += '</div>';
     mesageRow += '<div class="mb-20">';
     mesageRow += '<label class="form-label">'+title+'</label>';
     mesageRow += '<div class="clearfix">';
@@ -205,6 +205,8 @@ function insertNewMessage(message, id, insert = true, title) {
     mesageRow += '</div>';
     mesageRow += ' </li>';
     mesageRow += '</ul>';
+    mesageRow += '<div class="messages-order-down">';
+    mesageRow += '</div>';
     if(insert) {
     $('.messages-list-content').append(mesageRow);
     mesageRow += '</div>';
@@ -242,6 +244,10 @@ function messageDelete() {
 
                     console.log('success');
                     $('#message-main-'+resp.id).remove();
+                    checkFirstAndLastElement();
+                    setTimeout(() => {
+                        checkiFNotFirstOrLastElement();
+                    }, 500);
                 }
             });
     
