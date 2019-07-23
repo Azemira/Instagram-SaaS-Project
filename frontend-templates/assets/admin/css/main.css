@@ -51,10 +51,16 @@ h4, .h4 {
     font-size: 18px;
 }
 a {
-    color: #2962FF;
+    color: #27a9e3;
 }
 a:focus, a:hover {
     text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+.np{
+    padding: 0 !important
 }
 html, body {
     height: 100%;
@@ -84,6 +90,7 @@ html body .font-light {
 #main-wrapper {
     width: 100%;
     overflow: hidden;
+    position: relative;
 }
 #main-wrapper .topbar .top-navbar {
     color: #fff;
@@ -292,7 +299,68 @@ html body .font-light {
 .footer {
     padding: 15px 20px;
 }
-
+.auto-dimes-admin-btn{
+    min-width: 125px;
+    width: auto;
+    display: inline-block;
+    background-image: linear-gradient(to right, #27a9e3 0%, #6fbfe2 48%, #27a9e3 100%) !important;
+    background-size: 200% auto;
+    border: 0;
+    padding: 0px 25px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 36px;
+    border-radius: 3px;
+    outline: none !important;
+    box-shadow: none !important;
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 300ms linear 0s;
+}
+.btn-autodimes{
+    background-color: #27a9e3;
+    color: #fff;
+}
+.btn-autodimes:focus,
+.btn-autodimes:hover{
+    background-color: #6fbfe2;
+}
+.auto-dimes-admin-btn:focus, .auto-dimes-admin-btn:hover {
+    background-position: right center;
+    color: #fff;
+}
+.autodimes-success-box .badge-success{
+    position: absolute;
+    right: 1.25rem;
+}
+/*Profile info card*/
+.profile-info-card .form-group.row{
+    margin-bottom: 1.75rem
+}
+.profile-info-card .form-group.row .col-form-label{
+    padding:9px 0 0 0
+}
+.profile-info-card .form-group.row .form-control{
+    border-radius: 0.2rem;
+    min-height: 40px;
+    font-size: .875rem
+}
+.profile-info-card .form-group.row .form-control:focus{
+    box-shadow: 0 0 0 0.2rem rgba(39,169,227,.25);
+    border-color: #27a9e3
+}
+/*Stores html*/
+.stores-list .stores-table .description{
+    width: 35% !important
+}
+.stores-list .stores-table button.btn-sm{
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 12px
+}
 /*Animations*/
 .lds-ripple {
     display: inline-block;
@@ -305,7 +373,7 @@ html body .font-light {
 }
 .lds-ripple .lds-pos {
     position: absolute;
-    border: 2px solid #2962FF;
+    border: 2px solid #27a9e3;
     opacity: 1;
     border-radius: 50%;
     -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.1, 0.5, 1) infinite;
@@ -317,7 +385,7 @@ html body .font-light {
 }
 .lds-ripple .lds-pos {
     position: absolute;
-    border: 2px solid #2962FF;
+    border: 2px solid #27a9e3;
     opacity: 1;
     border-radius: 50%;
     -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.1, 0.5, 1) infinite;
