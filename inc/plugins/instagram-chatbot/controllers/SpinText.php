@@ -1,7 +1,7 @@
 <?PHP
+namespace Plugins\InstagramChatbot;
 
-
-class SpinTxt
+class SpinText
 {
     public function process($text)
     {

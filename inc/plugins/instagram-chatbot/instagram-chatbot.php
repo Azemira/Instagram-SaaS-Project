@@ -59,18 +59,41 @@ function install($Plugin)
                 PRIMARY KEY (`id`) 
             ) ENGINE = InnoDB;";
 
-$sql  .= "DROP TABLE IF EXISTS `".TABLE_PREFIX."chatbot_log`;";
-$sql .= "CREATE TABLE `".TABLE_PREFIX."chatbot_log` ( 
-            `id` int(11) NOT NULL AUTO_INCREMENT,
-            `user_id` int(11) NOT NULL,
-            `account_id` int(11) NOT NULL,
-            `recipient_id` BIGINT NOT NULL,
-            `message_id` int(11) NOT NULL,
-            `sent_message` LONGTEXT,
-            `sent_date` datetime NOT NULL,
-            PRIMARY KEY (`id`)
-        ) ENGINE = InnoDB;";
+    $sql  .= "DROP TABLE IF EXISTS `".TABLE_PREFIX."chatbot_log`;";
+    $sql .= "CREATE TABLE `".TABLE_PREFIX."chatbot_log` ( 
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `user_id` int(11) NOT NULL,
+                `account_id` int(11) NOT NULL,
+                `recipient_id` BIGINT NOT NULL,
+                `message_id` int(11) NOT NULL,
+                `sent_message` LONGTEXT,
+                `sent_date` datetime NOT NULL,
+                PRIMARY KEY (`id`)
+            ) ENGINE = InnoDB;";
 
+    $sql  .= "DROP TABLE IF EXISTS `".TABLE_PREFIX."chatbot_cron_jobs`;";
+    $sql .= "CREATE TABLE `".TABLE_PREFIX."chatbot_cron_jobs` ( 
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `user_id` int(11) NOT NULL,
+                `account_id` int(11) NOT NULL,
+                `recipient_id` BIGINT NOT NULL,
+                `thread_id` varchar(255) NOT NULL,
+                `fast_speed` BOOLEAN DEFAULT FALSE,
+                `slow_speed` BOOLEAN DEFAULT FALSE,
+                `inbox_count` int(22) NULL,
+                `sent_count` int(22) NULL,
+                `messages` varchar(255) NULL,
+                `received_count` int(22) NULL,
+                `sent_date` datetime NULL,
+                `received_date` datetime NULL,
+                `last_cron_run` datetime NULL,
+                PRIMARY KEY (`id`)
+                INDEX (`account_id`)
+            ) ENGINE = InnoDB;";
+    $sql .= "ALTER TABLE `".TABLE_PREFIX."chatbot_cron_jobs` 
+            ADD CONSTRAINT `".uniqid("idx_")."` FOREIGN KEY (`account_id`) 
+            REFERENCES `".TABLE_PREFIX."accounts`(`id`) 
+            ON DELETE CASCADE ON UPDATE CASCADE;";
     $pdo = \DB::pdo();
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -157,8 +180,8 @@ function route_maps($global_variable_name)
     ]);
         // save settings
         $GLOBALS[$global_variable_name]->map("GET|POST", "/chatbot/cron/?", [
-            PLUGINS_PATH . "/". IDNAME ."/controllers/CronTestController.php",
-            __NAMESPACE__ . "\CronTestController"
+            PLUGINS_PATH . "/". IDNAME ."/controllers/ChatbotCronController.php",
+            __NAMESPACE__ . "\ChatbotCronController"
         ]);
 
 }
