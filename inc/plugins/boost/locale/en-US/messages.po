@@ -1,0 +1,412 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Nextpost v3.0 - Default Theme\n"
+"Language: en-us\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Auto Like"
+msgstr "Auto Like"
+
+#: 
+msgid "Invalid parameter"
+msgstr "Invalid parameter"
+
+#: 
+msgid "%s public post"
+msgid_plural "%s public posts"
+msgstr[0] "%s public post"
+msgstr[1] "%s public posts"
+
+#: 
+msgid "Instagram user"
+msgstr "Instagram user"
+
+#: 
+msgid "Please select an account from left side list."
+msgstr "Please select an account from left side list."
+
+#: 
+msgid "Target & Settings"
+msgstr "Target & Settings"
+
+#: 
+msgid "Activity Log"
+msgstr "Activity Log"
+
+#: 
+msgid "Next request will be sent %s approximately"
+msgstr "Next request will be sent %s approximately"
+
+#: 
+msgid "Next request will be sent in a few moments"
+msgstr "Next request will be sent in a few moments"
+
+#: 
+msgid "Something is wrong on the system"
+msgstr "Something is wrong on the system"
+
+#: 
+msgid "Liked {username}'s {post}"
+msgstr "Liked {username}'s {post}"
+
+#: 
+msgid "Timeline Feed"
+msgstr "Timeline Feed"
+
+#: 
+msgid "View Post"
+msgstr "View Post"
+
+#: 
+msgid "Total %s actions"
+msgstr "Total %s actions"
+
+#: 
+msgid "Auto Like activity log for %s is empty"
+msgstr "Auto Like activity log for %s is empty"
+
+#: 
+msgid "Hashtags"
+msgstr "Hashtags"
+
+#: 
+msgid "Places"
+msgstr "Places"
+
+#: 
+msgid "People"
+msgstr "People"
+
+#: 
+msgid "Speed"
+msgstr "Speed"
+
+#: 
+msgid "Auto"
+msgstr "Auto"
+
+#: 
+msgid "Recommended"
+msgstr "Recommended"
+
+#: 
+msgid "Very Slow"
+msgstr "Very Slow"
+
+#: 
+msgid "Slow"
+msgstr "Slow"
+
+#: 
+msgid "Medium"
+msgstr "Medium"
+
+#: 
+msgid "Fast"
+msgstr "Fast"
+
+#: 
+msgid "Very Fast"
+msgstr "Very Fast"
+
+#: 
+msgid "Pause actions everyday"
+msgstr "Pause actions everyday"
+
+#: 
+msgid "To"
+msgstr "To"
+
+#: 
+msgid "Like the feed from the timeline"
+msgstr "Like the feed from the timeline"
+
+#: 
+msgid "Speeds"
+msgstr "Speeds"
+
+#: 
+msgid "%s request/hour"
+msgid_plural "%s requests/hour"
+msgstr[0] "%s request/hour"
+msgstr[1] "%s requests/hour"
+
+#: 
+msgid "These values indicates maximum amount of the requests per hour. They are not exact values. Depending on the server overload and delays between the requests, actual number of the requests might be less than these values."
+msgstr "These values indicates maximum amount of the requests per hour. They are not exact values. Depending on the server overload and delays between the requests, actual number of the requests might be less than these values."
+
+#: 
+msgid "High speeds might be risky"
+msgstr "High speeds might be risky"
+
+#: 
+msgid "Developers are not responsible for any issues related to the Instagram accounts."
+msgstr "Developers are not responsible for any issues related to the Instagram accounts."
+
+#: 
+msgid "Timeline Feed Settings"
+msgstr "Timeline Feed Settings"
+
+#: 
+msgid "Refresh Interval"
+msgstr "Refresh Interval"
+
+#: 
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s hour"
+msgstr[1] "%s hours"
+
+#: 
+msgid "Max. amount of posts"
+msgstr "Max. amount of posts"
+
+#: 
+msgid "Maximum amount of the posts to be liked in each refresh. Post will be selected in descending order."
+msgstr "Maximum amount of the posts to be liked in each refresh. Post will be selected in descending order."
+
+#: 
+msgid "Enable Random Delays"
+msgstr "Enable Random Delays"
+
+#: 
+msgid "If you enable this option, script will add random delays automatically between each requests."
+msgstr "If you enable this option, script will add random delays automatically between each requests."
+
+#: 
+msgid "Delays could be up to 5 minutes."
+msgstr "Delays could be up to 5 minutes."
+
+#: 
+msgid "Auto Like Module Settings"
+msgstr "Auto Like Module Settings"
+
+#: 
+msgid "Activity has been stopped"
+msgstr "Activity has been stopped"
+
+#: 
+msgid "Re-login is required for the account."
+msgstr "Re-login is required for the account."
+
+#: 
+msgid "User account is either disabled or expired."
+msgstr "User account is either disabled or expired."
+
+#: 
+msgid "Action re-scheduled"
+msgstr "Action re-scheduled"
+
+#: 
+msgid "Couldn't find any target to search for the feed."
+msgstr "Couldn't find any target to search for the feed."
+
+#: 
+msgid "Couldn't get the feed"
+msgstr "Couldn't get the feed"
+
+#: 
+msgid "Couldn't find the new media to like"
+msgstr "Couldn't find the new media to like"
+
+#: 
+msgid "Something went wrong"
+msgstr "Something went wrong"
+
+#: 
+msgid "Couldn't like the new media"
+msgstr "Couldn't like the new media"
+
+#: 
+msgid "Couldn't get the timeline feed"
+msgstr "Couldn't get the timeline feed"
+
+#: 
+msgid "Couldn't find any new media to like in the timeline feed"
+msgstr "Couldn't find any new media to like in the timeline feed"
+
+#: 
+msgid "Module is not accessible to your account."
+msgstr "Module is not accessible to your account."
+
+#: 
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minute"
+msgstr[1] "%s minutes"
+
+msgid "Best Sources"
+msgstr "Best Sources"
+
+msgid "Select the actions"
+msgstr "Select the actions"
+
+msgid "View Stories"
+msgstr "View Stories"
+
+msgid "Send Welcome Direct Messages"
+msgstr "Send Welcome Direct Messages"
+
+msgid "Turn on/off the actions that your account will run!"
+msgstr "Turn on/off the actions that your account will run!"
+
+msgid "Choose the source"
+msgstr "Choose the source"
+
+msgid "Copy"
+msgstr "Copy"
+
+msgid "Copy all parameters below to use in other account or place"
+msgstr "Copy all parameters below to use in other account or place"
+
+msgid "Click here to paste copied parameters"
+msgstr "Click here to paste copied parameters"
+
+msgid "Paste"
+msgstr "Paste"
+
+msgid "Choose here where your new followers will come from. Our platform will interage (like, comment,follow and more) with what you select here!"
+msgstr "Choose here where your new followers will come from. Our platform will interage (like, comment,follow and more) with what you select here!"
+
+msgid "Growth your profile"
+msgstr "Growth your profile"
+
+msgid "How fast our system should work? Set it here, but be careful."
+msgstr "How fast our system should work? Set it here, but be careful."
+
+msgid "Business Accounts"
+msgstr "Business Accounts"
+
+msgid "Both"
+msgstr "Both"
+
+msgid "Business"
+msgstr "Business"
+
+msgid "Personal"
+msgstr "Personal"
+
+msgid "Follow Cicle"
+msgstr "Follow Cicle"
+
+msgid "Automatically switch to unfollow when follow the number of accounts discribed here"
+msgstr "Automatically switch to unfollow when follow the number of accounts discribed here"
+
+msgid "Everyone"
+msgstr "Everyone"
+
+msgid "Male"
+msgstr "Male"
+
+msgid "Female"
+msgstr "Female"
+
+msgid "Do you want to interact with only certain genders?"
+msgstr "Do you want to interact with only certain genders?"
+
+msgid "Ignore Private Accounts?"
+msgstr "Ignore Private Accounts?"
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "Has Profile Picture?"
+msgstr "Has Profile Picture?"
+
+msgid "Do you want to send a follow request to private accounts? (follow only)"
+msgstr "Do you want to send a follow request to private accounts? (follow only)"
+
+msgid "Do you only want to interact ONLY with accounts that have a profile picture?"
+msgstr "Do you only want to interact ONLY with accounts that have a profile picture?"
+
+msgid "Resting an account will allow it to run longer without issues."
+msgstr "Resting an account will allow it to run longer without issues."
+
+msgid "Follow + Like"
+msgstr "Follow + Like"
+
+msgid "Enable this and we'll like some post from the followed user"
+msgstr "Enable this and we'll like some post from the followed user"
+
+msgid "Like Count"
+msgstr "Like Count"
+
+msgid "Unfollow settings"
+msgstr "Unfollow settings"
+
+msgid "Unfollow Everyone!"
+msgstr "Unfollow Everyone!"
+
+msgid "Don't unfollow my followers"
+msgstr "Don't unfollow my followers"
+
+msgid "Caution: If you check this box we will remove ALL your followers (except those in White list)"
+msgstr "Caution: If you check this box we will remove ALL your followers (except those in White list)"
+
+msgid "White list"
+msgstr "White list"
+
+msgid "Adding accounts will insure we never unfollows them. We recommend adding your family, friends, and the people that engage with your content the most"
+msgstr "Adding accounts will insure we never unfollows them. We recommend adding your family, friends, and the people that engage with your content the most"
+
+msgid "Auto comment"
+msgstr "Auto comment"
+
+msgid "Comment"
+msgstr "Comment"
+
+msgid "Add your comment"
+msgstr "Add your comment"
+
+msgid "Add Comment"
+msgstr "Add Comment"
+
+msgid "You can use following variables in the comments:"
+msgstr "You can use following variables in the comments:"
+
+msgid "Media owner's username"
+msgstr "Media owner's username"
+
+msdid "Media owner's First Name"
+msgstr "Media owner's First Name"
+
+msdid "Media owner's full name. If user's full name is not set, username will be used."
+msgstr "Media owner's full name. If user's full name is not set, username will be used."
+
+msgid "Welcome Direct Message"
+msgstr "Welcome Direct Message"
+
+msgid "Messages"
+msgstr "Messages"
+
+msgid "Add your message"
+msgstr "Add your message"
+
+msgid "Add message"
+msgstr "Add message"
+
+msgid "Black list"
+msgstr "Black list"
+
+msgid "Account Blacklist"
+msgstr "Account Blacklist"
+
+msgid "We will never follow or engage with content posted by any of the selected accounts."
+msgstr "We will never follow or engage with content posted by any of the selected accounts."
+
+msgid "Keywords Blacklist"
+msgstr "Keywords Blacklist"
+
+msgid "Add words that will be blocked"
+msgstr "Add words that will be blocked"
+
+msgid "Skip media (caption and tags) and accounts (username, full name, biography, website) that match any of the selected keywords."
+msgstr "Skip media (caption and tags) and accounts (username, full name, biography, website) that match any of the selected keywords."
+
+msgid "Use comma <strong>,</strong> to separe the keywords."
+msgstr "Use comma <strong>,</strong> to separe the keywords."
