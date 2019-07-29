@@ -27,18 +27,39 @@ class SettingsController extends \Controller
 
             $Account = \Controller::model("Account", $Route->params->id);
             $this->setVariable("Account", $Account);
-        } 
-        
-        $this->setVariable("Route", $Route);
 
-        if (\Input::post("action") == "save") {
-            $this->save();
-        }
-        if (\Input::post("action") == "update") {
-            $this->update();
+            $this->setVariable("Route", $Route);
+
+            if (\Input::post("action") == "save") {
+                $this->save();
+            }
+            if (\Input::post("action") == "update") {
+                $this->update();
+            }
+            
+            $this->view(PLUGINS_PATH."/".self::IDNAME."/views/chatbot.php", null);
+        } else {
+           
+          
+            if (\Input::post("action") == "settings") {
+               
+                $this->updateSettings();
+            }
+
+            $settings = $this->getCronSettings();
+            $this->setVariable("PendingFrom", $settings["pending_request_time_from"]);
+            $this->setVariable("PendingTo", $settings["pending_request_time_to"]);
+            $this->setVariable("NewConversationFrom", $settings["direct_message_time_from"]);
+            $this->setVariable("NewConversationTo", $settings["direct_message_time_to"]);
+            $this->setVariable("FastSpeedFrom", $settings["fast_speed_time_from"]);
+            $this->setVariable("FastSpeedTo", $settings["fast_speed_time_to"]);
+            $this->setVariable("SlowSpeedFrom", $settings["slow_speed_time_from"]);
+            $this->setVariable("SlowSpeedTo", $settings["slow_speed_time_to"]);
+
+            $this->view(PLUGINS_PATH."/".self::IDNAME."/views/settings.php", null);
         }
         
-        $this->view(PLUGINS_PATH."/".self::IDNAME."/views/chatbot.php", null);
+        
     }
 
         /**
@@ -96,5 +117,23 @@ class SettingsController extends \Controller
         ->select("*")
         ->get();
         return $query[0];
+    }
+    private function getCronSettings(){
+        $json = file_get_contents(PLUGINS_PATH."/".self::IDNAME."/assets/json/cron_settings.json");
+        return json_decode($json, true)[0];
+    }
+    private function updateSettings(){
+
+        $json_data = '[{ 
+            "pending_request_time_from":'.\Input::post("pending-from") .',
+            "pending_request_time_to":'.\Input::post("pending-to") .',
+            "direct_message_time_from":'.\Input::post("conversation-from") .',
+            "direct_message_time_to":'.\Input::post("conversation-to") .',
+            "fast_speed_time_from":'.\Input::post("fast-speed-from") .',
+            "fast_speed_time_to":'.\Input::post("fast-speed-to") .',
+            "slow_speed_time_from":'.\Input::post("slow-speed-from") .',
+            "slow_speed_time_to":'.\Input::post("slow-speed-to").'}]';
+
+          file_put_contents(PLUGINS_PATH."/".self::IDNAME."/assets/json/cron_settings.json", $json_data);
     }
 }

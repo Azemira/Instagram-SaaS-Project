@@ -94,7 +94,7 @@ class ChatbotController extends \Controller
         $this->resp->result = 1;
         $this->resp->redirect = APPURL."/chatbot";
         $this->resp->id = $Message->get("id");
-        $this->resp->title = $Message->get("title");
+        $this->resp->order = $Message->get("message_order");
         $this->resp->message = json_decode('"'.$Message->get("message").'"');
         
         $this->jsonecho();
@@ -137,7 +137,7 @@ class ChatbotController extends \Controller
             $this->resp->result = 1;
             $this->resp->redirect = APPURL."/chatbot";
             $this->resp->id = $Message->get("id");
-            $this->resp->title = $Message->get("title");
+            $this->resp->order = $Message->get("message_order");
             $this->resp->message = json_decode('"'.$Message->get("message").'"');
         }
         if ($action == 'update-order') {
@@ -174,6 +174,7 @@ class ChatbotController extends \Controller
     public function getCountOfUserMessages($account_id){
         $query = \DB::table('np_chatbot_messages')
         ->where("account_id", "=", $account_id)
+        ->where("is_deleted", "=", false)
         ->limit(1)
         ->select("*");
 

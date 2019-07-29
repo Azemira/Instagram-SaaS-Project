@@ -50,7 +50,7 @@
                                         <a href="javascript:void(0)" id="message-<?= $message->get("id"); ?>"  class="chatbot-message-item fluid button button--light-outline mb-15 js-add-new-comment-btn">
                                             <?= __("Edit") ?>    
                                         </a>
-                                        <input class="fluid button message-update-submit" id="<?= $message->get("id"); ?>"  value="<?= __("Save") ?>">
+                                        <a href="javascript:void(0)" hidden class="chatbot-button message-update-submit" id="<?= $message->get("id"); ?>">Save</a>
                                     </div>
                                 </div>
                             </div>
@@ -123,8 +123,6 @@
                     <div class="col s4">
                     
                     <input class="fluid button submit-buttom" type="submit" value="<?= __("Save") ?>">
-                    </div>
-                        
                         
                     </div>
                 </div>

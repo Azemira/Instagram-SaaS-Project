@@ -73,7 +73,7 @@
                 success: function(resp) {
                     console.log(resp);
                     console.log('success save');
-                    insertNewMessage(resp.message, resp.id, true, resp.title);
+                    insertNewMessage(resp.message, resp.id, true, resp.order);
                     enableInputField();
                     messageUpdate();
                     messageDelete();
@@ -92,9 +92,11 @@
 function enableInputField(){
     $(".chatbot-message-item").each(function(i){
         $(this).click(function(){
-            $('#'+this.id+'-editor').attr( "contenteditable","true" )
+            $('#'+this.id+'-editor').attr( "contenteditable","true" );
+            // $(this).next().show();
+            $(this).next().addClass('button');
             emojiLoad('#'+this.id+'-editor');
-            console.log('test');
+            // console.log($(this).next().css( "display", "inline-block !important" ));
         });
     });
   }
@@ -148,7 +150,7 @@ function messageUpdate() {
                 },
                 success: function(resp) {
                    
-                    insertNewMessage(resp.message, resp.id, false, resp.title);
+                    insertNewMessage(resp.message, resp.id, false, resp.order);
                     enableInputField();
                     messageUpdate();
                     messageDelete();
@@ -158,7 +160,8 @@ function messageUpdate() {
                 
                 }
             });
-    
+            $(this).removeClass('button');
+            $(this).hide();
             return false;
             
 
@@ -166,16 +169,16 @@ function messageUpdate() {
     });
 }
 
-function insertNewMessage(message, id, insert = true, title) {
+function insertNewMessage(message, id, insert = true, order) {
     let mesageRow = '';
     if(insert) {
-        mesageRow += '<div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list" data-order-id="" data-id="'+id+'" id="message-main-'+id+'" style="background-color: #F8F8F8">';
+        mesageRow += '<div class="pt-25 pb-25 pl-10 pr-10 mb-20 chatbot-messages-list" data-order-id="'+order+'" data-id="'+id+'" id="message-main-'+id+'" style="background-color: #F8F8F8">';
     }
     mesageRow += '<div class="messages-order-up">';
     mesageRow += '<a href="javascript:void(0)" class="message-sent-up" id="'+id+'">up</a>';
     mesageRow += '</div>';
     mesageRow += '<div class="mb-20">';
-    mesageRow += '<label class="form-label">'+title+'</label>';
+    mesageRow += '<label class="form-label chatbot-form-label">'+order+'</label>';
     mesageRow += '<div class="clearfix">';
 
     mesageRow += '<div class="col s12 m12 l10 mb-20">';
@@ -187,7 +190,7 @@ function insertNewMessage(message, id, insert = true, title) {
     mesageRow += '<div class="col s12 m12 l2 l-last">';
     mesageRow += '<a href="javascript:void(0)" id="'+id+'" style="background-color:#D45F5F !important; color:white;" class="chatbot-message-delete fluid button button--light-outline mb-15 js-add-new-comment-btn">Delete</a>';
     mesageRow += '<a href="javascript:void(0)" id="message-'+id+'"  class="chatbot-message-item fluid button button--light-outline mb-15 js-add-new-comment-btn">Edit</a>';
-    mesageRow += '<input class="fluid button message-update-submit" id="'+id+'"  value="Save">';
+    mesageRow += '<a href="javascript:void(0)" hidden class="chatbot-button message-update-submit"  id="'+id+'">Save</a>'
     mesageRow += '</div>';
 
     mesageRow += '</div>';

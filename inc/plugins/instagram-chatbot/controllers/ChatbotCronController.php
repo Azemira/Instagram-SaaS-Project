@@ -121,9 +121,13 @@ class ChatbotCronController extends \Controller
       default:
           return;
   }
+   $cronRunLog["last_pending_cron_run"] = $cronRunLog["last_pending_cron_run"] ? $cronRunLog["last_pending_cron_run"] : 0;
+   $cronRunLog["last_direct_cron_run"] = $cronRunLog["last_direct_cron_run"] ? $cronRunLog["last_direct_cron_run"] : 0;
+   $cronRunLog["last_fast_cron_run"] = $cronRunLog["last_fast_cron_run"] ? $cronRunLog["last_fast_cron_run"] : 0;
+   $cronRunLog["last_slow_cron_run"] = $cronRunLog["last_slow_cron_run"] ? $cronRunLog["last_slow_cron_run"] : 0;
 
     $json_data = '[{ 
-      "last_pending_cron_run":'.$cronRunLog["last_pending_cron_run"].',
+      "last_pending_cron_run":'.$cronRunLog["last_pending_cron_run"] .',
       "last_direct_cron_run":'.$cronRunLog["last_direct_cron_run"].',
       "last_fast_cron_run":'.$cronRunLog["last_fast_cron_run"].',
       "last_slow_cron_run":'.$cronRunLog["last_slow_cron_run"]

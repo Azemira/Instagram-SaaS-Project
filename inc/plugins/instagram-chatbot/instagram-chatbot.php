@@ -123,7 +123,7 @@ function uninstall($Plugin)
  *                               modules of the package
  */
 
- /*
+ 
 function add_module_option($package_modules)
 {
     $config = include __DIR__."/config.php";
@@ -146,7 +146,7 @@ function add_module_option($package_modules)
     <?php
 }
 \Event::bind("package.add_module_option", __NAMESPACE__ . '\add_module_option');
-*/
+
 
 
 
@@ -155,6 +155,11 @@ function add_module_option($package_modules)
  */
 function route_maps($global_variable_name)
 {
+     // Settings (admin only)
+     $GLOBALS[$global_variable_name]->map("GET|POST","/chatbot/admin/settings/?", [
+        PLUGINS_PATH . "/". IDNAME ."/controllers/SettingsController.php",
+        __NAMESPACE__ . "\SettingsController"
+    ]);
     // chatbot page
     $GLOBALS[$global_variable_name]->map("GET|POST","/chatbot/?", [
         PLUGINS_PATH . "/". IDNAME ."/controllers/ChatbotController.php",
@@ -187,7 +192,15 @@ function route_maps($global_variable_name)
 }
 \Event::bind("router.map", __NAMESPACE__ . '\route_maps');
 
-
+/**
+ * Get Plugin Settings
+ * @return \GeneralDataModel 
+ */
+function settings()
+{
+    $settings = \Controller::model("GeneralData", "plugin-".IDNAME."-settings");
+    return $settings;
+}
 /**
  * Event: navigation.add_special_menu
  */
