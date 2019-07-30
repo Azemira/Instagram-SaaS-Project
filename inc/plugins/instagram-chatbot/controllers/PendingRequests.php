@@ -57,17 +57,19 @@ class PendingRequests
     }
 
     private function saveCronJob($Account, $thread){
-        require_once PLUGINS_PATH."/".self::IDNAME."/models/CronJobModel.php";
-        $CronJob = new CronJobModel;
-        $messages = $this->getCurrentMessagesOrder($Account);
-        $CronJob->set("user_id", $Account->get('user_id'))
-                ->set("account_id", $Account->get('id'))
-                ->set("recipient_id", $thread->getInviter()->getPk())
-                ->set("thread_id", $thread->getThreadId())
-                ->set("fast_speed", true)
-                ->set("messages", $messages)
-                ->set("received_date", date('Y-m-d h:i:s', time()))
-                ->save();
+      require_once PLUGINS_PATH."/".self::IDNAME."/models/CronJobModel.php";
+      $CronJob = new CronJobModel;
+      $messages = $this->getCurrentMessagesOrder($Account);
+      $messages_count = count(json_decode($messages ,true));
+      $CronJob->set("user_id", $Account->get('user_id'))
+      ->set("account_id", $Account->get('id'))
+      ->set("recipient_id", $thread->getInviter()->getPk())
+      ->set("thread_id", $thread->getThreadId())
+      ->set("fast_speed", true)
+      ->set("inbox_count", $messages_count)
+      ->set("messages", $messages)
+      ->set("received_date", date('Y-m-d h:i:s', time()))
+      ->save();
     }
 
     public function getCurrentMessagesOrder($Account) {
