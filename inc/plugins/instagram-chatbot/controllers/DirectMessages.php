@@ -104,13 +104,13 @@ class DirectMessages
        
     }
     private function sendMessage($Account, $threadId, $msg){         
-        try {
+        // try {
             $Instagram = \InstagramController::login($Account);
-        } catch (\Exception $e) {
-            echo "Error: " . $e->getMessage();
-        }
+        // } catch (\Exception $e) {
+        //     echo "Error: " . $e->getMessage();
+        // }
 
-        try {
+        // try {
             $text = $msg;
             $recipients = [
             'thread' => $threadId
@@ -129,12 +129,12 @@ class DirectMessages
              } else {
                 return  false;
              }
-        } catch (\Exception $e) {
-            $result['msg'] = $e->getMessage();
-            header('Content-Type: application/json');
-            echo json_encode($result);
-            exit;
-        }
+        // } catch (\Exception $e) {
+        //     $result['msg'] = $e->getMessage();
+        //     header('Content-Type: application/json');
+        //     echo json_encode($result);
+        //     exit;
+        // }
     }
     public function logSentMessage($account_id, $user_id, $recipient_id, $msg, $msg_id) {
         require_once PLUGINS_PATH."/".self::IDNAME."/models/ChatbotLogModel.php";

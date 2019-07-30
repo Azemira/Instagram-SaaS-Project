@@ -18,25 +18,25 @@ class ChatbotCronController extends \Controller
 
         foreach($accountIds as $id){
           if($Settings->since_pending_start >= $Settings->random_pending_time){
-            try {
+            // try {
               require_once PLUGINS_PATH."/".self::IDNAME."/controllers/PendingRequests.php";
               $PendingRequests = new PendingRequests;
               $PendingRequests->process($id->account_id);
               $this->setCroneRuntime('pending');
-            } catch (\Exception $e) {
-              echo "Error: " . $e->getMessage();
-            }
+            // } catch (\Exception $e) {
+            //   echo "Error: " . $e->getMessage();
+            // }
           }
 
           if($Settings->since_direct_start >= $Settings->random_direct_time){
-            try {
+            // try {
               require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectRequests.php";
               $DirectRequests = new DirectRequests;
               $DirectRequests->process($id->account_id);
               $this->setCroneRuntime('direct');
-            } catch (\Exception $e) {
-              echo "Error: " . $e->getMessage();
-            }
+            // } catch (\Exception $e) {
+            //   echo "Error: " . $e->getMessage();
+            // }
           }
         }
 
@@ -45,14 +45,14 @@ class ChatbotCronController extends \Controller
         if($activeFastCronJobs) {
           foreach($activeFastCronJobs as $cron){
 
-            try {
+            // try {
               require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
               $DirectMessages = new DirectMessages;
               $DirectMessages->process($cron);
               $this->setCroneRuntime('fast');
-            } catch (\Exception $e) {
-              echo "Error: " . $e->getMessage();
-            }
+            // } catch (\Exception $e) {
+            //   echo "Error: " . $e->getMessage();
+            // }
   
           }
         }
@@ -63,14 +63,14 @@ class ChatbotCronController extends \Controller
           if($activeSlowCronJobs) {
             foreach($activeSlowCronJobs as $cron){
 
-              try {
+              // try {
                 require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
                 $DirectMessages = new DirectMessages;
                 $DirectMessages->process($cron);
                 $this->setCroneRuntime('slow');
-              } catch (\Exception $e) {
-                echo "Error: " . $e->getMessage();
-              }
+              // } catch (\Exception $e) {
+              //   echo "Error: " . $e->getMessage();
+              // }
     
             }
           }
