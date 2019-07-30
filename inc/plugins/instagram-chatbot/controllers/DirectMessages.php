@@ -19,39 +19,39 @@ class DirectMessages
         $thread_id = $cron->thread_id;
       
         try {
-        $Account = \Controller::model("Account", $account_id);
-        $Instagram = \InstagramController::login($Account);
+            $Account = \Controller::model("Account", $account_id);
+            $Instagram = \InstagramController::login($Account);
+        
+            $instagram_account_id = $Instagram->account_id;
+
+            $thread = $Instagram->direct->getThread($thread_id);
+            $all_messages = $thread->getThread()->getItems();
+
+            $current_sender_id = $all_messages[0]->getUserId();
+        
+            echo "<br>account id: ".$instagram_account_id .' - last sender id: '. $current_sender_id;
+            if($instagram_account_id !== $current_sender_id){
+            
+                $next_msg = $cron->last_sent_index !== null ? $cron->last_sent_index + 1: 0 ;
+                $messages = json_decode($cron->messages, true);
+                if(!empty($messages[$next_msg])){
+                    
+                    $msg = $messages[$next_msg];
+                    $this->generateNewMessage($Account, $thread_id, $msg , $current_sender_id, $cron, $next_msg );
+                    $this->changeSendingSpeedBasedOnActivity($thread, $cron, true);
+                } 
+            } else {
+                $this->changeSendingSpeedBasedOnActivity($thread, $cron, false);
+            }
         } catch (\Exception $e) {
             echo "Start: ";
-        echo "Error: " . $e->getMessage();
-        require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
-        $ChatbotCron = new ChatbotCronController;
-        $ChatbotCron->disableInstagramAccountWithError($account_id);
-        $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
-        echo "End";
+            echo "Error: " . $e->getMessage();
+            require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
+            $ChatbotCron = new ChatbotCronController;
+            $ChatbotCron->disableInstagramAccountWithError($account_id);
+            $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
+            echo "End";
         }
-        $instagram_account_id = $Instagram->account_id;
-
-        $thread = $Instagram->direct->getThread($thread_id);
-        $all_messages = $thread->getThread()->getItems();
-
-        $current_sender_id = $all_messages[0]->getUserId();
-       
-        echo "<br>account id: ".$instagram_account_id .' - last sender id: '. $current_sender_id;
-        if($instagram_account_id !== $current_sender_id){
-           
-            $next_msg = $cron->last_sent_index !== null ? $cron->last_sent_index + 1: 0 ;
-            $messages = json_decode($cron->messages, true);
-            if(!empty($messages[$next_msg])){
-                
-                $msg = $messages[$next_msg];
-                $this->generateNewMessage($Account, $thread_id, $msg , $current_sender_id, $cron, $next_msg );
-                $this->changeSendingSpeedBasedOnActivity($thread, $cron, true);
-            } 
-        } else {
-            $this->changeSendingSpeedBasedOnActivity($thread, $cron, false);
-        }
-
     }
 
     private function changeSendingSpeedBasedOnActivity($thread, $cron, $on_send_request){
