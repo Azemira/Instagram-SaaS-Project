@@ -67,7 +67,7 @@ class ChatbotCronController extends \Controller
         }
         
         echo "<br>-----------------------------------------------------------------------";
-        echo "<br>last slow speed run - minutes pased: ". $Settings->since_slow_start . " max wait: ". $Settings->slow_max_time;
+        echo "<br>last slow speed run - minutes pased: ". $Settings->since_slow_start . " max wait: ". $Settings->slow_max_time . " curr random: ".$Settings->random_slow_time;
         if($Settings->since_slow_start >= $Settings->random_slow_time){
           $activeSlowCronJobs = $this->getActiveCronjobs('slow');
           if($activeSlowCronJobs) {
