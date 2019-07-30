@@ -48,22 +48,24 @@ class ChatbotCronController extends \Controller
           }
         }
         echo "<br>----------------------------------------------------------------------";
-        $activeFastCronJobs = $this->getActiveCronjobs('fast');
-        if($activeFastCronJobs) {
-          foreach($activeFastCronJobs as $cron){
-            echo "<br>Check for new messages every min account_id= ".  $cron->account_id;
-            try {
-              require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
-              $DirectMessages = new DirectMessages;
-              $DirectMessages->process($cron);
-              $this->setCroneRuntime('fast');
-            } catch (\Exception $e) {
-              echo "Error: " . $e->getMessage();
+        echo "<br>last fast speed run - minutes pased: ". $Settings->since_fast_start . " max wait: ". $Settings->fast_max_time . " curr random: ".$Settings->random_fast_time;
+        if($Settings->since_fast_start >= $Settings->random_fast_time){
+          $activeFastCronJobs = $this->getActiveCronjobs('fast');
+          if($activeFastCronJobs) {
+            foreach($activeFastCronJobs as $cron){
+              try {
+                require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
+                $DirectMessages = new DirectMessages;
+                $DirectMessages->process($cron);
+                $this->setCroneRuntime('fast');
+              } catch (\Exception $e) {
+                echo "Error: " . $e->getMessage();
+              }
+    
             }
-  
+          } else {
+              echo "<br> No fast speed messages to check";
           }
-        } else {
-            echo "<br> No fast speed messages to check";
         }
         
         echo "<br>-----------------------------------------------------------------------";
@@ -72,7 +74,6 @@ class ChatbotCronController extends \Controller
           $activeSlowCronJobs = $this->getActiveCronjobs('slow');
           if($activeSlowCronJobs) {
             foreach($activeSlowCronJobs as $cron){
-
               try {
                 require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
                 $DirectMessages = new DirectMessages;
@@ -189,6 +190,14 @@ class ChatbotCronController extends \Controller
     $SettingsData->random_direct_time = $random_direct_time;
     $SettingsData->since_direct_start = $since_direct_start->i;
     $SettingsData->direct_max_time = $settings["direct_message_time_to"];
+
+    $random_fast_time = mt_rand($settings["fast_speed_time_from"],$settings["fast_speed_time_to"]);
+    $fastToTime = $settings["fast_speed_time_to"];
+    $fast_start_date = $cronlog["last_fast_cron_run"] > 0 ? new \DateTime(date('Y-m-d h:i:s',$cronlog["last_fast_cron_run"]) ) : new \DateTime(date('Y-m-d h:i:s', strtotime("-$fastToTime minute")));
+    $since_fast_start = $fast_start_date->diff(new \DateTime(date('Y-m-d h:i:s', time())));
+    $SettingsData->random_fast_time = $random_fast_time;
+    $SettingsData->since_fast_start = $since_fast_start->i;
+    $SettingsData->fast_max_time = $settings["fast_speed_time_to"];
 
     $random_slow_time = mt_rand($settings["slow_speed_time_from"],$settings["slow_speed_time_to"]);
     $slowToTime = $settings["slow_speed_time_to"];
