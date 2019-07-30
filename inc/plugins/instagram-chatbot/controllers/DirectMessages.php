@@ -36,12 +36,11 @@ class DirectMessages
 
         $current_sender_id = $all_messages[0]->getUserId();
        
-        var_dump($instagram_account_id .' - '. $current_sender_id);
+        echo "<br>account id: ".$instagram_account_id .' - last sender id: '. $current_sender_id;
         if($instagram_account_id !== $current_sender_id){
            
             $next_msg = $cron->last_sent_index !== null ? $cron->last_sent_index + 1: 0 ;
             $messages = json_decode($cron->messages, true);
-            var_dump($next_msg);
             if(!empty($messages[$next_msg])){
                 
                 $msg = $messages[$next_msg];
@@ -60,7 +59,6 @@ class DirectMessages
         $time = substr($time, 0, 10);
         $start =  new \DateTime(date('Y-m-d h:i:s',intval($time)) );
         $diff = $start->diff(new \DateTime(date('Y-m-d h:i:s', time())));
-        var_dump($diff->i);
         if($on_send_request){
             if( !$cron->fast_speed && $cron->slow_speed ){
                 require_once PLUGINS_PATH."/".self::IDNAME."/models/CronJobModel.php";
@@ -113,13 +111,13 @@ class DirectMessages
        
     }
     private function sendMessage($Account, $threadId, $msg){         
-        // try {
+        try {
             $Instagram = \InstagramController::login($Account);
-        // } catch (\Exception $e) {
-        //     echo "Error: " . $e->getMessage();
-        // }
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
 
-        // try {
+        try {
             $text = $msg;
             $recipients = [
             'thread' => $threadId
@@ -132,18 +130,18 @@ class DirectMessages
             'messages' => $text
             ];
             header('Content-Type: application/json');
-            echo json_encode($result);
+            echo "<br>". json_encode($result);
             if($sendMessage){
                 return true;
              } else {
                 return  false;
              }
-        // } catch (\Exception $e) {
-        //     $result['msg'] = $e->getMessage();
-        //     header('Content-Type: application/json');
-        //     echo json_encode($result);
-        //     exit;
-        // }
+        } catch (\Exception $e) {
+            $result['msg'] = $e->getMessage();
+            header('Content-Type: application/json');
+            echo json_encode($result);
+            exit;
+        }
     }
     public function logSentMessage($account_id, $user_id, $recipient_id, $msg, $msg_id) {
         require_once PLUGINS_PATH."/".self::IDNAME."/models/ChatbotLogModel.php";

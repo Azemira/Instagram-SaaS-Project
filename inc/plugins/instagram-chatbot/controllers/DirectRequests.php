@@ -64,10 +64,10 @@ class DirectRequests
         
                     if($is_old_conversation) {
                         $this->terminateChatbotForThisUser($Account->get('id'), $Account->get('user_id'), $current_sender_id);
-                        var_dump('conversation terminated');
+                        echo "<br>conversation terminated";
                     } else {
                         $this->saveCronJob($Account, $thread);
-                        var_dump('added to cronjob');
+                        echo "<br>added to cronjob";
                     }
                 
                 } 

@@ -35,7 +35,9 @@ class PendingRequests
         if(count($thredIDs) > 0){
           $Instagram->direct->approvePendingThreads($thredIDs);
           $this->addAccountToCron($Account, $threads);
-          var_dump(count($thredIDs).' message requests approved');
+          echo "<br>".count($thredIDs)." message requests approved";
+        } else {
+          echo "<br>No new message requests";
         }
      }
 
