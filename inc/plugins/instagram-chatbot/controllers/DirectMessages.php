@@ -19,7 +19,16 @@ class DirectMessages
         $thread_id = $cron->thread_id;
 
         $Account = \Controller::model("Account", $account_id);
+      
+        try {
         $Instagram = \InstagramController::login($Account);
+    } catch (\Exception $e) {
+        echo "Error: " . $e->getMessage();
+        require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
+        $ChatbotCron = new ChatbotCronController;
+        $ChatbotCron->disableInstagramAccountWithError($Account);
+        $ChatbotCron->chatbotErrorLog($Account, $e->getMessage());
+        }
         $instagram_account_id = $Instagram->account_id;
 
         $thread = $Instagram->direct->getThread($thread_id);

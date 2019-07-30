@@ -39,7 +39,7 @@ function install($Plugin)
                 `id` int(11) NOT NULL AUTO_INCREMENT,
                 `user_id` int(11) NOT NULL,
                 `account_id` int(11) NOT NULL,
-                `chatbot_status` int(11) NOT NULL,
+                `chatbot_status` int(11) NULL,
                 PRIMARY KEY (`id`), 
                 INDEX (`account_id`)
             ) ENGINE = InnoDB;";
@@ -68,6 +68,14 @@ function install($Plugin)
                 `message_id` int(11) NOT NULL,
                 `sent_message` LONGTEXT,
                 `sent_date` datetime NOT NULL,
+                PRIMARY KEY (`id`)
+            ) ENGINE = InnoDB;";
+    $sql  .= "DROP TABLE IF EXISTS `".TABLE_PREFIX."chatbot_error_log`;";
+    $sql .= "CREATE TABLE `".TABLE_PREFIX."chatbot_error_log` ( 
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `user_id` int(11) NOT NULL,
+                `account_id` int(11) NOT NULL,
+                `error_message` LONGTEXT,
                 PRIMARY KEY (`id`)
             ) ENGINE = InnoDB;";
 

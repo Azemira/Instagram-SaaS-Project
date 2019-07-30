@@ -24,10 +24,19 @@ class DirectRequests
 
      private function getDirectMessageRequests($Account){
        
-        $Instagram = \InstagramController::login($Account);
-        $inbox = $Instagram->direct->getInbox();
-        $threads = $inbox->getInbox()->getThreads();
-        $this->addAccountToCron($Account, $threads, $Instagram);
+        try {
+            $Instagram = \InstagramController::login($Account);
+            $inbox = $Instagram->direct->getInbox();
+            $threads = $inbox->getInbox()->getThreads();
+            $this->addAccountToCron($Account, $threads, $Instagram);
+        } catch (\Exception $e) {
+        echo "Error: " . $e->getMessage();
+        require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
+        $ChatbotCron = new ChatbotCronController;
+        $ChatbotCron->disableInstagramAccountWithError($Account);
+        $ChatbotCron->chatbotErrorLog($Account, $e->getMessage());
+        }
+        
      }
 
      private function getThreadIDs($threads){
@@ -144,5 +153,7 @@ class DirectRequests
       ->get();
       return sizeOf($query) > 0 ? true : false ;
     }
+
+  
 
 }

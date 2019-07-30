@@ -20,8 +20,15 @@ class PendingRequests
     }
 
      private function getPendingMessageRequests($Account){
-       
-        $Instagram = \InstagramController::login($Account);
+        try {
+          $Instagram = \InstagramController::login($Account);
+        } catch (\Exception $e) {
+          echo "Error: " . $e->getMessage();
+          require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
+          $ChatbotCron = new ChatbotCronController;
+          $ChatbotCron->disableInstagramAccountWithError($Account);
+          $ChatbotCron->chatbotErrorLog($Account, $e->getMessage());
+        }
         $inbox = $Instagram->direct->getPendingInbox();
         $threads = $inbox->getInbox()->getThreads();
         $thredIDs = $this->getThreadIDs($threads);
