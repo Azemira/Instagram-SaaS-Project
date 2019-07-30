@@ -15,7 +15,9 @@ class ChatbotCronController extends \Controller
         set_time_limit(0);
         $accountIds = $this->getActiveChatbotAccountIDs();
         $Settings = $this->settingsData();
-
+        echo "<br>-----------------------------------------------------------------------";
+        echo "<br> NEW CRON RUN";
+       
         foreach($accountIds as $id){
           echo "<br>-----------------------------------------------------------------------";
           echo "<br> Check for pending requests - account id=".$id->account_id ." minutes pased: ". $Settings->since_pending_start . " max wait: ". $Settings->pending_max_time;
@@ -29,7 +31,8 @@ class ChatbotCronController extends \Controller
             } catch (\Exception $e) {
               echo "Error: " . $e->getMessage();
             }
-          }
+          } 
+
           echo "<br>-----------------------------------------------------------------------";
           echo "<br>Check for new conversation - account id=".$id->account_id ." minutes pased: ". $Settings->since_direct_start . " max wait: ". $Settings->direct_max_time;
           if($Settings->since_direct_start >= $Settings->random_direct_time){
@@ -48,7 +51,7 @@ class ChatbotCronController extends \Controller
         $activeFastCronJobs = $this->getActiveCronjobs('fast');
         if($activeFastCronJobs) {
           foreach($activeFastCronJobs as $cron){
-            echo "<br>Check for new messages ".  $cron->account_id;
+            echo "<br>Check for new messages every min account_id= ".  $cron->account_id;
             try {
               require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
               $DirectMessages = new DirectMessages;
@@ -59,7 +62,10 @@ class ChatbotCronController extends \Controller
             }
   
           }
+        } else {
+            echo "<br> No fast speed messages to check";
         }
+        
         echo "<br>-----------------------------------------------------------------------";
         echo "<br>last slow speed run - minutes pased: ". $Settings->since_slow_start . " max wait: ". $Settings->slow_max_time;
         if($Settings->since_slow_start >= $Settings->random_slow_time){
@@ -77,6 +83,8 @@ class ChatbotCronController extends \Controller
               }
     
             }
+          } else {
+            echo "<br> No slow speed messages to check";
           }
         }
 
@@ -86,13 +94,26 @@ class ChatbotCronController extends \Controller
     }
 
     private function getActiveCronjobs($speed){
+      $cronjobs = new \stdClass();
+      $tmp_count = 0;
       $query = \DB::table('np_chatbot_cron_jobs')
       ->where("is_terminated", "=", false)
       ->where("fast_speed", "=", $speed == 'fast' ? true : false)
       ->where("slow_speed", "=", $speed == 'slow' ? true : false)
       ->select("*")
       ->get();
-      return sizeOf($query)  > 0 ? $query : false;
+     
+
+      if(sizeOf($query)  > 0) {
+        foreach($query as $q){
+          $account = $this->getChatbotSettinsID($q->account_id);
+          if($account->chatbot_status){
+            $cronjobs->$tmp_count = $q;
+            $tmp_count++;
+          }
+        }
+      }
+      return count((array)$cronjobs) > 0 ? $cronjobs : false;
     }
 
   
@@ -147,66 +168,66 @@ class ChatbotCronController extends \Controller
     return $query;
  }
 
- private function settingsData(){
-  $SettingsData = new \stdClass();
- 
-  $settings = $this->getCronSettings();
-  $cronlog = $this->getCronRunLog();
+  private function settingsData(){
+    $SettingsData = new \stdClass();
+  
+    $settings = $this->getCronSettings();
+    $cronlog = $this->getCronRunLog();
 
-  $random_pending_time = mt_rand($settings["pending_request_time_from"],$settings["pending_request_time_to"]);
-  $pendingToTime = $settings["pending_request_time_to"];
-  $pending_start_date = $cronlog["last_pending_cron_run"] > 0 ? new \DateTime(date('Y-m-d h:i:s',$cronlog["last_pending_cron_run"]) ) : new \DateTime(date('Y-m-d h:i:s', strtotime("-$pendingToTime minute")));
-  $since_pending_start = $pending_start_date->diff(new \DateTime(date('Y-m-d h:i:s', time())));
-  $SettingsData->random_pending_time = $random_pending_time;
-  $SettingsData->since_pending_start = $since_pending_start->i;
-  $SettingsData->pending_max_time = $settings["pending_request_time_to"];
+    $random_pending_time = mt_rand($settings["pending_request_time_from"],$settings["pending_request_time_to"]);
+    $pendingToTime = $settings["pending_request_time_to"];
+    $pending_start_date = $cronlog["last_pending_cron_run"] > 0 ? new \DateTime(date('Y-m-d h:i:s',$cronlog["last_pending_cron_run"]) ) : new \DateTime(date('Y-m-d h:i:s', strtotime("-$pendingToTime minute")));
+    $since_pending_start = $pending_start_date->diff(new \DateTime(date('Y-m-d h:i:s', time())));
+    $SettingsData->random_pending_time = $random_pending_time;
+    $SettingsData->since_pending_start = $since_pending_start->i;
+    $SettingsData->pending_max_time = $settings["pending_request_time_to"];
 
-  $random_direct_time = mt_rand($settings["direct_message_time_from"],$settings["direct_message_time_to"]);
-  $directToTime = $settings["direct_message_time_to"];
-  $direct_start_date = $cronlog["last_direct_cron_run"] > 0 ? new \DateTime(date('Y-m-d h:i:s',$cronlog["last_direct_cron_run"]) ) : new \DateTime(date('Y-m-d h:i:s', strtotime("-$directToTime minute")));
-  $since_direct_start = $direct_start_date->diff(new \DateTime(date('Y-m-d h:i:s', time())));
-  $SettingsData->random_direct_time = $random_direct_time;
-  $SettingsData->since_direct_start = $since_direct_start->i;
-  $SettingsData->direct_max_time = $settings["direct_message_time_to"];
+    $random_direct_time = mt_rand($settings["direct_message_time_from"],$settings["direct_message_time_to"]);
+    $directToTime = $settings["direct_message_time_to"];
+    $direct_start_date = $cronlog["last_direct_cron_run"] > 0 ? new \DateTime(date('Y-m-d h:i:s',$cronlog["last_direct_cron_run"]) ) : new \DateTime(date('Y-m-d h:i:s', strtotime("-$directToTime minute")));
+    $since_direct_start = $direct_start_date->diff(new \DateTime(date('Y-m-d h:i:s', time())));
+    $SettingsData->random_direct_time = $random_direct_time;
+    $SettingsData->since_direct_start = $since_direct_start->i;
+    $SettingsData->direct_max_time = $settings["direct_message_time_to"];
 
-  $random_slow_time = mt_rand($settings["slow_speed_time_from"],$settings["slow_speed_time_to"]);
-  $slowToTime = $settings["slow_speed_time_to"];
-  $slow_start_date = $cronlog["last_slow_cron_run"] > 0 ? new \DateTime(date('Y-m-d h:i:s',$cronlog["last_slow_cron_run"]) ) : new \DateTime(date('Y-m-d h:i:s', strtotime("-$slowToTime minute")));
-  $since_slow_start = $slow_start_date->diff(new \DateTime(date('Y-m-d h:i:s', time())));
-  $SettingsData->random_slow_time = $random_slow_time;
-  $SettingsData->since_slow_start = $since_slow_start->i;
-  $SettingsData->slow_max_time = $settings["slow_speed_time_to"];
+    $random_slow_time = mt_rand($settings["slow_speed_time_from"],$settings["slow_speed_time_to"]);
+    $slowToTime = $settings["slow_speed_time_to"];
+    $slow_start_date = $cronlog["last_slow_cron_run"] > 0 ? new \DateTime(date('Y-m-d h:i:s',$cronlog["last_slow_cron_run"]) ) : new \DateTime(date('Y-m-d h:i:s', strtotime("-$slowToTime minute")));
+    $since_slow_start = $slow_start_date->diff(new \DateTime(date('Y-m-d h:i:s', time())));
+    $SettingsData->random_slow_time = $random_slow_time;
+    $SettingsData->since_slow_start = $since_slow_start->i;
+    $SettingsData->slow_max_time = $settings["slow_speed_time_to"];
 
-  return $SettingsData;
-}
+    return $SettingsData;
+  }
 
-public function disableInstagramAccountWithError($Account){
-  require_once PLUGINS_PATH."/".self::IDNAME."/models/SettingModel.php";
-  $Setting = new SettingModel;
-  $settings = $this->getChatbotSettinsID($Account);
-  $Setting->select($settings->id);
-  $Setting->set("chatbot_status", 0)
-  ->save();
+  public function disableInstagramAccountWithError($account_id){
+    require_once PLUGINS_PATH."/".self::IDNAME."/models/SettingModel.php";
+    $Setting = new SettingModel;
+    $settings = $this->getChatbotSettinsID($account_id);
+    $Setting->select($settings->id);
+    $Setting->set("chatbot_status", 0)
+    ->save();
+  }
 
+  public function chatbotErrorLog($account_id, $error, $action){
+    $settings = $this->getChatbotSettinsID($account_id);
+    require_once PLUGINS_PATH."/".self::IDNAME."/models/ChatbotErrorLog.php";
+    $ChatbotErrorLog = new ChatbotErrorLog;
+    $ChatbotErrorLog->set("user_id", $settings->user_id)
+    ->set("error_action", $action)
+    ->set("date", date('Y-m-d h:i:s', time()))
+    ->set("account_id", $account_id)
+    ->set("error_message", $error)
+    ->save();
+  }
 
-}
-
-public function chatbotErrorLog($Account, $error){
-  require_once PLUGINS_PATH."/".self::IDNAME."/models/ChatbotErrorLog.php";
-  $ChatbotErrorLog = new ChatbotErrorLog;
-  $ChatbotErrorLog->set("user_id", $Account->get("user_id"))
-  ->set("account_id", $Account->get('id'))
-  ->set("error_message", $error)
-  ->save();
-}
-
-public function getChatbotSettinsID($Account){
-  $query = \DB::table('np_chatbot_settings')
-  ->where("user_id", "=",$Account->get("user_id"))
-  ->where("account_id", "=",$Account->get("id"))
-  ->select("*")
-  ->get();
-  return sizeOf($query) > 0 ? $query[0] : true ;
-}
+  public function getChatbotSettinsID($account_id){
+    $query = \DB::table('np_chatbot_settings')
+    ->where("account_id", "=",$account_id)
+    ->select("*")
+    ->get();
+    return sizeOf($query) > 0 ? $query[0] : true ;
+  }
 
 }

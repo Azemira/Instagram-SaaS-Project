@@ -76,6 +76,8 @@ function install($Plugin)
                 `user_id` int(11) NOT NULL,
                 `account_id` int(11) NOT NULL,
                 `error_message` LONGTEXT,
+                `error_action` LONGTEXT,
+                `date` datetime NULL,
                 PRIMARY KEY (`id`)
             ) ENGINE = InnoDB;";
 

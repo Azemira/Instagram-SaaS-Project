@@ -41,6 +41,11 @@ class ChatbotController extends \Controller
             require_once PLUGINS_PATH."/".self::IDNAME."/models/SettingsModel.php";
             $Settings  =  $this->getChatBotStatus($Route->params->id);
             $this->setVariable("Settings", $Settings);
+
+            require_once PLUGINS_PATH."/".self::IDNAME."/controllers/SettingsController.php";
+            $SettingsController = new SettingsController;
+            $ErrorLog = $SettingsController->getUserErrorLogs($Account);
+            $this->setVariable("ErrorLog", $ErrorLog);
         } 
         
         $this->setVariable("Accounts", $Accounts);

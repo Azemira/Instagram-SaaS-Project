@@ -26,8 +26,8 @@ class PendingRequests
           echo "Error: " . $e->getMessage();
           require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
           $ChatbotCron = new ChatbotCronController;
-          $ChatbotCron->disableInstagramAccountWithError($Account);
-          $ChatbotCron->chatbotErrorLog($Account, $e->getMessage());
+          $ChatbotCron->disableInstagramAccountWithError($account_id);
+          $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
         }
         $inbox = $Instagram->direct->getPendingInbox();
         $threads = $inbox->getInbox()->getThreads();

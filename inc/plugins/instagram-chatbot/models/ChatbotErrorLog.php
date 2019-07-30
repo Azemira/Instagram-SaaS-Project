@@ -94,7 +94,9 @@ namespace Plugins\InstagramChatbot;
 		    		"id" => null,
 					"user_id" => $this->get("user_id"),
 					"account_id" => $this->get("account_id"),
-                    "error_message" => $this->get("error_message")
+                    "error_message" => $this->get("error_message"),
+                    "error_action" => $this->get("error_action"),
+                    "date" => $this->get("date")
 		    	));
 
 	    	$this->set("id", $id);
@@ -118,7 +120,9 @@ namespace Plugins\InstagramChatbot;
 		    	->update(array(
 		    		"user_id" => $this->get("user_id"),
 					"account_id" => $this->get("account_id"),
-                    "error_message" => $this->get("error_message")
+                    "error_message" => $this->get("error_message"),
+                    "error_action" => $this->get("error_action"),
+                    "date" => $this->get("date")
 		    	));
 
 	    	return $this;

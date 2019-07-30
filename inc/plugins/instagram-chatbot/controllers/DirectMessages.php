@@ -17,17 +17,16 @@ class DirectMessages
     private function start_process($cron){
         $account_id = $cron->account_id;
         $thread_id = $cron->thread_id;
-
-        $Account = \Controller::model("Account", $account_id);
       
         try {
+        $Account = \Controller::model("Account", '');
         $Instagram = \InstagramController::login($Account);
-    } catch (\Exception $e) {
+        } catch (\Exception $e) {
         echo "Error: " . $e->getMessage();
         require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
         $ChatbotCron = new ChatbotCronController;
-        $ChatbotCron->disableInstagramAccountWithError($Account);
-        $ChatbotCron->chatbotErrorLog($Account, $e->getMessage());
+        $ChatbotCron->disableInstagramAccountWithError($account_id);
+        $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
         }
         $instagram_account_id = $Instagram->account_id;
 

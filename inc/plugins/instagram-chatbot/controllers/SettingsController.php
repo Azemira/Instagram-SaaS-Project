@@ -136,4 +136,15 @@ class SettingsController extends \Controller
 
           file_put_contents(PLUGINS_PATH."/".self::IDNAME."/assets/json/cron_settings.json", $json_data);
     }
+
+    public function getUserErrorLogs($Account){
+        $query = \DB::table('np_chatbot_error_log')
+        ->where("user_id", "=",$Account->get("user_id"))
+        ->where("account_id", "=",$Account->get("id"))
+        ->select("*")
+        ->orderBy("date","DESC")
+        ->get();
+        return sizeOf($query)  > 0 ? $query : false;
+    }
+
 }

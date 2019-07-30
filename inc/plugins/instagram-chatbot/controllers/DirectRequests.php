@@ -30,11 +30,11 @@ class DirectRequests
             $threads = $inbox->getInbox()->getThreads();
             $this->addAccountToCron($Account, $threads, $Instagram);
         } catch (\Exception $e) {
-        echo "Error: " . $e->getMessage();
-        require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
-        $ChatbotCron = new ChatbotCronController;
-        $ChatbotCron->disableInstagramAccountWithError($Account);
-        $ChatbotCron->chatbotErrorLog($Account, $e->getMessage());
+            echo "Error: " . $e->getMessage();
+            require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
+            $ChatbotCron = new ChatbotCronController;
+            $ChatbotCron->disableInstagramAccountWithError($account_id);
+            $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
         }
         
      }
