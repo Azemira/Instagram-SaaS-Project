@@ -22,11 +22,13 @@ class DirectMessages
         $Account = \Controller::model("Account", $account_id);
         $Instagram = \InstagramController::login($Account);
         } catch (\Exception $e) {
+            echo "Start: ";
         echo "Error: " . $e->getMessage();
         require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
         $ChatbotCron = new ChatbotCronController;
         $ChatbotCron->disableInstagramAccountWithError($account_id);
         $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
+        echo "End";
         }
         $instagram_account_id = $Instagram->account_id;
 
