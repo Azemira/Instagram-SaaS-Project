@@ -19,7 +19,7 @@ class DirectMessages
         $thread_id = $cron->thread_id;
       
         try {
-        $Account = \Controller::model("Account", '');
+        $Account = \Controller::model("Account", $account_id);
         $Instagram = \InstagramController::login($Account);
         } catch (\Exception $e) {
         echo "Error: " . $e->getMessage();
