@@ -54,6 +54,7 @@ class ChatbotCronController extends \Controller
           if($activeFastCronJobs) {
             foreach($activeFastCronJobs as $cron){
               try {
+                echo "<br>Check for new messages account_id=".$cron->account_id;
                 require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
                 $DirectMessages = new DirectMessages;
                 $DirectMessages->process($cron);
@@ -75,6 +76,7 @@ class ChatbotCronController extends \Controller
           if($activeSlowCronJobs) {
             foreach($activeSlowCronJobs as $cron){
               try {
+                echo "<br>Check for new messages account_id=".$cron->account_id;
                 require_once PLUGINS_PATH."/".self::IDNAME."/controllers/DirectMessages.php";
                 $DirectMessages = new DirectMessages;
                 $DirectMessages->process($cron);
