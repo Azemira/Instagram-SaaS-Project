@@ -42,12 +42,13 @@
                         <div class="section-content">
                         
                             <div class="mb-20">
-                                <label for="form-label"><?= __("Slow speed:") ?></label><br>
+                                <label for="form-label"><?= __("Fast speed:") ?></label><br>
                                 Min<input class="input" name="fast-speed-from" type="text" value="<?= $FastSpeedFrom !== '' ? $FastSpeedFrom: '' ?>" placeholder="Min" >
                                 Max<input class="input" name="fast-speed-to" type="text" value="<?= $FastSpeedTo !== '' ? $FastSpeedTo: '' ?>" placeholder="Max" >
                             </div>
+                            
                             <div class="mb-20">
-                                <label for="form-label"><?= __("Fast speed:") ?></label><br>
+                                <label for="form-label"><?= __("Slow speed:") ?></label><br>
                                 Min<input class="input" name="slow-speed-from" type="text" value="<?= $SlowSpeedFrom !== '' ? $SlowSpeedFrom: '' ?>" placeholder="Min" >
                                 Max<input class="input" name="slow-speed-to" type="text" value="<?= $SlowSpeedTo !== '' ? $SlowSpeedTo: '' ?>" placeholder="Max" >
                             </div>
