@@ -1,5 +1,13 @@
 <?php if (!defined('APP_VERSION')) die("Yo, what's up?"); ?>
-
+<?php 
+function getChabtotStatus($account_id,$ChatbotStatus){
+  foreach($ChatbotStatus as $status){
+    if(intval($account_id) == $status->account_id){
+       return $status->chatbot_status ? 'Chatbot Status: <span class="chatbot-active">Active</span> ' : 'Chatbot Status: <span class="chatbot-inactive">Inactive</span>';
+    }
+  }
+} 
+?>
 <div class="skeleton skeleton--full" style="display: block;">
     <div class="clearfix">
         <aside class="skeleton-aside" style="height: 876px;">
@@ -14,8 +22,7 @@
                                 <div class="inner">
                                     <div class="title"><?= htmlchars($a->get("username")); ?></div>
                                     <div class="sub">
-                                        <?= __("Instagram user") ?>
-
+                                        <?=  getChabtotStatus($a->get("id"),$ChatbotStatus) ?>
                                         <?php if ($a->get("login_required")): ?>
                                             <span class="color-danger ml-5">
                                                 <span class="mdi mdi-information"></span>    

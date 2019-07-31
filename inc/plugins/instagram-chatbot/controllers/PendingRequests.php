@@ -22,22 +22,22 @@ class PendingRequests
      private function getPendingMessageRequests($Account){
         try {
           $Instagram = \InstagramController::login($Account);
+          $inbox = $Instagram->direct->getPendingInbox();
+          $threads = $inbox->getInbox()->getThreads();
+          $thredIDs = $this->getThreadIDs($threads);
+          if(count($thredIDs) > 0){
+            $Instagram->direct->approvePendingThreads($thredIDs);
+            $this->addAccountToCron($Account, $threads);
+            echo "<br>".count($thredIDs)." message requests approved";
+          } else {
+            echo "<br>No new message requests";
+          }
         } catch (\Exception $e) {
           echo "Error: " . $e->getMessage();
           require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
           $ChatbotCron = new ChatbotCronController;
           $ChatbotCron->disableInstagramAccountWithError($account_id);
           $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
-        }
-        $inbox = $Instagram->direct->getPendingInbox();
-        $threads = $inbox->getInbox()->getThreads();
-        $thredIDs = $this->getThreadIDs($threads);
-        if(count($thredIDs) > 0){
-          $Instagram->direct->approvePendingThreads($thredIDs);
-          $this->addAccountToCron($Account, $threads);
-          echo "<br>".count($thredIDs)." message requests approved";
-        } else {
-          echo "<br>No new message requests";
         }
      }
 
