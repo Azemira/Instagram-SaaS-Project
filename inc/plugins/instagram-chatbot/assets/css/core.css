@@ -164,3 +164,9 @@
   -moz-transition: all ease 0.2s;
   transition: all ease 0.2s;
 }
+.chatbot-active{
+  color: chartreuse;
+}
+.chatbot-inactive{
+  color: red;
+}
