@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../assets/img/favicon.png" type="image/png">
+
+    <title>AutoDimes - Add Bot</title>
+    <link href="../assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/admin/css/responsive.css" rel="stylesheet">
+    <link href="../assets/admin/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                Top navbar container
+            </nav>
+        </header>
+        <aside class="left-sidebar h-100">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav" class="p-t-30">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="index.html">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="#">
+                                <i class="mdi mdi-account-card-details"></i>
+                                <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="javascript:void(0)">
+                                <i class="mdi mdi-package-variant-closed"></i>
+                                <span class="hide-menu">Packages</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow" href="#">
+                                <i class="mdi mdi-store"></i>
+                                <span class="hide-menu">Shopify Stores</span>
+                            </a>
+                            <ul class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="" class="sidebar-link">
+                                        <i class="mdi mdi-cart-plus"></i>
+                                        <span class="hide-menu">Add Store</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="storesList.html" class="sidebar-link">
+                                        <i class="mdi mdi-format-list-bulleted"></i>
+                                        <span class="hide-menu">View All Stores</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow" href="#">
+                                <i class="mdi mdi-instagram"></i>
+                                <span class="hide-menu">Instagram Accounts</span>
+                            </a>
+                            <ul class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="" class="sidebar-link">
+                                        <i class="mdi mdi-account-plus"></i>
+                                        <span class="hide-menu">Add Account</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="instagramList.html" class="sidebar-link">
+                                        <i class="mdi mdi-format-list-bulleted"></i>
+                                        <span class="hide-menu">View All Accounts</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)">
+                                <i class="mdi mdi-robot"></i>
+                                <span class="hide-menu">Bots</span>
+                            </a>
+                            <ul class="collapse first-level">
+                                <li class="sidebar-item active selected">
+                                    <a href="addBot.html" class="sidebar-link">
+                                        <i class="mdi mdi-library-plus"></i>
+                                        <span class="hide-menu">Add Bot</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="botsList.html" class="sidebar-link">
+                                        <i class="mdi mdi-format-list-bulleted"></i>
+                                        <span class="hide-menu">View All Bots</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="log.html">
+                                <i class="mdi mdi-information-outline"></i>
+                                <span class="hide-menu">Log</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Add Bot</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add Bot</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card bot-info-card">
+                            <form class="form-horizontal">
+                                <div class="card-body">
+
+                                    <h4 class="card-title">Bot Info</h4>
+                                    <div class="row m-0 pt-4">
+                                        <div class="col-12 col-lg-6">
+                                            <div class="form-group row">
+                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">Lorem Ipsum</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="loremipsum" placeholder="Lorem Ipsum Here">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">Lorem Ipsum</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="loremipsum" placeholder="Lorem Ipsum Here">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-12 col-md-3 text-right control-label px-0">Lorem Ipsum</label>
+                                                <div class="col-md-8">
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" id="radio-lorem1" name="radio-lorem">
+                                                        <label class="custom-control-label" for="radio-lorem1">Lorem Ipsum 1</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" class="custom-control-input" id="radio-lorem2" name="radio-lorem">
+                                                        <label class="custom-control-label" for="radio-lorem2">Lorem Ipsum 2</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-12 col-md-3 text-right control-label px-0">Lorem Ipsum</label>
+                                                <div class="col-md-8">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="check-lorem1">
+                                                        <label class="custom-control-label" for="check-lorem1">Lorem Ipsum 1</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="check-lorem2">
+                                                        <label class="custom-control-label" for="check-lorem2">Lorem Ipsum 2</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="check-lorem3">
+                                                        <label class="custom-control-label" for="check-lorem3">Lorem Ipsum 3</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="check-lorem4">
+                                                        <label class="custom-control-label" for="check-lorem4">Lorem Ipsum 4</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="check-lorem5">
+                                                        <label class="custom-control-label" for="check-lorem5">Lorem Ipsum 5</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <div class="form-group row">
+                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label px-0">Lorem ipsum</label>
+                                                <div class="col-md-8">
+                                                    <textarea id="loremipsum" class="form-control" rows="8"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="loremoption" class="col-12 col-md-3 text-right control-label col-form-label">Lorem</label>
+                                                <div class="col-md-8">
+                                                    <select id="loremoption" name="loremoption" class="form-control">
+                                                        <option value="1">Lorem option 1</option>
+                                                        <option value="2">Lorem option 2</option>
+                                                        <option value="3">Lorem option 3</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-md-8 offset-md-3 text-right">
+                                                    <button type="submit" class="btn btn-primary auto-dimes-admin-btn">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/libs/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="../assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="../assets/admin/js/admin-main.js"></script>
+
+</body>
+
+</html>

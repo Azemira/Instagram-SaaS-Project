@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../assets/img/favicon.png" type="image/png">
 
-    <title>AutoDimes - Admin area</title>
+    <title>AutoDimes - All Instagram Accounts</title>
     <link href="../assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/admin/css/responsive.css" rel="stylesheet">
     <link href="../assets/admin/css/main.css" rel="stylesheet">
@@ -26,11 +26,11 @@
                 Top navbar container
             </nav>
         </header>
-        <aside class="left-sidebar">
+        <aside class="left-sidebar h-100">
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item active selected">
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="index.html">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Dashboard</span>
@@ -73,14 +73,14 @@
                                 <i class="mdi mdi-instagram"></i>
                                 <span class="hide-menu">Instagram Accounts</span>
                             </a>
-                            <ul class="collapse  first-level">
+                            <ul class="collapse first-level">
                                 <li class="sidebar-item">
                                     <a href="" class="sidebar-link">
                                         <i class="mdi mdi-account-plus"></i>
                                         <span class="hide-menu">Add Account</span>
                                     </a>
                                 </li>
-                                <li class="sidebar-item">
+                                <li class="sidebar-item active selected">
                                     <a href="instagramList.html" class="sidebar-link">
                                         <i class="mdi mdi-format-list-bulleted"></i>
                                         <span class="hide-menu">View All Accounts</span>
@@ -122,14 +122,14 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">All Instagram Accounts</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item active" aria-current="page">All Accounts</li>
                                 </ol>
                             </nav>
                         </div>
@@ -138,83 +138,89 @@
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-cyan text-center">
-                                <h1 class="font-light text-white">
-                                    <i class="mdi mdi-view-dashboard"></i>
-                                </h1>
-                                <h6 class="text-white">Box 1</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-success text-center">
-                                <h1 class="font-light text-white">
-                                    <i class="mdi mdi-chart-areaspline"></i>
-                                </h1>
-                                <h6 class="text-white">Box 2</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-warning text-center">
-                                <h1 class="font-light text-white">
-                                    <i class="mdi mdi-collage"></i>
-                                </h1>
-                                <h6 class="text-white">Box 3</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card card-hover">
-                            <div class="box bg-danger text-center">
-                                <h1 class="font-light text-white">
-                                    <i class="mdi mdi-border-outside"></i>
-                                </h1>
-                                <h6 class="text-white">Box 4</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
+                    <div class="col-12">
+                        <div class="card accounts-list">
                             <div class="card-body">
-                                <h4 class="card-title">Card example 1</h4>
-                                <div class="d-flex flex-row comment-row m-t-0">
-                                    Content card
-                                </div>
+                                <h5 class="card-title m-b-0">All Accounts</h5>
                             </div>
+                            <table class="table accounts-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="name">Account name</th>
+                                        <th class="text-center">Number of followers</th>
+                                        <th class="text-center">Date created</th>
+                                        <th class="text-center">Date modified</th>
+                                        <th class="controls"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</th>
+                                            <td>Lorem ipsum</td>
+                                            <td class="text-center">1.333</td>
+                                            <td class="text-center">04.11.2018</td>
+                                            <td class="text-center">14.10.2019</td>
+                                            <td class="controls text-right">
+                                                <button type="button" class="btn btn-autodimes btn-sm">Edit</button>
+                                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</th>
+                                            <td>Netus Habitant</td>
+                                            <td class="text-center">20.877</td>
+                                            <td class="text-center">02.03.2012</td>
+                                            <td class="text-center">13.12.2019</td>
+                                            <td class="controls text-right">
+                                                <button type="button" class="btn btn-autodimes btn-sm">Edit</button>
+                                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</th>
+                                            <td>Aliquam lacus</td>
+                                            <td class="text-center">982</td>
+                                            <td class="text-center">02.05.2019</td>
+                                            <td class="text-center">11.07.2019</td>
+                                            <td class="controls text-right">
+                                                <button type="button" class="btn btn-autodimes btn-sm">Edit</button>
+                                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</th>
+                                            <td>Dignissim tortor</td>
+                                            <td class="text-center">440.499</td>
+                                            <td class="text-center">10.01.2011</td>
+                                            <td class="text-center">12.12.2012</td>
+                                            <td class="controls text-right">
+                                                <button type="button" class="btn btn-autodimes btn-sm">Edit</button>
+                                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</th>
+                                            <td>Lorem ipsum</td>
+                                            <td class="text-center">1.302.870</td>
+                                            <td class="text-center">28.04.2017</td>
+                                            <td class="text-center">16.12.2018</td>
+                                            <td class="controls text-right">
+                                                <button type="button" class="btn btn-autodimes btn-sm">Edit</button>
+                                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title m-b-0">Card 2</h4>
-                                <div class="m-t-20">
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        Lorem ipsum
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <footer class="footer text-center">
-                        Footer box
-                    </footer>
                 </div>
             </div>
         </div>
-            <script src="../assets/libs/jQuery/jquery-3.4.1.min.js"></script>
-            <script src="../assets/libs/bootstrap/bootstrap.min.js"></script>
-            <script src="../assets/admin/js/admin-main.js"></script>
+    </div>
+    <script src="../assets/libs/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="../assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="../assets/admin/js/admin-main.js"></script>
 
 </body>
 

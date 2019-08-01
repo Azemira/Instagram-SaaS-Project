@@ -19,4 +19,5 @@ $(function () {
         e.preventDefault();
     });
 
+    $('.sidebar-item.active.selected').parent().parent().find('.sidebar-link.has-arrow').first().click();
 })

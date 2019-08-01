@@ -87,6 +87,60 @@ html body .font-light {
     z-index: 99999;
     background: #fff;
 }
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 300;
+    line-height: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 2px;
+}
+.badge-success {
+    color: #fff;
+    background-color: #28b779
+}
+
+.badge-success[href]:focus,.badge-success[href]:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #1f8d5d
+}
+
+.badge-info {
+    color: #fff;
+    background-color: #2255a4
+}
+
+.badge-info[href]:focus,.badge-info[href]:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #193f7a
+}
+
+.badge-warning {
+    color: #212529;
+    background-color: #ffb848
+}
+
+.badge-warning[href]:focus,.badge-warning[href]:hover {
+    color: #212529;
+    text-decoration: none;
+    background-color: #ffa415
+}
+
+.badge-danger {
+    color: #fff;
+    background-color: #da542e
+}
+
+.badge-danger[href]:focus,.badge-danger[href]:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #b54120
+}
 #main-wrapper {
     width: 100%;
     overflow: hidden;
@@ -270,7 +324,30 @@ html body .font-light {
 #main-wrapper .topbar {
     background: #414755;
 }
-
+#main-wrapper .topbar .nav-link.dropdown-toggle.notification-icon{
+    font-size: 20px
+}
+#main-wrapper .topbar .navbar-nav .dropdown-menu.notification{
+    left: auto;
+    right: 0px;
+    border-radius: 0;
+    max-width: 300px;
+    width: 300px
+}
+#main-wrapper .topbar .navbar-nav .dropdown-menu.notification .dropdown-item{
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    white-space: pre-wrap;
+}
+#main-wrapper .topbar .navbar-nav .dropdown-menu.notification .dropdown-item .badge{
+    position: relative;
+    top: -2px;
+    left: -2px;
+    margin-right: 5px
+}
+#main-wrapper .topbar .navbar-nav .dropdown-menu.notification .dropdown-divider{
+    margin: 0
+}
 #main-wrapper .left-sidebar,
 #main-wrapper .left-sidebar ul {
     background: #414755;
@@ -336,18 +413,22 @@ html body .font-light {
     position: absolute;
     right: 1.25rem;
 }
-/*Profile info card*/
+/*Profile info card, add bot form*/
+.bot-info-card .form-group.row,
 .profile-info-card .form-group.row{
     margin-bottom: 1.75rem
 }
+.bot-info-card .form-group.row .col-form-label,
 .profile-info-card .form-group.row .col-form-label{
     padding:9px 0 0 0
 }
+.bot-info-card .form-group.row .form-control,
 .profile-info-card .form-group.row .form-control{
     border-radius: 0.2rem;
     min-height: 40px;
     font-size: .875rem
 }
+.bot-info-card .form-group.row .form-control:focus,
 .profile-info-card .form-group.row .form-control:focus{
     box-shadow: 0 0 0 0.2rem rgba(39,169,227,.25);
     border-color: #27a9e3
@@ -357,6 +438,21 @@ html body .font-light {
     width: 35% !important
 }
 .stores-list .stores-table button.btn-sm{
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 12px
+}
+/*Accounts html*/
+.accounts-list .accounts-table button.btn-sm{
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 12px
+}
+/*Bots html*/
+.bots-list .bots-table .description{
+    width: 35% !important
+}
+.bots-list .bots-table button.btn-sm{
     border-radius: 3px;
     padding: 2px 6px;
     font-size: 12px
