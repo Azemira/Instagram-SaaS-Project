@@ -19,5 +19,6 @@ $(function () {
         e.preventDefault();
     });
 
-    $('.sidebar-item.active.selected').parent().parent().find('.sidebar-link.has-arrow').first().click();
+    if($('.sidebar-item.active.selected').parent().hasClass('collapse'))
+        $('.sidebar-item.active.selected').parent().parent().find('.sidebar-link.has-arrow').first().click();
 })

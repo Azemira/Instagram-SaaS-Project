@@ -339,6 +339,7 @@ html body .font-light {
     padding: 0.5rem 1rem;
     white-space: pre-wrap;
 }
+
 #main-wrapper .topbar .navbar-nav .dropdown-menu.notification .dropdown-item .badge{
     position: relative;
     top: -2px;
