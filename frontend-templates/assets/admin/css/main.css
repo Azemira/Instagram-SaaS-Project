@@ -337,9 +337,8 @@ html body .font-light {
 #main-wrapper .topbar .navbar-nav .dropdown-menu.notification .dropdown-item{
     font-size: 14px;
     padding: 0.5rem 1rem;
-    white-space: pre-wrap;
+    white-space: normal;
 }
-
 #main-wrapper .topbar .navbar-nav .dropdown-menu.notification .dropdown-item .badge{
     position: relative;
     top: -2px;
@@ -347,7 +346,8 @@ html body .font-light {
     margin-right: 5px
 }
 #main-wrapper .topbar .navbar-nav .dropdown-menu.notification .dropdown-divider{
-    margin: 0
+    margin: 0;
+    width: 100%
 }
 #main-wrapper .left-sidebar,
 #main-wrapper .left-sidebar ul {
