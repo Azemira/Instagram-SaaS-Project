@@ -41,14 +41,16 @@ class ChatbotController extends \Controller
             $Settings  =  $this->getChatBotStatus($Route->params->id);
             $this->setVariable("Settings", $Settings);
 
-            $ChatbotStatus = \DB::table('np_chatbot_settings')->where("user_id", "=", $AuthUser->get("id"))->select("*")->get();
-            $this->setVariable("ChatbotStatus", $ChatbotStatus);
+           
 
             require_once PLUGINS_PATH."/".self::IDNAME."/controllers/SettingsController.php";
             $SettingsController = new SettingsController;
             $ErrorLog = $SettingsController->getUserErrorLogs($Account);
             $this->setVariable("ErrorLog", $ErrorLog);
         } 
+
+        $ChatbotStatus = \DB::table('np_chatbot_settings')->where("user_id", "=", $AuthUser->get("id"))->select("*")->get();
+        $this->setVariable("ChatbotStatus", $ChatbotStatus);
         
         $this->setVariable("Accounts", $Accounts);
         $this->setVariable("Route", $Route);

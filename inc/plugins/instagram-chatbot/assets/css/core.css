@@ -170,3 +170,7 @@
 .chatbot-inactive{
   color: red;
 }
+
+.meessageedit {
+  white-space: pre-wrap;
+}
