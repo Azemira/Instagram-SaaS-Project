@@ -18,6 +18,7 @@ if (!defined('APP_VERSION'))
  */
 function addCronTask()
 {
+   
     require_once __DIR__."/models/SchedulesModel.php";
     require_once __DIR__."/models/LogModel.php";
 
@@ -356,7 +357,12 @@ function _comment_target_feed($sc, $Instagram, $comments, $do_spintax = false)
         $items = $feed->getItems();
     } else if ($target->type == "people") {
         try {
-            $feed = $Instagram->timeline->getUserFeed($target->id);
+            // var_dump($target->id);
+           
+            $users = $Instagram->people->getFollowers(
+            $target->id,
+            $rank_token);
+            $feed = getAllUserFeeds($users->getUsers(), $Instagram);
         } catch (\Exception $e) {
             // Couldn't get instagram feed related to the user id
             // Log data
@@ -370,13 +376,19 @@ function _comment_target_feed($sc, $Instagram, $comments, $do_spintax = false)
             return false;
         }
 
-        $items = $feed->getItems();
+        $items = $feed;
         shuffle($items);
     }
-
-    if (count($feed->getItems()) < 1) {
-        // Invalid
-        return false;
+    if ($target->type !== "people") {
+        if (count($feed->getItems()) < 1) {
+            // Invalid
+            return false;
+        }
+    } else {
+        if (count($feed) < 1) {
+            // Invalid
+            return false;
+        }
     }
 
 
@@ -685,4 +697,31 @@ function _get_comment($comments, $do_spintax = false, $variables = [])
     }
 
     return $comment;
+}
+
+function getAllUserFeeds($users, $Instagram) {
+    $feeds = [];
+    // var_dump(sizeOf($users));
+    // if(!empty($users) && sizeOf($users) > 0){
+        foreach($users as $user){
+            // var_dump('user pk : '.$user->getPk());
+            try {
+                $feed = $Instagram->timeline->getUserFeed($user->getPk());
+                $items = $feed->getItems();
+                // var_dump('size of feed items: '.sizeOf($items));
+                 foreach($items as $item){
+                    array_push($feeds, $item);
+                // var_dump($item->getUser()->getUsername());
+                // die();
+                  }
+            } catch (\Exception $e) {
+                // Couldn't get user feeeds
+                // var_dump("Couldn't get user feeeds /". $e->getMessage());
+                // die();
+                continue;
+            }
+        }
+        
+    // }
+    return $feeds;
 }
