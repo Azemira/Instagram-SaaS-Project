@@ -19,9 +19,9 @@ class PendingRequests
         $this->getPendingMessageRequests($Account);
     }
 
-     private function getPendingMessageRequests($Account){
+     private function getPendingMessageRequests($account_id){
         try {
-          $Instagram = \InstagramController::login($Account);
+          $Instagram = \InstagramController::login($account_id);
           $inbox = $Instagram->direct->getPendingInbox();
           $threads = $inbox->getInbox()->getThreads();
           $thredIDs = $this->getThreadIDs($threads);
