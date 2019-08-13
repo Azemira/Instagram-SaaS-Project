@@ -11,6 +11,7 @@ var AutoLike = {};
 AutoLike.ScheduleForm = function()
 {
     var $form = $(".js-auto-like-schedule-form");
+    var $Form_duplicate = $(".js-auto-like-duplicate-form");
     var $searchinp = $form.find(":input[name='search']");
     var query;
     var icons = {};
@@ -196,6 +197,53 @@ AutoLike.ScheduleForm = function()
 
         return false;
     });
+
+    $Form_duplicate.on("submit", function() {
+        console.log($Form_duplicate.find("[name='select_user']").val());
+        $("body").addClass("onprogress");
+
+        var target = [];
+
+        $Form_duplicate.find(".tags .tag").each(function() {
+            var t = {};
+                t.type = $(this).data("type");
+                t.id = $(this).data("id").toString();
+                t.value = $(this).data("value");
+
+            target.push(t);
+        });
+        var duplicate = $Form_duplicate.find("[name='select_user']").val();
+        $.ajax({
+            url: $Form_duplicate.attr("action"),
+            type: $Form_duplicate.attr("method"),
+            dataType: 'jsonp',
+            data: {
+                action: "save",
+                duplicate: duplicate
+
+                // duplicate: JSON.stringify(duplicate)
+            },
+            error: function() {
+                $("body").removeClass("onprogress");
+                NextPost.DisplayFormResult($Form_duplicate, "error", __("Oops! An error occured. Please try again later!"));
+            },
+
+            success: function(resp) {
+                if (resp.result == 1) {
+                    NextPost.DisplayFormResult($Form_duplicate, "success", resp.msg);
+                } else {
+                    NextPost.DisplayFormResult($Form_duplicate, "error", resp.msg);
+                }
+
+                $("body").removeClass("onprogress");
+            }
+        });
+
+        return false;
+    });
+
+
+
 }
 
 
