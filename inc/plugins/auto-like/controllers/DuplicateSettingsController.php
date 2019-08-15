@@ -181,45 +181,38 @@ class duplicateSettingsController extends \Controller
         $Account = $this->getVariable("Account");
         $Schedule = $this->getVariable("Schedule");
 
-        // file_put_contents('/var/tmp/saas_debug.log', print_r($Account,true),FILE_APPEND );
-
         $user_ids = \Input::post("duplicate");
-        
-        
-        // $target = json_encode(\Input::post("duplicate"));
-        // $target = "This is test";
-
-        
+      
         require_once PLUGINS_PATH."/".self::IDNAME."/models/DuplicateModel.php";
         
         $target = $Schedule->get("target");
-        // file_put_contents('/var/tmp/saas_debug.log', print_r($target,true),FILE_APPEND );
 
-
-       
-      
         foreach ($user_ids as $key => $id) {
 
 
-            $Schedule_duolicated = new DuplicateModel([
+            $Schedule_duplicated = new DuplicateModel([
                 "account_id" =>$id,
                 "user_id" => $Account->get("user_id")
             ]);
   
-
-            $Schedule_duolicated->set("user_id", $AuthUser->get("id"))
+            $Schedule_duplicated->set("user_id", $AuthUser->get("id"))
             ->set("target", $target)
             ->set("account_id", $id)
-            ->set("target", $target);
-            # code...
-            // file_put_contents('/var/tmp/saas_debug.log', print_r(array($id),true),FILE_APPEND );
-            $Schedule_duolicated->save();
+            ->set("target", $target)
+            ->set("timeline_feed",$Schedule->get("timeline_feed"))
+            ->set("speed",$Schedule->get("speed"))
+            ->set("daily_pause",$Schedule->get("daily_pause"))
+            ->set("daily_pause_from",$Schedule->get("daily_pause_from"))
+            ->set("is_active",$Schedule->get("is_active"))
+            ->set("schedule_date",$Schedule->get("schedule_date"))
+            ->set("end_date",$Schedule->get("end_date"))
+            ->set("last_action_date",$Schedule->get("last_action_date"))
+            ->set("data",$Schedule->get("data"));
+
+            $Schedule_duplicated->save();
 
         }
         
-
-
-
 
         $this->resp->msg = __("Changes saved!");
         $this->resp->result = 1;
