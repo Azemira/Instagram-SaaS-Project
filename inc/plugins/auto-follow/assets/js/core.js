@@ -10,7 +10,7 @@ var AutoFollow = {};
  */
 AutoFollow.ScheduleForm = function()
 {
-    var $form = $(".js-auto-like-schedule-form");
+    var $form = $(".js-auto-follow-schedule-form");
     var $Form_duplicate = $(".js-auto-follow-duplicate-form");
     var $searchinp = $form.find(":input[name='search']");
     var query;
