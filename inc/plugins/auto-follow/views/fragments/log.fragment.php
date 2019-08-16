@@ -29,6 +29,7 @@
             <div class="af-tab-heads clearfix">
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id") ?>"><?= __("Target & Settings") ?></a>
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/log" ?>" class="active"><?= __("Activity Log") ?></a>
+                <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/duplicate" ?>" ><?= __("Duplicate Settings") ?></a>
             </div>
 
             <?php if ($ActivityLog->getTotalCount() > 0): ?>
