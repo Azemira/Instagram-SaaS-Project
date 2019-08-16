@@ -203,6 +203,7 @@ class duplicateSettingsController extends \Controller
             ->set("speed",$Schedule->get("speed"))
             ->set("daily_pause",$Schedule->get("daily_pause"))
             ->set("daily_pause_from",$Schedule->get("daily_pause_from"))
+            ->set("daily_pause_to",$Schedule->get("daily_pause_to"))
             ->set("is_active",$Schedule->get("is_active"))
             ->set("schedule_date",$Schedule->get("schedule_date"))
             ->set("end_date",$Schedule->get("end_date"))
