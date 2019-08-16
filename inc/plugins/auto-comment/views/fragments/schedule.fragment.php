@@ -28,6 +28,8 @@
                     <a href="<?= APPURL."/e/".$idname."/".$Account->get("id") ?>" class="active"><?= __("Target & Settings") ?></a>
                     <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/comments" ?>"><?= __("Comments") ?></a>
                     <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/log" ?>"><?= __("Activity Log") ?></a>
+                    <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/duplicate" ?>"><?= __("Duplicate Settings") ?></a>
+
                 </div>
 
                 <div class="section-content">
