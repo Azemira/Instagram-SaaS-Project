@@ -96,7 +96,7 @@
 <!-- The Modal -->
     <div id="myModal" class="Modal is-hidden is-visuallyHidden">
   <!-- Modal content -->
-  <form class="js-chatbot-message-form"  action="<?= "/chatbot/message/new/". $Account->get("id");?>" method="POST">
+  <form class="js-chatbot-message-form"  action="<?= APPURL. "/chatbot/message/new/". $Account->get("id");?>" method="POST">
 
          <input type="hidden" name="action" value="save">
         <div class="Modal-content">

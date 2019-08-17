@@ -30,7 +30,7 @@
 
                             <div class="clearfix">
                                 <div class="col s12 m6 l6">
-                                    <button class="fluid button chatbot_status" id="/chatbot/settings/<?= $Account->get("id"); ?>" >Save</button>
+                                    <button class="fluid button chatbot_status" id="<?= APPURL?>/chatbot/settings/<?= $Account->get("id"); ?>" >Save</button>
                                 </div>
                             </div>
                         </div>
