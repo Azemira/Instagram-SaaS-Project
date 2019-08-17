@@ -16,7 +16,7 @@ function getChabtotStatus($account_id,$ChatbotStatus){
                 <div class="aside-list js-loadmore-content" data-loadmore-id="1">
                     <?php foreach ($Accounts->getDataAs("Account") as $a): ?>
                         <div class="aside-list-item js-list-item <?= $active_item_id == $a->get("id") ? "active" : "" ?>">
-                        <a href="/chatbot/account/<?=  $a->get('id')  ?>">
+                        <a href="<?= APPURL."/chatbot/account/". $a->get('id') ?>">
                             <div class="clearfix">
                               <img class="circle" src="<?= 'https://avatars.io/instagram/' . $a->get("username");?>">
                                 <div class="inner">
