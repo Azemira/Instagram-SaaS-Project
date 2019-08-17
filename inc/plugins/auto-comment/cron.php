@@ -81,7 +81,7 @@ function addCronTask()
         $last_action_min = $last_action_date_diff->i;
 
         if($last_action_min < $randomWait || sizeOf($checkSentComments) >= $daily_account_limit){
-            return false;
+            continue;
         }
        
         $Log = new LogModel;
