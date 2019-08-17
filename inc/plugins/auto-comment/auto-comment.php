@@ -154,6 +154,12 @@ function route_maps($global_variable_name)
         PLUGINS_PATH . "/". IDNAME ."/controllers/IndexController.php",
         __NAMESPACE__ . "\IndexController"
     ]);
+    
+    //duplicate-settings
+    $GLOBALS[$global_variable_name]->map("GET|POST", "/e/".IDNAME."/[i:id]/duplicate?", [
+        PLUGINS_PATH . "/". IDNAME ."/controllers/DuplicateSettingsController.php",
+        __NAMESPACE__ . "\duplicateSettingsController"
+    ]);
 
     // Schedule
     $GLOBALS[$global_variable_name]->map("GET|POST", "/e/".IDNAME."/[i:id]/?", [

@@ -1,5 +1,5 @@
 <?php
-namespace Plugins\AutoLike;
+namespace Plugins\AutoComment;
 
 // Disable direct access
 if (!defined('APP_VERSION')) 
@@ -13,7 +13,7 @@ class duplicateSettingsController extends \Controller
     /**
      * idname of the plugin for internal use
      */
-    const IDNAME = 'auto-like';
+    const IDNAME = 'auto-comment';
 
 
     /**
@@ -65,10 +65,7 @@ class duplicateSettingsController extends \Controller
             $this->search();
         } else if (\Input::post("action") == "save") {
             $this->save();
-        } else if (\Input::post("action") == "select_user") {
-        $this->select_user();
-    }
-        
+        }
 
         $Accounts = \Controller::model("Accounts");
         $Accounts->setPageSize(20)
@@ -80,6 +77,7 @@ class duplicateSettingsController extends \Controller
         $this->setVariable("Accounts", $Accounts);
 
         $this->view(PLUGINS_PATH."/".self::IDNAME."/views/duplicateSettings.php", null);
+
     }
 
 
@@ -182,20 +180,20 @@ class duplicateSettingsController extends \Controller
         $Schedule = $this->getVariable("Schedule");
 
         $user_ids = \Input::post("duplicate");
-      
+        
         require_once PLUGINS_PATH."/".self::IDNAME."/models/DuplicateModel.php";
         
         $target = $Schedule->get("target");
 
         foreach ($user_ids as $key => $id) {
 
-
-            $Schedule_duplicated = new DuplicateModel([
+            $Schedule_duolicated = new DuplicateModel([
                 "account_id" =>$id,
                 "user_id" => $Account->get("user_id")
             ]);
   
-            $Schedule_duplicated->set("user_id", $AuthUser->get("id"))
+
+            $Schedule_duolicated->set("user_id", $AuthUser->get("id"))
             ->set("target", $target)
             ->set("account_id", $id)
             ->set("target", $target)
@@ -208,50 +206,18 @@ class duplicateSettingsController extends \Controller
             ->set("schedule_date",$Schedule->get("schedule_date"))
             ->set("end_date",$Schedule->get("end_date"))
             ->set("last_action_date",$Schedule->get("last_action_date"))
-            ->set("data",$Schedule->get("data"));
+            ->set("data",$Schedule->get("data"))
+            ->set("comments", $Schedule->get('comments'));
 
-            $Schedule_duplicated->save();
+           
+            $Schedule_duolicated->save();
 
         }
         
-
         $this->resp->msg = __("Changes saved!");
         $this->resp->result = 1;
         $this->jsonecho();
     }
 
-    function select_user() {
-
-        $this->resp->result = 0;
-        $AuthUser = $this->getVariable("AuthUser");
-        $Account = $this->getVariable("Account");
-        $Schedule = $this->getVariable("Schedule");
-
-        $results = \Input::post("duplicate");
-file_put_contents('/var/tmp/saas_debug.log', print_r($results,true) );
-
-        // echo "<pre>"; print_r($results); echo "</pre>";
-
-    }
-    function console_log( $data ){
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
-      }
 
 }
-
-function update() {
-
-
-}
-// set_error_handler("customError");
-
-
-// function customError($errno, $errstr, $err2,$err3,$err4 ) {
-//     echo "Error: [$errno] $errstr";
-//     echo "\nFile: $err2";
-//     echo "\nLine: $err3";
-//     // echo "\nContainer:" .print_r($err4);
-
-// }

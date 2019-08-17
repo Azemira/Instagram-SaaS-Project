@@ -27,7 +27,7 @@ function addCronTask()
     
     
     
-    // Get auto comment schedules '.strval(rand(intval($speedSettings['wait-from']),intval($speedSettings['wait-to']))).'
+    // Get auto comment schedules 
     $Schedules = new SchedulesModel;
     $Schedules->where("is_active", "=", 1)
               ->orderBy("last_action_date", "ASC")
@@ -74,16 +74,16 @@ function addCronTask()
         $speedCategotry = str_replace("_", "-", $sc->get("speed"));
         $randomWait = rand(intval($speedSettings[$speedCategotry]['wait-from']),intval($speedSettings[$speedCategotry]['wait-to']));
         $randomcomments = rand(intval($speedSettings[$speedCategotry]['comment-limit-min']),intval($speedSettings[$speedCategotry]['comment-limit-max']));
-
+        $daily_account_limit = intval($speedSettings[$speedCategotry]['comment-per-day-limit']);
+        $checkSentComments =  getAccountSentComments($sc->get("account_id"));
         $last_action_date = new \DateTime(date('Y-m-d h:i:s', strtotime($sc->get("last_action_date"))));
         $last_action_date_diff = $last_action_date->diff(new \DateTime(date('Y-m-d h:i:s')));
         $last_action_min = $last_action_date_diff->i;
 
-        // if($last_action_min < $randomWait){
-        //     var_dump('leave');
-        //     return false;
-        // }
-            
+        if($last_action_min < $randomWait || sizeOf($checkSentComments) >= $daily_account_limit){
+            return false;
+        }
+       
         $Log = new LogModel;
         $Account = \Controller::model("Account", $sc->get("account_id"));
         $User = \Controller::model("User", $sc->get("user_id"));
@@ -260,10 +260,11 @@ function addCronTask()
 
         $do_spintax = (bool)$User->get("settings.spintax");
 
-
+       
         if ($feed_type == "target") {
             
-            for ($x = 0; $x < $randomcomments; $x++) {
+            $x = $x > 1 ? 1 : 0;
+            for (;$x < $randomcomments; $x++) {
                 $randomSleep = rand(intval($speedSettings[$speedCategotry]['delay-secconds-from']),intval($speedSettings[$speedCategotry]['delay-secconds-to']));
                 $sc->set("last_action_date", date("Y-m-d H:i:s"))
                 ->save();
@@ -383,7 +384,6 @@ function _comment_target_feed($sc, $Instagram, $comments, $do_spintax = false)
         $items = $feed->getItems();
     } else if ($target->type == "people") {
         try {
-            // var_dump($target->id);
            
             $users = $Instagram->people->getFollowers(
             $target->id,
@@ -727,28 +727,18 @@ function _get_comment($comments, $do_spintax = false, $variables = [])
 
 function getAllUserFeeds($users, $Instagram) {
     $feeds = [];
-    // var_dump(sizeOf($users));
-    // if(!empty($users) && sizeOf($users) > 0){
         foreach($users as $user){
-            // var_dump('user pk : '.$user->getPk());
             try {
                 $feed = $Instagram->timeline->getUserFeed($user->getPk());
                 $items = $feed->getItems();
-                // var_dump('size of feed items: '.sizeOf($items));
                  foreach($items as $item){
                     array_push($feeds, $item);
-                // var_dump($item->getUser()->getUsername());
-                // die();
                   }
             } catch (\Exception $e) {
-                // Couldn't get user feeeds
-                // var_dump("Couldn't get user feeeds /". $e->getMessage());
-                // die();
                 continue;
             }
         }
         
-    // }
     return $feeds;
 }
 
@@ -756,3 +746,12 @@ function getSpeedsSettings(){
     $json = file_get_contents(PLUGINS_PATH."/auto-comment/assets/json/speed-settings.json");
     return json_decode($json, true)[0];
 }
+
+function  getAccountSentComments($account_id){
+    $query = \DB::table('np_auto_comment_log')
+    ->where("account_id", "=",$account_id)
+    ->where("date", ">=", date("Y-m-d 00:00:00")) 
+    ->select("*")
+    ->get();
+    return sizeOf($query) > 0 ? $query : [];
+  }
