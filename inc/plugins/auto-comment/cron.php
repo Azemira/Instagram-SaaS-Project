@@ -18,26 +18,28 @@ if (!defined('APP_VERSION'))
  */
 function addCronTask()
 {
-   
+    $tempScheduleData = [];
+    $ExecuteData = [];
     require_once __DIR__."/models/SchedulesModel.php";
     require_once __DIR__."/models/LogModel.php";
 
-
-    // Get auto comment schedules
+    $speedSettings = getSpeedsSettings();
+    
+    
+    
+    // Get auto comment schedules '.strval(rand(intval($speedSettings['wait-from']),intval($speedSettings['wait-to']))).'
     $Schedules = new SchedulesModel;
     $Schedules->where("is_active", "=", 1)
-              ->where("schedule_date", "<=", date("Y-m-d H:i:s"))
-              ->where("end_date", ">=", date("Y-m-d H:i:s"))
               ->orderBy("last_action_date", "ASC")
               ->setPageSize(10) // required to prevent server overload
               ->setPage(1)
               ->fetchData();
-
+             
+  
     if ($Schedules->getTotalCount() < 1) {
         // There is not any active schedule
         return false;
     }
-
 
     // Get settings 
     $settings = namespace\settings();
@@ -50,7 +52,7 @@ function addCronTask()
     }
 
 
-    // Speeds
+    //Speeds
     $default_speeds = [
         "very_slow" => 1,
         "slow" => 2,
@@ -69,6 +71,19 @@ function addCronTask()
 
     $as = [__DIR__."/models/ScheduleModel.php", __NAMESPACE__."\ScheduleModel"];
     foreach ($Schedules->getDataAs($as) as $sc) {
+        $speedCategotry = str_replace("_", "-", $sc->get("speed"));
+        $randomWait = rand(intval($speedSettings[$speedCategotry]['wait-from']),intval($speedSettings[$speedCategotry]['wait-to']));
+        $randomcomments = rand(intval($speedSettings[$speedCategotry]['comment-limit-min']),intval($speedSettings[$speedCategotry]['comment-limit-max']));
+
+        $last_action_date = new \DateTime(date('Y-m-d h:i:s', strtotime($sc->get("last_action_date"))));
+        $last_action_date_diff = $last_action_date->diff(new \DateTime(date('Y-m-d h:i:s')));
+        $last_action_min = $last_action_date_diff->i;
+
+        // if($last_action_min < $randomWait){
+        //     var_dump('leave');
+        //     return false;
+        // }
+            
         $Log = new LogModel;
         $Account = \Controller::model("Account", $sc->get("account_id"));
         $User = \Controller::model("User", $sc->get("user_id"));
@@ -156,7 +171,7 @@ function addCronTask()
         }
 
 
-        // Calculate next schedule datetime...
+       // Calculate next schedule datetime...
         if (isset($speeds[$sc->get("speed")]) && (int)$speeds[$sc->get("speed")] > 0) {
             $speed = (int)$speeds[$sc->get("speed")];
             $delta = round(3600/$speed) + $random_delay;
@@ -191,7 +206,6 @@ function addCronTask()
         $sc->set("schedule_date", $next_schedule)
            ->set("last_action_date", date("Y-m-d H:i:s"))
            ->save();
-
 
         if ($feed_type == "timeline" && $tf_schedule <= $next_schedule) {
             // Force next schedule for target
@@ -242,14 +256,26 @@ function addCronTask()
 
             continue;
         }
-
+        $last_action_date = $sc->get("last_action_date");
 
         $do_spintax = (bool)$User->get("settings.spintax");
+
+
         if ($feed_type == "target") {
-            namespace\_comment_target_feed($sc, $Instagram, $comments, $do_spintax);
+            
+            for ($x = 0; $x < $randomcomments; $x++) {
+                $randomSleep = rand(intval($speedSettings[$speedCategotry]['delay-secconds-from']),intval($speedSettings[$speedCategotry]['delay-secconds-to']));
+                $sc->set("last_action_date", date("Y-m-d H:i:s"))
+                ->save();
+                namespace\_comment_target_feed($sc, $Instagram, $comments, $do_spintax);
+                sleep($randomSleep);
+            }
+
         } else if ($feed_type == "timeline") {
             namespace\_comment_timeline_feed($sc, $Instagram, $comments, $do_spintax);
         }
+
+
     }
 }
 \Event::bind("cron.add", __NAMESPACE__."\addCronTask");
@@ -724,4 +750,9 @@ function getAllUserFeeds($users, $Instagram) {
         
     // }
     return $feeds;
+}
+
+function getSpeedsSettings(){
+    $json = file_get_contents(PLUGINS_PATH."/auto-comment/assets/json/speed-settings.json");
+    return json_decode($json, true)[0];
 }
