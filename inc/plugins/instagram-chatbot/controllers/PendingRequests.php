@@ -19,9 +19,9 @@ class PendingRequests
         $this->getPendingMessageRequests($Account);
     }
 
-     private function getPendingMessageRequests($account_id){
+     private function getPendingMessageRequests($Account){
         try {
-          $Instagram = \InstagramController::login($account_id);
+          $Instagram = \InstagramController::login($Account);
           $inbox = $Instagram->direct->getPendingInbox();
           $threads = $inbox->getInbox()->getThreads();
           $thredIDs = $this->getThreadIDs($threads);
@@ -36,8 +36,8 @@ class PendingRequests
           echo "Error: " . $e->getMessage();
           require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
           $ChatbotCron = new ChatbotCronController;
-          $ChatbotCron->disableInstagramAccountWithError($account_id);
-          $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
+          $ChatbotCron->disableInstagramAccountWithError($Account->get("id"));
+          $ChatbotCron->chatbotErrorLog($Account->get("id"), $e->getMessage(), 'Account Chatbot deactivated');
         }
      }
 
