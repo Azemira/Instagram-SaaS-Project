@@ -30,6 +30,8 @@ function addCronTask()
     // Get auto comment schedules 
     $Schedules = new SchedulesModel;
     $Schedules->where("is_active", "=", 1)
+              ->where("schedule_date", "<=", date("Y-m-d H:i:s"))
+              ->where("end_date", ">=", date("Y-m-d H:i:s"))
               ->orderBy("last_action_date", "ASC")
               ->setPageSize(10) // required to prevent server overload
               ->setPage(1)
@@ -73,16 +75,17 @@ function addCronTask()
     foreach ($Schedules->getDataAs($as) as $sc) {
         $speedCategotry = str_replace("_", "-", $sc->get("speed"));
         $randomWait = rand(intval($speedSettings[$speedCategotry]['wait-from']),intval($speedSettings[$speedCategotry]['wait-to']));
-        $randomcomments = rand(intval($speedSettings[$speedCategotry]['comment-limit-min']),intval($speedSettings[$speedCategotry]['comment-limit-max']));
+        $randomSleep = rand(intval($speedSettings[$speedCategotry]['delay-secconds-from']),intval($speedSettings[$speedCategotry]['delay-secconds-to']));
+        $randomCommentsCount = rand(intval($speedSettings[$speedCategotry]['comment-limit-min']),intval($speedSettings[$speedCategotry]['comment-limit-max']));
         $daily_account_limit = intval($speedSettings[$speedCategotry]['comment-per-day-limit']);
         $checkSentComments =  getAccountSentComments($sc->get("account_id"));
         $last_action_date = new \DateTime(date('Y-m-d h:i:s', strtotime($sc->get("last_action_date"))));
         $last_action_date_diff = $last_action_date->diff(new \DateTime(date('Y-m-d h:i:s')));
         $last_action_min = $last_action_date_diff->i;
 
-        if($last_action_min < $randomWait || sizeOf($checkSentComments) >= $daily_account_limit){
-            continue;
-        }
+        // if($last_action_min < $randomWait || sizeOf($checkSentComments) >= $daily_account_limit){
+        //     continue;
+        // }
        
         $Log = new LogModel;
         $Account = \Controller::model("Account", $sc->get("account_id"));
@@ -173,8 +176,32 @@ function addCronTask()
 
        // Calculate next schedule datetime...
         if (isset($speeds[$sc->get("speed")]) && (int)$speeds[$sc->get("speed")] > 0) {
-            $speed = (int)$speeds[$sc->get("speed")];
-            $delta = round(3600/$speed) + $random_delay;
+            $comments_count = $sc->get("last_operation_comments");
+            if(empty($comments_count)){
+                $sc->set("last_operation_comments", (int)$randomCommentsCount)
+                   ->save();
+            }
+            $last_operation_comments_count = !empty($sc->get("last_operation_comments")) ? $sc->get("last_operation_comments") : (int)$randomCommentsCount;
+            $lastStart = $sc->get("last_operation_start");
+            if(empty($lastStart)){
+                $sc->set("last_operation_start", date("Y-m-d H:i:s"))
+                   ->save();
+            }
+            $last_operation_start = !empty($sc->get("last_operation_start")) ? $sc->get("last_operation_start") : date("Y-m-d H:i:s");
+            $commensFromLastOperation = getLastOperationSentComments($sc->get("account_id"), $last_operation_start);
+            
+            if(count($commensFromLastOperation) < $last_operation_comments_count){
+                $randomSleep = (int)$randomSleep;
+                $delta = $randomSleep;
+                   var_dump('fast '.$delta);
+            } else {
+                $delta = (int)$randomWait * 60;
+                $sc->set("last_operation_start", date("Y-m-d H:i:s"))
+                   ->set("last_operation_comments", (int)$randomCommentsCount)
+                   ->save();
+                   var_dump('new '.$delta);
+            }
+
         } else {
             $delta = rand(720, 7200);
         }
@@ -203,6 +230,7 @@ function addCronTask()
                 $next_schedule = $pause_to;
             }
         }
+        var_dump('next_schedule '.$next_schedule);
         $sc->set("schedule_date", $next_schedule)
            ->set("last_action_date", date("Y-m-d H:i:s"))
            ->save();
@@ -259,19 +287,11 @@ function addCronTask()
         $last_action_date = $sc->get("last_action_date");
 
         $do_spintax = (bool)$User->get("settings.spintax");
-
+        $sc->set("last_action_date", date("Y-m-d H:i:s"))
+        ->save();
        
         if ($feed_type == "target") {
-            
-            $x = $x > 1 ? 1 : 0;
-            for (;$x < $randomcomments; $x++) {
-                $randomSleep = rand(intval($speedSettings[$speedCategotry]['delay-secconds-from']),intval($speedSettings[$speedCategotry]['delay-secconds-to']));
-                $sc->set("last_action_date", date("Y-m-d H:i:s"))
-                ->save();
-                namespace\_comment_target_feed($sc, $Instagram, $comments, $do_spintax);
-                sleep($randomSleep);
-            }
-
+            namespace\_comment_target_feed($sc, $Instagram, $comments, $do_spintax);
         } else if ($feed_type == "timeline") {
             namespace\_comment_timeline_feed($sc, $Instagram, $comments, $do_spintax);
         }
@@ -754,4 +774,13 @@ function  getAccountSentComments($account_id){
     ->select("*")
     ->get();
     return sizeOf($query) > 0 ? $query : [];
+  }
+  function  getLastOperationSentComments($account_id, $last_operation_start){
+    $query = \DB::table('np_auto_comment_log')
+    ->where("account_id", "=",$account_id)
+    ->where("date", ">=", $last_operation_start) 
+    ->select("*")
+    ->get();
+    return sizeOf($query) > 0 ? $query : [];
+
   }

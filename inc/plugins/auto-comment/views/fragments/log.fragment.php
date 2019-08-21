@@ -30,12 +30,44 @@
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id") ?>"><?= __("Target & Settings") ?></a>
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/comments" ?>"><?= __("Comments") ?></a>
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/log" ?>" class="active"><?= __("Activity Log") ?></a>
-                <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/duplicate" ?>"><?= __("Duplicate Settings") ?></a>
-
             </div>
 
             <?php if ($ActivityLog->getTotalCount() > 0): ?>
                 <div class="ac-log-list js-loadmore-content" data-loadmore-id="2">
+                    <?php if ($ActivityLog->getPage() == 1 && $Schedule->get("is_active")): ?>
+                        <?php 
+                            $nextdate = new \Moment\Moment($Schedule->get("schedule_date"), date_default_timezone_get());
+                            $nextdate->setTimezone($AuthUser->get("preferences.timezone"));
+
+                            $diff = $nextdate->fromNow(); 
+                        ?>
+                        <?php if ($diff->getDirection() == "future"): ?>
+                            <div class="ac-next-schedule">
+                                <?= __("Next request will be sent %s approximately", $diff->getRelative()) ?>
+                            </div>
+                        <?php elseif (abs($diff->getSeconds()) < 60*10): ?>
+                            <div class="ac-next-schedule">
+                                <?= __("Next request will be sent in a few moments") ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="ac-log-list-item error">
+                                <div class="clearfix">
+                                    <span class="circle">
+                                        <span class="text">E</span>    
+                                    </span>
+
+                                    <div class="inner clearfix">
+                                        <div class="action">
+                                            <div class="error-msg">
+                                                <?= __("Something is wrong on the system") ?>
+                                            </div>
+                                            <div class="error-details"><?= __("System task error") ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif ?>
+                    <?php endif ?>
 
                     <?php $Emojione = new \Emojione\Client(new \Emojione\Ruleset()); ?>
                     <?php foreach ($Logs as $l): ?>
@@ -81,7 +113,7 @@
                                                     "{post}" => $type_label 
                                                 ]);
                                             ?>
-                                            <span class="date" title="<?= $fulldate ?>"><?= $date->fromNow()->getRelative() ?></span>
+                                            <span class="date" title="<?= $fulldate ?>"><?= $date->fromNow()->getRelative() ?> - <?= date("Y-m-d H:i:s", strtotime('+3 hours',  strtotime($fulldate))) ?></span>
 
                                             <?php if ($l->get("data.commented.comment")): ?>
                                                 <div class="comment"><?= $Emojione->shortnameToUnicode($l->get("data.commented.comment")); ?></div>
