@@ -190,16 +190,14 @@ function addCronTask()
             $last_operation_start = !empty($sc->get("last_operation_start")) ? $sc->get("last_operation_start") : date("Y-m-d H:i:s");
             $commensFromLastOperation = getLastOperationSentComments($sc->get("account_id"), $last_operation_start);
             
-            if(count($commensFromLastOperation) < $last_operation_comments_count){
+            if(count($commensFromLastOperation) < $last_operation_comments_count -1){
                 $randomSleep = (int)$randomSleep;
                 $delta = $randomSleep;
-                   var_dump('fast '.$delta);
             } else {
                 $delta = (int)$randomWait * 60;
                 $sc->set("last_operation_start", date("Y-m-d H:i:s"))
                    ->set("last_operation_comments", (int)$randomCommentsCount)
                    ->save();
-                   var_dump('new '.$delta);
             }
 
         } else {
