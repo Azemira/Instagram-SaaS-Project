@@ -1,6 +1,5 @@
-(function() {
+(function () {
     
-    console.log('test');
     function modal() {
     // Get the modal
     var modal = document.getElementById('myModal');
@@ -42,6 +41,7 @@
         settings_form();
         document.getElementById("chatbot-messages-tab-button").click();
         messagesOrderEvents();
+
     }, 1000);
 
 })();
