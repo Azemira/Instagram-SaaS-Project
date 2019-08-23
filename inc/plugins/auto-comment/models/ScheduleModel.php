@@ -93,6 +93,7 @@ class ScheduleModel extends \DataEntry
             "schedule_date" => date("Y-m-d H:i:s"),
             "last_operation_start" => date("Y-m-d H:i:s"),
             "last_operation_comments" => 0,
+            "last_operation_step" => 0,
             "end_date" => date("Y-m-d H:i:s"),
             "last_action_date" => date("Y-m-d H:i:s"),
             "data" => "{}"
@@ -132,6 +133,7 @@ class ScheduleModel extends \DataEntry
                 "schedule_date" => $this->get("schedule_date"),
                 "last_operation_start" =>  $this->get("last_operation_start"),
                 "last_operation_comments" => $this->get("last_operation_comments"),
+                "last_operation_step" => $this->get("last_operation_step"),
                 "end_date" => $this->get("end_date"),
                 "last_action_date" => $this->get("last_action_date"),
                 "data" => $this->get("data")
@@ -169,6 +171,7 @@ class ScheduleModel extends \DataEntry
                 "schedule_date" => $this->get("schedule_date"),
                 "last_operation_start" =>  $this->get("last_operation_start"),
                 "last_operation_comments" => $this->get("last_operation_comments"),
+                "last_operation_step" => $this->get("last_operation_step"),
                 "end_date" => $this->get("end_date"),
                 "last_action_date" => $this->get("last_action_date"),
                 "data" => $this->get("data")

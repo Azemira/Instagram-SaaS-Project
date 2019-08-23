@@ -113,7 +113,7 @@
                                                     "{post}" => $type_label 
                                                 ]);
                                             ?>
-                                            <span class="date" title="<?= $fulldate ?>"><?= $date->fromNow()->getRelative() ?> - <?= date("Y-m-d H:i:s", strtotime('+3 hours',  strtotime($fulldate))) ?></span>
+                                            <span class="date" title="<?= $fulldate ?>"><?= $date->fromNow()->getRelative() ?> - <?= date("Y-m-d H:i:s", strtotime($fulldate)) ?></span>
 
                                             <?php if ($l->get("data.commented.comment")): ?>
                                                 <div class="comment"><?= $Emojione->shortnameToUnicode($l->get("data.commented.comment")); ?></div>

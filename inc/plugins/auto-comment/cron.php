@@ -82,6 +82,7 @@ function addCronTask()
         $last_action_date = new \DateTime(date('Y-m-d h:i:s', strtotime($sc->get("last_action_date"))));
         $last_action_date_diff = $last_action_date->diff(new \DateTime(date('Y-m-d h:i:s')));
         $last_action_min = $last_action_date_diff->i;
+        // $operation = 'new';
 
         // if($last_action_min < $randomWait || sizeOf($checkSentComments) >= $daily_account_limit){
         //     continue;
@@ -176,29 +177,35 @@ function addCronTask()
 
        // Calculate next schedule datetime...
         if (isset($speeds[$sc->get("speed")]) && (int)$speeds[$sc->get("speed")] > 0) {
-            $comments_count = $sc->get("last_operation_comments");
-            if(empty($comments_count)){
-                $sc->set("last_operation_comments", (int)$randomCommentsCount)
-                   ->save();
-            }
-            $last_operation_comments_count = !empty($sc->get("last_operation_comments")) ? $sc->get("last_operation_comments") : (int)$randomCommentsCount;
-            $lastStart = $sc->get("last_operation_start");
-            if(empty($lastStart)){
-                $sc->set("last_operation_start", date("Y-m-d H:i:s"))
-                   ->save();
-            }
-            $last_operation_start = !empty($sc->get("last_operation_start")) ? $sc->get("last_operation_start") : date("Y-m-d H:i:s");
-            $commensFromLastOperation = getLastOperationSentComments($sc->get("account_id"), $last_operation_start);
+           
+            $last_operation_comments_count = $sc->get("last_operation_comments");
+            $last_operation_comments_step = $sc->get("last_operation_step");
+            // $last_operation_start = $sc->get("last_operation_start");
+            // $commensFromLastOperation = !empty($last_operation_start) ? getLastOperationSentComments($sc->get("account_id"), $last_operation_start) : null;
             
-            if(count($commensFromLastOperation) < $last_operation_comments_count -1){
+            if($last_operation_comments_count > $last_operation_comments_step){
+                // $operation = 'process';
                 $randomSleep = (int)$randomSleep;
                 $delta = $randomSleep;
-            } else {
-                $delta = (int)$randomWait * 60;
-                $sc->set("last_operation_start", date("Y-m-d H:i:s"))
-                   ->set("last_operation_comments", (int)$randomCommentsCount)
-                   ->save();
-            }
+                $sc->set("last_operation_step", $last_operation_comments_step + 1)
+                    ->save();
+                if($last_operation_comments_count == $last_operation_comments_step + 1){
+                    $delta = (int)$randomWait * 60;
+                    $sc->set("last_operation_start", date("Y-m-d H:i:s"))
+                       ->set("last_operation_comments", (int)$randomCommentsCount)
+                       ->set("last_operation_step", 0)
+                       ->save();
+                }
+                   
+            } 
+            // else {
+            //     $operation = 'new';
+            //     $delta = (int)$randomWait * 60;
+            //     $sc->set("last_operation_start", date("Y-m-d H:i:s"))
+            //        ->set("last_operation_comments", (int)$randomCommentsCount)
+            //        ->set("last_operation_step", 0)
+            //        ->save();
+            // }
 
         } else {
             $delta = rand(720, 7200);
@@ -228,7 +235,6 @@ function addCronTask()
                 $next_schedule = $pause_to;
             }
         }
-        var_dump('next_schedule '.$next_schedule);
         $sc->set("schedule_date", $next_schedule)
            ->set("last_action_date", date("Y-m-d H:i:s"))
            ->save();
@@ -260,6 +266,9 @@ function addCronTask()
                 ->save();
             continue;
         }
+        // if($operation == 'new'){
+        //     continue;
+        // }
 
 
         // Login into the account
