@@ -84,14 +84,17 @@ function getChabtotStatus($account_id,$ChatbotStatus){
                 
             </div>
            <?php } else {?>
-            <?php require_once(__DIR__.'/chatbot-tabs.fragment.php'); ?>
-            <div id="chatbot-messages-tab" class="tabcontent" >
-            <?php require_once(__DIR__.'/chatbot-messages.fragment.php'); ?>
-            </div>
-            <div id="chatbot-settings-tab" class="tabcontent">
-            <?php require_once(__DIR__.'/chatbot-settings.fragment.php'); ?>
-            </div>
 
+            <?php require_once(__DIR__.'/chatbot-tabs.fragment.php'); ?>
+            <section id="duplicate-settings-tab" class="tabcontent">
+                <?php require_once(__DIR__.'/duplicate_settings.fragment.php'); ?>
+            </section>
+            <section id="chatbot-settings-tab" class="tabcontent">
+                <?php require_once(__DIR__.'/chatbot-settings.fragment.php'); ?>
+            </section>
+            <section id="chatbot-messages-tab" class="tabcontent" >
+            <?php require_once(__DIR__.'/chatbot-messages.fragment.php'); ?>
+            </section>
 
             <?php } ?>
         </section>

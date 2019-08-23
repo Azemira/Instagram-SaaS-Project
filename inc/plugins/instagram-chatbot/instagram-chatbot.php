@@ -182,6 +182,12 @@ function route_maps($global_variable_name)
         __NAMESPACE__ . "\ChatbotController"
     ]);
 
+ 
+    $GLOBALS[$global_variable_name]->map("GET|POST", "/".IDNAME."/[i:id]/duplicate?", [
+        PLUGINS_PATH . "/". IDNAME ."/controllers/DuplicateSettingsController.php",
+        __NAMESPACE__ . "\duplicateSettingsController"
+    ]);
+
     // save message
     $GLOBALS[$global_variable_name]->map("GET|POST", "/chatbot/message/new/[i:id]/?", [
         PLUGINS_PATH . "/". IDNAME ."/controllers/ChatbotController.php",
