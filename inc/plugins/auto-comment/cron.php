@@ -82,7 +82,7 @@ function addCronTask()
         $last_action_date = new \DateTime(date('Y-m-d h:i:s', strtotime($sc->get("last_action_date"))));
         $last_action_date_diff = $last_action_date->diff(new \DateTime(date('Y-m-d h:i:s')));
         $last_action_min = $last_action_date_diff->i;
-        // $operation = 'new';
+        $operation = 'new';
 
        
         $Log = new LogModel;
@@ -195,14 +195,14 @@ function addCronTask()
                 }
                    
             } 
-            // else {
-            //     $operation = 'new';
-            //     $delta = (int)$randomWait * 60;
-            //     $sc->set("last_operation_start", date("Y-m-d H:i:s"))
-            //        ->set("last_operation_comments", (int)$randomCommentsCount)
-            //        ->set("last_operation_step", 0)
-            //        ->save();
-            // }
+            else {
+                $operation = 'new';
+                $delta = (int)$randomWait * 60;
+                $sc->set("last_operation_start", date("Y-m-d H:i:s"))
+                   ->set("last_operation_comments", (int)$randomCommentsCount)
+                   ->set("last_operation_step", 0)
+                   ->save();
+            }
 
         } else {
             $delta = rand(720, 7200);
@@ -269,9 +269,9 @@ function addCronTask()
                 ->save();
             continue;
         }
-        // if($operation == 'new'){
-        //     continue;
-        // }
+        if($operation == 'new'){
+            continue;
+        }
 
 
         // Login into the account
