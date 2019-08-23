@@ -84,9 +84,6 @@ function addCronTask()
         $last_action_min = $last_action_date_diff->i;
         // $operation = 'new';
 
-        // if($last_action_min < $randomWait || sizeOf($checkSentComments) >= $daily_account_limit){
-        //     continue;
-        // }
        
         $Log = new LogModel;
         $Account = \Controller::model("Account", $sc->get("account_id"));
@@ -235,6 +232,12 @@ function addCronTask()
                 $next_schedule = $pause_to;
             }
         }
+        //daily limit
+        if(sizeOf($checkSentComments) +1 >= $daily_account_limit){
+            $next_schedule = date("Y-m-d H:i:s", strtotime('tomorrow midnight'));
+        }
+
+
         $sc->set("schedule_date", $next_schedule)
            ->set("last_action_date", date("Y-m-d H:i:s"))
            ->save();
