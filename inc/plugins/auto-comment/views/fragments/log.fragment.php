@@ -30,8 +30,6 @@
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id") ?>"><?= __("Target & Settings") ?></a>
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/comments" ?>"><?= __("Comments") ?></a>
                 <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/log" ?>" class="active"><?= __("Activity Log") ?></a>
-                <a href="<?= APPURL."/e/".$idname."/".$Account->get("id")."/duplicate" ?>"><?= __("Duplicate Settings") ?></a>
-
             </div>
 
             <?php if ($ActivityLog->getTotalCount() > 0): ?>
@@ -115,7 +113,7 @@
                                                     "{post}" => $type_label 
                                                 ]);
                                             ?>
-                                            <span class="date" title="<?= $fulldate ?>"><?= $date->fromNow()->getRelative() ?></span>
+                                            <span class="date" title="<?= $fulldate ?>"><?= $date->fromNow()->getRelative() ?> - <?= date("Y-m-d H:i:s", strtotime($fulldate)) ?></span>
 
                                             <?php if ($l->get("data.commented.comment")): ?>
                                                 <div class="comment"><?= $Emojione->shortnameToUnicode($l->get("data.commented.comment")); ?></div>
