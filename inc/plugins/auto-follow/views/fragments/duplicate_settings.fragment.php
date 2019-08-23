@@ -43,15 +43,28 @@
                     <div class="form-result mb-25" style="display:none;"></div>
 
                     <div class="clearfix">
-                   
 
                     <div class="col s12 m10 l8">
 
                     <ul class="field-tips mb-20">
                                 <p><?= __("Duplicate settings from <b>" .htmlchars($Account->get("username")) . "</b> to selected user."  ) ?></p>
 
-                                 
                             </ul>
+
+                    <div class="mb-20">
+                        <label>
+                            <input type="checkbox" 
+                                    class="checkbox" 
+                                    name="duplicate-target"
+                                    value="1">
+                            <span>
+                                <span class="icon unchecked">
+                                    <span class="mdi mdi-check"></span>
+                                </span>
+                                <?= __('Select to include Targets') ?>
+                            </span>
+                        </label>
+                    </div>
                         <div class="col s12 m12 l6 mb-20">
 
                             <select class="selectpicker"  multiple data-actions-box="true" name="select_user" multiple>

@@ -180,7 +180,8 @@ class duplicateSettingsController extends \Controller
         $Schedule = $this->getVariable("Schedule");
 
         $user_ids = \Input::post("duplicate");
-        
+        $duplicate_target = \Input::post("duplicate_target");
+
         require_once PLUGINS_PATH."/".self::IDNAME."/models/DuplicateModel.php";
         
         $target = $Schedule->get("target");
@@ -192,11 +193,8 @@ class duplicateSettingsController extends \Controller
                 "user_id" => $Account->get("user_id")
             ]);
   
-
             $Schedule_duolicated->set("user_id", $AuthUser->get("id"))
-            ->set("target", $target)
             ->set("account_id", $id)
-            ->set("target", $target)
             ->set("timeline_feed",$Schedule->get("timeline_feed"))
             ->set("speed",$Schedule->get("speed"))
             ->set("daily_pause",$Schedule->get("daily_pause"))
@@ -207,6 +205,11 @@ class duplicateSettingsController extends \Controller
             ->set("end_date",$Schedule->get("end_date"))
             ->set("last_action_date",$Schedule->get("last_action_date"))
             ->set("data",$Schedule->get("data"));
+
+            if($duplicate_target == "1") {
+
+                $Schedule_duolicated->set("target", $target);
+            }
            
             $Schedule_duolicated->save();
 
