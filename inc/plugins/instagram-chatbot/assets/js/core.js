@@ -423,4 +423,43 @@ function openCity(evt, cityName) {
     evt.currentTarget.className += " active";
   }
   
-  
+
+var InstagramChatboot = {};
+
+InstagramChatboot.ScheduleForm = function () { 
+    var $Form_duplicate = $(".js-chatboot-duplicate-form");
+    $Form_duplicate.on("submit", function() {
+        $("body").addClass("onprogress");
+
+        var duplicate = $Form_duplicate.find("[name='select_user']").val();
+        $.ajax({
+            url: $Form_duplicate.attr("action"),
+            type: $Form_duplicate.attr("method"),
+            dataType: 'jsonp',
+            data: {
+                action: "save",
+                duplicate: duplicate
+
+            },
+            error: function() {
+                $("body").removeClass("onprogress");
+                NextPost.DisplayFormResult($form, "error", __("Oops! An error occured. Please try again later!"));
+
+            },
+
+            success: function(resp) {
+                if (resp.result == 1) {
+                    NextPost.DisplayFormResult($Form_duplicate, "success", resp.msg);
+                } else {
+                    NextPost.DisplayFormResult($Form_duplicate, "error", resp.msg);
+                }
+
+                $("body").removeClass("onprogress");
+            }
+        });
+
+        return false;
+    });
+
+}
+    
