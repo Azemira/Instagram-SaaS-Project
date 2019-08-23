@@ -45,7 +45,7 @@
             $TopBar->btn = false;
             require_once(APPPATH.'/views/fragments/topbar.fragment.php'); 
         ?>
-        <script type="text/javascript" src="<?= PLUGINS_URL."/instagram-chatbot/assets/js/core.js?v=12" ?>"></script>
+        <script type="text/javascript" src="<?= PLUGINS_URL."/instagram-chatbot/assets/js/core.js?v=".VERSION ?>"></script>
         <script type="text/javascript" src="<?= APPURL."/assets/js/plugins.js?v=".VERSION ?>"></script>
         <script type="text/javascript" src="<?= APPURL."/assets/js/core.js?v=".VERSION ?>"></script>
 
