@@ -219,9 +219,9 @@ AutoLike.ScheduleForm = function()
             dataType: 'jsonp',
             data: {
                 action: "save",
-                duplicate: duplicate
+                duplicate: duplicate,
+                duplicate_target: $Form_duplicate.find(":input[name='duplicate-target']").is(":checked") ? 1 : 0,
 
-                // duplicate: JSON.stringify(duplicate)
             },
             error: function() {
                 $("body").removeClass("onprogress");

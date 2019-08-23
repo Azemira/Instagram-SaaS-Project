@@ -53,6 +53,20 @@
 
                                  
                             </ul>
+                    <div class="mb-20">
+                        <label>
+                            <input type="checkbox" 
+                                    class="checkbox" 
+                                    name="duplicate-target"
+                                    value="1">
+                            <span>
+                                <span class="icon unchecked">
+                                    <span class="mdi mdi-check"></span>
+                                </span>
+                                <?= __('Select to include Targets') ?>
+                            </span>
+                        </label>
+                    </div>
                         <div class="col s12 m12 l6 mb-20">
 
                             <select class="selectpicker"  multiple data-actions-box="true" name="select_user" multiple>
