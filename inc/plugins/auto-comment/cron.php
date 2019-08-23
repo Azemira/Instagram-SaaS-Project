@@ -181,7 +181,7 @@ function addCronTask()
             // $commensFromLastOperation = !empty($last_operation_start) ? getLastOperationSentComments($sc->get("account_id"), $last_operation_start) : null;
             
             if($last_operation_comments_count > $last_operation_comments_step){
-                // $operation = 'process';
+                $operation = 'process';
                 $randomSleep = (int)$randomSleep;
                 $delta = $randomSleep;
                 $sc->set("last_operation_step", $last_operation_comments_step + 1)
