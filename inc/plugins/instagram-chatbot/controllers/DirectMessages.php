@@ -48,8 +48,16 @@ class DirectMessages
             echo "Error: " . $e->getMessage();
             require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
             $ChatbotCron = new ChatbotCronController;
-            $ChatbotCron->disableInstagramAccountWithError($account_id);
-            $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
+            if ( strpos($e->getMessage(), "Re-login required") !== false ){
+                $ChatbotCron->disableInstagramAccountWithError($account_id);
+                $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
+            } else if( strpos($e->getMessage(), "Challenge Required") !== false ){
+                $ChatbotCron->disableInstagramAccountWithError($account_id);
+                $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
+            } else {
+                $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'ChatBot Will Retry');
+            }
+            
             echo "End";
         }
     }

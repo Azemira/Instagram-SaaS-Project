@@ -33,8 +33,16 @@ class DirectRequests
             echo "Error: " . $e->getMessage();
             require_once PLUGINS_PATH."/".self::IDNAME."/controllers/ChatbotCronController.php";
             $ChatbotCron = new ChatbotCronController;
-            $ChatbotCron->disableInstagramAccountWithError($Account->get("id"));
-            $ChatbotCron->chatbotErrorLog($Account->get("id"), $e->getMessage(), 'Account Chatbot deactivated');
+            if ( strpos($e->getMessage(), "Re-login required") !== false ){
+                $ChatbotCron->disableInstagramAccountWithError($Account->get("id"));
+                $ChatbotCron->chatbotErrorLog($Account->get("id"), $e->getMessage(), 'Account Chatbot deactivated');
+            } else if( strpos($e->getMessage(), "Challenge Required") !== false ){
+                $ChatbotCron->disableInstagramAccountWithError($Account->get("id"));
+                $ChatbotCron->chatbotErrorLog($Account->get("id"), $e->getMessage(), 'Account Chatbot deactivated');
+            } else {
+                $ChatbotCron->chatbotErrorLog($Account->get("id"), $e->getMessage(), 'ChatBot Will Retry');
+            }
+
         }
         
      }
