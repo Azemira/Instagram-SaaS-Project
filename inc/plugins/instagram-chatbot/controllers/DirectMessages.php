@@ -54,6 +54,9 @@ class DirectMessages
             } else if( strpos($e->getMessage(), "Challenge Required") !== false ){
                 $ChatbotCron->disableInstagramAccountWithError($account_id);
                 $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
+            } else if( strpos($e->getMessage(), "Feedback Required") !== false ){
+                $ChatbotCron->disableInstagramAccountWithError($account_id);
+                $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'Account Chatbot deactivated');
             } else {
                 $ChatbotCron->chatbotErrorLog($account_id, $e->getMessage(), 'ChatBot Will Retry');
             }
