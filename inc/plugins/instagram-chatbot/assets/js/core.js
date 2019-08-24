@@ -71,8 +71,6 @@
           
                 },
                 success: function(resp) {
-                    console.log(resp);
-                    console.log('success save');
                     insertNewMessage(resp.message, resp.id, true, resp.order);
                     enableInputField();
                     messageUpdate();
@@ -93,10 +91,10 @@ function enableInputField(){
     $(".chatbot-message-item").each(function(i){
         $(this).click(function(){
             $('#'+this.id+'-editor').attr( "contenteditable","true" );
-            // $(this).next().show();
             $(this).next().addClass('button');
             emojiLoad('#'+this.id+'-editor');
-            // console.log($(this).next().css( "display", "inline-block !important" ));
+            $(this).next().css( "display", "inline-block !important" );
+            $(this).next().removeAttr('hidden');;
         });
     });
   }
@@ -135,8 +133,6 @@ function messageUpdate() {
             }
             let identifier = this.id;
             message = unicodeEscape(message);
-            console.log($form.attr("action"));
-          
             $.ajax({
                 // url: '/chatbot/message/new',
                 url: $form.attr("action"),
@@ -154,8 +150,6 @@ function messageUpdate() {
                     enableInputField();
                     messageUpdate();
                     messageDelete();
-                    console.log(resp);
-                    console.log('success');
                     checkFirstAndLastElement();
                 
                 }
@@ -213,10 +207,8 @@ function insertNewMessage(message, id, insert = true, order) {
     if(insert) {
     $('.messages-list-content').append(mesageRow);
     mesageRow += '</div>';
-    console.log('no');
     } else {
     $('#message-main-'+id).html(mesageRow);
-    console.log('yes');
     }
     
  }
@@ -239,13 +231,6 @@ function messageDelete() {
           
                 },
                 success: function(resp) {
-                   
-                    // insertNewMessage(resp.message, resp.id, false, resp.title);
-                    // enableInputField();
-                    // messageUpdate();
-                    console.log(resp);
-
-                    console.log('success');
                     $('#message-main-'+resp.id).remove();
                     checkFirstAndLastElement();
                     setTimeout(() => {
@@ -269,9 +254,6 @@ function messageDelete() {
                 var status = $("#chatbot_status_select").val();
                 var url = this.id;
         
-                // console.log(status);
-                // console.log(url);
-        
                 $.ajax({
                     url: this.id,
                     type: 'POST',
@@ -283,8 +265,6 @@ function messageDelete() {
               
                     },
                     success: function(resp) {
-                        console.log(resp);
-                        console.log('success save 2');
                     }
                 });
         
@@ -308,7 +288,6 @@ function messagesOrderEvents(){
     $(".message-sent-down").each(function(i){
         $(this).click(function(){
             let elem = $('#message-main-'+ this.id);
-            console.log(elem.next().attr('data-order-id'));
             elem.next().insertBefore(elem);
             
             checkFirstAndLastElement();
@@ -362,11 +341,6 @@ function saveNewMessagesOrder(){
       
             },
             success: function(resp) {
-                // enableInputField();
-                // messageUpdate();
-                // messageDelete();
-                // console.log(resp);
-                console.log('success');
             
             }
         });
@@ -393,7 +367,6 @@ if(action == 'show'){
 
 if(action == 'hide'){
     $(".message-sent-up").each(function(i){
-        console.log($(this))
         $(this).hide();
     });
     $(".message-sent-down").each(function(i){
@@ -402,7 +375,7 @@ if(action == 'hide'){
 }
 }
 
-function openCity(evt, cityName) {
+function chatbotTab(evt, tab) {
     // Declare all variables
     var i, tabcontent, tablinks;
   
@@ -419,7 +392,7 @@ function openCity(evt, cityName) {
     }
   
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tab).style.display = "block";
     evt.currentTarget.className += " active";
   }
   
