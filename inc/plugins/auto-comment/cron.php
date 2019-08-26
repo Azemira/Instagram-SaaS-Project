@@ -83,6 +83,8 @@ function addCronTask()
         $last_action_date_diff = $last_action_date->diff(new \DateTime(date('Y-m-d h:i:s')));
         $last_action_min = $last_action_date_diff->i;
         $operation = 'new';
+        // $last_operation_start = $sc->get("last_operation_start");
+        // $commensFromLastOperation = getLastOperationSentComments($sc->get("account_id"), $last_operation_start);
 
        
         $Log = new LogModel;
@@ -177,10 +179,18 @@ function addCronTask()
            
             $last_operation_comments_count = $sc->get("last_operation_comments");
             $last_operation_comments_step = $sc->get("last_operation_step");
-            $last_operation_start = $sc->get("last_operation_start");
-            $commensFromLastOperation = !empty($last_operation_start) ? getLastOperationSentComments($sc->get("account_id"), $last_operation_start) : null;
+          
             
-            if($last_operation_comments_count > $last_operation_comments_step && $last_operation_comments_count > sizeof($commensFromLastOperation) ){
+            if($last_operation_comments_count <= $last_operation_comments_step ){
+                $operation = 'new';
+                $delta = (int)$randomWait * 60;
+                $sc->set("last_operation_start", date("Y-m-d H:i:s"))
+                   ->set("last_operation_comments", (int)$randomCommentsCount)
+                   ->set("last_operation_step", 0)
+                   ->save();
+                   
+            } 
+            else {
                 $operation = 'process';
                 $randomSleep = (int)$randomSleep;
                 $delta = $randomSleep;
@@ -193,15 +203,8 @@ function addCronTask()
                        ->set("last_operation_step", 0)
                        ->save();
                 }
-                   
-            } 
-            else {
-                $operation = 'new';
-                $delta = (int)$randomWait * 60;
-                $sc->set("last_operation_start", date("Y-m-d H:i:s"))
-                   ->set("last_operation_comments", (int)$randomCommentsCount)
-                   ->set("last_operation_step", 0)
-                   ->save();
+
+                
             }
 
         } else {

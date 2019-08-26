@@ -225,12 +225,14 @@ class ChatbotCronController extends \Controller
     $settings = $this->getChatbotSettinsID($account_id);
     require_once PLUGINS_PATH."/".self::IDNAME."/models/ChatbotErrorLog.php";
     $ChatbotErrorLog = new ChatbotErrorLog;
-    $ChatbotErrorLog->set("user_id", $settings->user_id)
-    ->set("error_action", $action)
-    ->set("date", date('Y-m-d h:i:s', time()))
-    ->set("account_id", $account_id)
-    ->set("error_message", $error)
-    ->save();
+    if(!empty($settings->user_id)){
+      $ChatbotErrorLog->set("user_id", $settings->user_id)
+      ->set("error_action", $action)
+      ->set("date", date('Y-m-d h:i:s', time()))
+      ->set("account_id", $account_id)
+      ->set("error_message", $error)
+      ->save();
+    }
   }
 
   public function getChatbotSettinsID($account_id){
