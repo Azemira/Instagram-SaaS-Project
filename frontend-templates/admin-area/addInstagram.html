@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../assets/img/favicon.png" type="image/png">
 
-    <title>AutoDimes - Add Bot</title>
+    <title>AutoDimes - Add Instagram</title>
     <link href="../assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/admin/css/responsive.css" rel="stylesheet">
     <link href="../assets/admin/css/main.css" rel="stylesheet">
@@ -117,7 +117,7 @@
                                 <span class="hide-menu">Instagram Accounts</span>
                             </a>
                             <ul class="collapse  first-level">
-                                <li class="sidebar-item">
+                                <li class="sidebar-item  active selected">
                                     <a href="addInstagram.html" class="sidebar-link">
                                         <i class="mdi mdi-account-plus"></i>
                                         <span class="hide-menu">Add Account</span>
@@ -137,7 +137,7 @@
                                 <span class="hide-menu">Bots</span>
                             </a>
                             <ul class="collapse first-level">
-                                <li class="sidebar-item active selected">
+                                <li class="sidebar-item">
                                     <a href="addBot.html" class="sidebar-link">
                                         <i class="mdi mdi-library-plus"></i>
                                         <span class="hide-menu">Add Bot</span>
@@ -165,14 +165,14 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Add Bot</h4>
+                        <h4 class="page-title">Add Instagram Account</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Add Bot</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add Instagram Account</li>
                                 </ol>
                             </nav>
                         </div>
@@ -186,79 +186,72 @@
                             <form class="form-horizontal">
                                 <div class="card-body">
 
-                                    <h4 class="card-title">Bot Info</h4>
+                                    <h4 class="card-title">Account Info</h4>
                                     <div class="row m-0 pt-4">
                                         <div class="col-12 col-lg-6">
                                             <div class="form-group row">
-                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">Lorem Ipsum</label>
+                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">Name</label>
                                                 <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="loremipsum" placeholder="Lorem Ipsum Here">
+                                                    <input type="text" class="form-control" id="loremipsum" placeholder="Name Here" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">Lorem Ipsum</label>
+                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">E-mail</label>
                                                 <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="loremipsum" placeholder="Lorem Ipsum Here">
+                                                    <input type="email" class="form-control" id="loremipsum" placeholder="E-mail Here" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-12 col-md-3 text-right control-label px-0">Lorem Ipsum</label>
+                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">Password</label>
                                                 <div class="col-md-8">
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" class="custom-control-input" id="radio-lorem1" name="radio-lorem">
-                                                        <label class="custom-control-label" for="radio-lorem1">Lorem Ipsum 1</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" class="custom-control-input" id="radio-lorem2" name="radio-lorem">
-                                                        <label class="custom-control-label" for="radio-lorem2">Lorem Ipsum 2</label>
-                                                    </div>
+                                                    <input type="password" class="form-control" id="loremipsum" placeholder="Password Here" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-12 col-md-3 text-right control-label px-0">Lorem Ipsum</label>
+                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label col-form-label">Repeat Password</label>
                                                 <div class="col-md-8">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="check-lorem1">
-                                                        <label class="custom-control-label" for="check-lorem1">Lorem Ipsum 1</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="check-lorem2">
-                                                        <label class="custom-control-label" for="check-lorem2">Lorem Ipsum 2</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="check-lorem3">
-                                                        <label class="custom-control-label" for="check-lorem3">Lorem Ipsum 3</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="check-lorem4">
-                                                        <label class="custom-control-label" for="check-lorem4">Lorem Ipsum 4</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="check-lorem5">
-                                                        <label class="custom-control-label" for="check-lorem5">Lorem Ipsum 5</label>
+                                                    <input type="password" class="form-control" id="loremipsum" placeholder="Repeat Password Here" required>
+                                                </div>
+                                            </div>  
+                                            <div class="form-group row">
+                                                    <label for="loremoption" class="col-12 col-md-3 text-right control-label col-form-label">Country</label>
+                                                    <div class="col-md-8">
+                                                        <select id="loremoption" name="loremoption" class="form-control">
+                                                            <option value="1">Country option 1</option>
+                                                            <option value="2">Country option 2</option>
+                                                            <option value="3">Country option 3</option>
+        
+                                                        </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <div class="form-group row">
+                                                    <label class="col-12 col-md-3 text-right control-label px-0">Gender</label>
+                                                    <div class="col-md-8">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="radio-lorem1" name="radio-gender">
+                                                            <label class="custom-control-label" for="radio-lorem1">Male</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="radio-lorem2" name="radio-gender">
+                                                            <label class="custom-control-label" for="radio-lorem2">Female</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="radio-lorem3" name="radio-gender">
+                                                            <label class="custom-control-label" for="radio-lorem2">Other</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                       
+                                                                                  
                                         </div>
                                         <div class="col-12 col-lg-6">
+                                                
                                             <div class="form-group row">
-                                                <label for="loremipsum" class="col-12 col-md-3 text-right control-label px-0">Lorem ipsum</label>
-                                                <div class="col-md-8">
-                                                    <textarea id="loremipsum" class="form-control" rows="8"></textarea>
+                                                    <label for="loremipsum" class="col-12 col-md-3 text-right control-label px-0">Notes</label>
+                                                    <div class="col-md-8">
+                                                        <textarea id="loremipsum" class="form-control" rows="18"></textarea>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="loremoption" class="col-12 col-md-3 text-right control-label col-form-label">Lorem</label>
-                                                <div class="col-md-8">
-                                                    <select id="loremoption" name="loremoption" class="form-control">
-                                                        <option value="1">Lorem option 1</option>
-                                                        <option value="2">Lorem option 2</option>
-                                                        <option value="3">Lorem option 3</option>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-
                                             <div class="form-group row">
                                                 <div class="col-md-8 offset-md-3 text-right">
                                                     <button type="submit" class="btn btn-primary auto-dimes-admin-btn">Submit</button>
