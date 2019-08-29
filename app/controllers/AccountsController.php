@@ -132,57 +132,89 @@ public function reconnect()
    }
    $this->resp->result = 1;  
    $this->jsonecho();
-} 
+}
 
-public function checkForActivePluggins($account_id,$user_id) {
+    public function checkForActivePluggins($account_id, $user_id)
+    {
 
-    $are_plugins_activated = [];
+        $are_plugins_activated = [];
 
-    $query_auto_like = \DB::table('np_auto_like_schedule')
-    ->where("account_id", "=", $account_id)
-    ->where("user_id", "=", $user_id)
-    ->select("*")
-    ->get();
+        $query_auto_like = \DB::table('np_auto_like_schedule')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->select("*")
+            ->get();
 
-    $query_auto_comment = \DB::table('np_auto_comment_schedule')
-    ->where("account_id", "=", $account_id)
-    ->where("user_id", "=", $user_id)
-    ->select("*")
-    ->get();
+        $query_auto_comment = \DB::table('np_auto_comment_schedule')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->select("*")
+            ->get();
 
-    $query_auto_follow = \DB::table('np_auto_follow_schedule')
-    ->where("account_id", "=", $account_id)
-    ->where("user_id", "=", $user_id)
-    ->select("*")
-    ->get();
+        $query_auto_follow = \DB::table('np_auto_follow_schedule')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->select("*")
+            ->get();
 
-    $query_chatboot = \DB::table('np_chatbot_settings')
-    ->where("account_id", "=", $account_id)
-    ->where("user_id", "=", $user_id)
-    ->select("*")
-    ->get();
+        $query_chatboot = \DB::table('np_chatbot_settings')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->select("*")
+            ->get();
 
+        if (!empty($query_auto_like)) {
+            $are_plugins_activated['Auto Like'] = array(
+                "active" => $query_auto_like[0]->is_active,
+                "url" => 'e/auto-like'
+            );
+        } else {
+            $are_plugins_activated['Auto Like'] = array(
+                "active" => "0",
+                "url" => 'e/auto-like'
+            );
+        }
 
-    $are_plugins_activated['Auto Like'] =array (
-      "active" => $query_auto_like[0]->is_active,
-      "url" =>'e/auto-like');
+        if (!empty($query_auto_comment)) {
 
-    $are_plugins_activated['Auto Comment'] = array (
-        "active" =>  $query_auto_comment[0]->is_active,
-        "url" =>'e/auto-comment');
+            $are_plugins_activated['Auto Comment'] = array(
+                "active" =>  $query_auto_comment[0]->is_active,
+                "url" => 'e/auto-comment'
+            );
+        } else {
+            $are_plugins_activated['Auto Comment'] = array(
+                "active" => "0",
+                "url" => 'e/auto-comment'
+            );
+        }
 
-        
-    $are_plugins_activated['Auto Follow'] = array (
-        "active" => $query_auto_follow[0]->is_active,
-        "url" =>'e/auto-follow');
+        if (!empty($query_auto_follow)) {
+            $are_plugins_activated['Auto Follow'] = array(
+                "active" => $query_auto_follow[0]->is_active,
+                "url" => 'e/auto-follow'
+            );
+        } else {
+            $are_plugins_activated['Auto Follow'] = array(
+                "active" => "0",
+                "url" => 'e/auto-follow'
+            );
+        }
 
-    $are_plugins_activated['Chatboot'] = array (
+        if (!empty($query_auto_follow)) {
 
-        "active" =>   $query_chatboot[0]->chatbot_status,
-        "url" =>'chatbot/account');
+            $are_plugins_activated['Chatboot'] = array(
 
-    
+                "active" =>   $query_chatboot[0]->chatbot_status,
+                "url" => 'chatbot/account'
+            );
+        } else {
+            $are_plugins_activated['Chatboot'] = array(
+
+                "active" =>  "0",
+                "url" => 'chatbot/account'
+            );
+        }
+
         return $are_plugins_activated;
-
-  }
+    }
 }
