@@ -3,7 +3,7 @@
             "pending_request_time_to":15,
             "direct_message_time_from":5,
             "direct_message_time_to":15,
-            "fast_speed_time_from":5,
-            "fast_speed_time_to":12,
-            "slow_speed_time_from":1,
-            "slow_speed_time_to":3}]
+            "fast_speed_time_from":2,
+            "fast_speed_time_to":4,
+            "slow_speed_time_from":30,
+            "slow_speed_time_to":60}]

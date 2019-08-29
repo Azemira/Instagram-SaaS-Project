@@ -3,9 +3,9 @@
  * Define database credentials
  */
 define("DB_HOST", "localhost"); 
-define("DB_NAME", "nextpost"); 
-define("DB_USER", "administrator"); 
-define("DB_PASS", "Stronghold172138!"); 
+define("DB_NAME", "autodimes"); 
+define("DB_USER", "root"); 
+define("DB_PASS", "admin123!"); 
 define("DB_ENCODING", "utf8"); // DB connnection charset
 
 

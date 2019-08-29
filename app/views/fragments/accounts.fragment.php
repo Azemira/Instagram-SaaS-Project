@@ -14,6 +14,7 @@
                                         <?php endif ?>
 
                                         <?php 
+
                                             $date = new Moment\Moment($a->get("date"), date_default_timezone_get());
                                             $date->setTimezone($AuthUser->get("preferences.timezone"));
                                             $format = $AuthUser->get("preferences.dateformat");
@@ -29,7 +30,41 @@
                                                 <?= __("Re-login required!") ?>
                                             </a>
                                         <?php endif ?>
-                                        </div>     
+                                        </div>
+                                        <div class="quick-info inactive-plugins">
+                                        <?php
+
+                                        $are_plugins_activated = $this->checkForActivePluggins($a->get("id"), $AuthUser->get("id"));
+                                        $print_inactive  = false;
+
+                                        foreach ($are_plugins_activated as $inner_array => $value) {
+
+                                            if ($value['active'] == 0) {
+
+                                                $print_inactive  = true;
+                                            }
+                                        }
+
+                                        if ($print_inactive) {
+
+                                            echo "<span class='color-danger ml-5'><span class='mdi mdi-information' style = 'white-space: normal;'> Inactive plugins</span></span><br>";
+
+                                            foreach ($are_plugins_activated as $inner_array => $inner_value) {
+
+                                                if ($inner_value['active'] == 0) {
+
+                                                    echo  " <a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a> ";
+                                                }
+                                            }
+                                        } else {
+                                            echo "<span class='all-plugins-are-active'>All plugins are active</span>";
+                                        }
+
+                                        ?>
+
+                                        </div>
+
+                                        
                                     </div>
 
                                     <div class="options context-menu-wrapper">
