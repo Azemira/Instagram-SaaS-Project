@@ -48,12 +48,12 @@
                                         if ($print_inactive) {
 
                                             echo "<span class='color-danger ml-5'><span class='mdi mdi-information' style = 'white-space: normal;'> Inactive plugins</span></span><br>";
-
-                                            foreach ($are_plugins_activated as $inner_array => $inner_value) {
+                                             foreach ($are_plugins_activated as $inner_array => $inner_value) {
 
                                                 if ($inner_value['active'] == 0) {
 
-                                                    echo  " <a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a> ";
+                                                    echo  " <a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a><br>";
+                                                    
                                                 }
                                             }
                                         } else {
