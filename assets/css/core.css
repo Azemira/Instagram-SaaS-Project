@@ -3130,3 +3130,8 @@ nav {
   -webkit-transform: rotate(360deg);
   transform: rotate(360deg);
 }  
+
+.quick-info.inactive-plugins {
+  overflow: unset;
+  padding-bottom: 20px;
+}
