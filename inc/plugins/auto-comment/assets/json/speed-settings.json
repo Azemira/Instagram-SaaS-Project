@@ -1,12 +1,12 @@
 [{ 
             "very-slow" : {
-                "wait-from": 10,
-                "wait-to": 15,
+                "wait-from": 20,
+                "wait-to": 120,
                 "comment-limit-min": 1,
-                "comment-limit-max": 1,
+                "comment-limit-max": 4,
                 "delay-secconds-from": 10,
-                "delay-secconds-to": 30,
-                "comment-per-day-limit": 20
+                "delay-secconds-to": 120,
+                "comment-per-day-limit": 30
             },
             "slow" : {
                 "wait-from": 1,
