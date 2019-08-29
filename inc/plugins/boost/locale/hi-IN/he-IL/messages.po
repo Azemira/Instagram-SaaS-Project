@@ -1,0 +1,367 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"Project-Id-Version: Nextpost v3.0 - Default Theme\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+msgid "Boost"
+msgstr "אוטומציה באינסטגרם"
+
+msgid "Auto Like"
+msgstr "לייק אוטומטי"
+
+msgid "Invalid parameter"
+msgstr "פרמטר שגוי"
+
+msgid "%s public post"
+msgid_plural "%s public posts"
+msgstr[0] "%s פוסט פומבי"
+msgstr[1] "%s פוסטים פומביים"
+
+msgid "Instagram user"
+msgstr "משתמש אינסטגרם"
+
+msgid "Please select an account from left side list."
+msgstr "אנא בחר משתמש מהרשימה."
+
+msgid "Target & Settings"
+msgstr "קהלים והגדרות"
+
+msgid "Activity Log"
+msgstr "יומן פעילות"
+
+msgid "Next request will be sent %s approximately"
+msgstr "הבקשה הבאה תשלח בעוד %s בערך"
+
+msgid "Next request will be sent in a few moments"
+msgstr "הבקשה הבאה תשלח בעוד מספר רגעים"
+
+msgid "Something is wrong on the system"
+msgstr "תקלה קרתה במערכת"
+
+msgid "Liked {username}'s {post}"
+msgstr "אהבת את הפוסט {post} של {username}"
+
+msgid "Timeline Feed"
+msgstr "ציר הזמן"
+
+msgid "View Post"
+msgstr "צפה בפוסט"
+
+msgid "beta"
+msgstr ""
+
+msgid "Total %s actions"
+msgstr "סך הכל %s פעולות"
+
+msgid "Auto Like activity log for %s is empty"
+msgstr "יומן פעילות בעבור לייק אוטומטי %s ריק"
+
+msgid "Hashtags"
+msgstr "האשטגים"
+
+msgid "Places"
+msgstr "מיקומים"
+
+msgid "People"
+msgstr "משתמשים"
+
+msgid "Speed"
+msgstr "מהירות"
+
+msgid "Auto"
+msgstr "אוטומטי"
+
+msgid "Recommended"
+msgstr "מומלץ"
+
+msgid "Very Slow"
+msgstr "איטי מאד"
+
+msgid "Slow"
+msgstr "איטי"
+
+msgid "Medium"
+msgstr "בינוני"
+
+msgid "Fast"
+msgstr "מהיר"
+
+msgid "Very Fast"
+msgstr "מהיר מאד"
+
+msgid "Pause actions everyday"
+msgstr "הפסק פעולות בכל יום"
+
+msgid "To"
+msgstr "עד"
+
+msgid "Like the feed from the timeline"
+msgstr "תן לייק לפוסטים מציר הזמן"
+
+msgid "Speeds"
+msgstr "מהירויות"
+
+msgid "%s request/hour"
+msgid_plural "%s requests/hour"
+msgstr[0] "%s בקשה לשעה"
+msgstr[1] "%s בקשות לשעה"
+
+msgid "These values indicates maximum amount of the requests per hour. They are not exact values. Depending on the server overload and delays between the requests, actual number of the requests might be less than these values."
+msgstr "הערכים הללו מצביעים על כמות מקסימלית לשעה. אלו אינם ערכים מדויקים. תלוי בעומס השרת והדיליי בין הבקשות, המספר האמיתי של הבקשות עלול להיות פחות מהערכים הללו."
+
+msgid "High speeds might be risky"
+msgstr "מהירויות גבוהות עלולות להיות מסוכנות"
+
+msgid "Developers are not responsible for any issues related to the Instagram accounts."
+msgstr "המפתחים אינם אחראיים לשום תקלה מצד משתמשי האינסטגרם."
+
+msgid "Timeline Feed Settings"
+msgstr "הגדרות ציר הזמן"
+
+msgid "Refresh Interval"
+msgstr "מרווח רענון"
+
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s שעה"
+msgstr[1] "%s שעות"
+
+msgid "Max. amount of posts"
+msgstr "מקסימום כמות פוסטים"
+
+msgid "Maximum amount of the posts to be liked in each refresh. Post will be selected in descending order."
+msgstr "מקסימום כמות הפוסטים שיקבלו לייק בכל רענון. הפוסט ייבחר בסדר יורד."
+
+msgid "Enable Random Delays"
+msgstr "אפשר דיליי רנדומלי"
+
+msgid "If you enable this option, script will add random delays automatically between each requests."
+msgstr "אם תפעיל אפשרות זו, הסקריפט יוסיף דיליים רנדומליים בצורה אוטומטית בין בקשות."
+
+msgid "Delays could be up to 5 minutes."
+msgstr "הדיליים יכולים לקחת עד 5 דקות."
+
+msgid "Auto Like Module Settings"
+msgstr "הגדרות לייק אוטומטי"
+
+msgid "Activity has been stopped"
+msgstr "הפעילות הופסקה"
+
+msgid "Re-login is required for the account."
+msgstr "כניסה מחדש נדרשת למשתמש זה."
+
+msgid "User account is either disabled or expired."
+msgstr "המשתמש נחסם או פג תוקפו."
+
+msgid "Action re-scheduled"
+msgstr "פעילות תוזמנה מחדש"
+
+msgid "Couldn't find any target to search for the feed."
+msgstr "לא נמצא קהל יעד בעבור ציר הזמן."
+
+msgid "Couldn't get the feed"
+msgstr "לא הייתה אפשרות להשיג את ציר הזמן"
+
+msgid "Couldn't find the new media to like"
+msgstr "לא נמצאה מדיה חדשה ללייקים"
+
+msgid "Something went wrong"
+msgstr "משהו השתבש"
+
+msgid "Couldn't like the new media"
+msgstr "לא ניתן לתת לייק למדיה חדשה"
+
+msgid "Couldn't get the timeline feed"
+msgstr "לא היה ניתן להשיג את ציר הזמן"
+
+msgid "Couldn't find any new media to like in the timeline feed"
+msgstr "לא נמצאה מדיה חדשה בכדי לתת לייק בציר הזמן"
+
+msgid "Module is not accessible to your account."
+msgstr "מודול לא נגיש למשתמש שלך."
+
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s דקות"
+msgstr[1] "%s דקות"
+
+
+msgid "Best Sources"
+msgstr "דירוג קהלים (ביטא)"
+
+msgid "<span>Select </span> the actions"
+msgstr "<span>בחירת</span> פעולות"
+
+msgid "View Stories"
+msgstr "צפה בסטורי"
+
+msgid "Send Welcome Direct Messages"
+msgstr "שליחת הודעה לעוקבים חדשים"
+
+msgid "Turn on/off the actions that your account will run!"
+msgstr "כבה/הפעל את הפעולות האוטומטיות שיבוצעו במשתמש שלך!"
+
+msgid "<span>Choose</span> the source"
+msgstr "<span>בחירת</span> קהלים"
+
+msgid "Copy"
+msgstr "העתק"
+
+msgid "Paste"
+msgstr "הדבק"
+
+msgid "Choose here where your new followers will come from. Our platform will interage (like, comment,follow and more) with what you select here!"
+msgstr "בחר כאן את הקהלים שהפעולות יבוצעו עליהם. האפליקציה תתן לייקים, תגיב, תעקוב ועוד אחרי הקהלים הללו"!
+
+msgid "<span>Growth</span> your profile"
+msgstr "<span>התחל</span> פעולות בפרופיל"
+
+msgid "How fast our system should work? Set it here, but be careful."
+msgstr "אנו ממליצים להתחיל במהירות "איטי מאד" וכל יום-יומיים להעלות בדרגה עד "מהיר מאד"
+
+msgid "Business Accounts"
+msgstr "פרופילים עסקיים"
+
+msgid "Both"
+msgstr "עסקי ואישי"
+
+msgid "Business"
+msgstr "עסקי"
+
+msgid "Personal"
+msgstr "אישי"
+
+msgid "Follow Cicle"
+msgstr "מעגל עקבות"
+
+msgid "Automatically switch to unfollow when follow the number of accounts discribed here"
+msgstr "כאשר הפרופיל יגיע למספר העקבות הנ"ל הוא יחליף אוטומטית לביטול עקבות ויחזור על הפעולה"
+
+msgid "Everyone"
+msgstr "כולם"
+
+msgid "Male"
+msgstr "גברים"
+
+msgid "Female"
+msgstr "נשים"
+
+msgid "Do you want to interact with only certain genders?"
+msgstr "האם תרצה לבצע פעולות עם מגדר מסוים?"
+
+msgid "Ignore Private Accounts?"
+msgstr "האם להתעלם מפרופילים פרטיים?"
+
+msgid "Yes"
+msgstr "כן"
+
+msgid 
+msgstr ""
+
+msgid "Has Profile Picture?"
+msgstr "האם לעקוב רק אחרי פרופילים עם תמונת פרופיל?"
+
+msgid "Do you want to send a follow request to private accounts? (follow only)"
+msgstr "האם תרצה לשלוח בקשת עקבה לפרופילים פרטיים?"
+
+msgid "Do you only want to interact ONLY with accounts that have a profile picture?"
+msgstr "האם תרצה לעקוב אך ורק אחרי משתמשי אינסטגרם שיש להם תמונת פרופיל?"
+
+msgid "Resting an account will allow it to run longer without issues."
+msgstr "*אנו ממליצים על תקופת הפסקה של לפחות 6 שעות ביממה"
+
+msgid "<span>Follow</span> + Like"
+msgstr "<span>עקבה</span> + לייק"
+
+msgid "Enable this and we'll like some post from the followed user"
+msgstr "הפעל אפשרות זו כדי לתת לייק לפוסט של משתמש שביצעת אחריו עקבה"
+
+msgid "Like Count"
+msgstr "מספר לייקים"
+
+msgid "<span>Unfollow</span> settings"
+msgstr "<span>הגדרות</span> ביטול עקבה"
+
+msgid "Unfollow Everyone!"
+msgstr "ביטול עקבה לכל העוקבים"
+
+msgid "Don't unfollow my followers"
+msgstr "אל תבטל עקבה לעוקבים שלי"
+
+msgid "Caution: If you check this box we will remove ALL your followers (except those in White list)"
+msgstr "המלצה: סמנו את 2 הקופסאות וכך תורידו את כל העקבות שלא רלוונטיות לכם והשאירו רק את העקבות אחרי העוקבים שלכם"
+
+msgid "White list"
+msgstr "רשימה מוגנת"
+
+msgid "Adding accounts will insure we never unfollows them. We recommend adding your family, friends, and the people that engage with your content the most"
+msgstr "הוספת משתמשים ברשימה זו תבטיח שלעולם לא נבטל להם עקבה. אנו ממליצים להוסיף כאן את המשפחה, חברים והאנשים איתם אתם בקשר מתמיד"
+
+msgid "<span>Auto</span> comment"
+msgstr "<span>תגובה</span> אוטומטית"
+
+msgid "Comment"
+msgstr "תגובה"
+
+msgid "Source"
+msgstr "קהל"
+
+msgid "Add your comment"
+msgstr "כתוב את התגובה שלך..."
+
+msgid "Add Comment"
+msgstr "הוסף תגובה חדשה"
+
+msgid "You can use following variables in the comments"
+msgstr "תוכל להשתמש במשתנים הבאים בתגובות שלך:"
+
+msgid "Media owner's username"
+msgstr "שם בעל המדיה אליו מגיבים"
+
+msgid "Media owner's First Name"
+msgstr "שמו הפרטי של בעל המדיה אליו מגיבים"
+
+msgid "Media owner's full name. If user's full name is not set, username will be used."
+msgstr "שמו המלא של בעל המדיה אליו מגיבים, במידה והשם המלא לא הוגדר, שם המשתמש יחליף אותו."
+
+msgid "<span>Welcome</span> Direct Message"
+msgstr "<span>שליחת הודעה</span> לעוקבים חדשים"
+
+msgid "Messages"
+msgstr "הודעות"
+
+msgid "Add your message"
+msgstr "כתוב את ההודעה שלך..."
+
+msgid "Add Message"
+msgstr "הוסף הודעה חדשה"
+
+msgid "Black list"
+msgstr "רשימות סינון"
+
+msgid "Account Blacklist"
+msgstr "סנן משתמשים"
+
+msgid "We will never follow or engage with content posted by any of the selected accounts."
+msgstr "לעולם לא נעקוב או נבצע פעולות עם תוכן המפורסם ע"י המשתמשים המוגדרים ברשימה זו."
+
+msgid "Keywords Blacklist"
+msgstr "סנן מילות מפתח"
+
+msgid "Add words that will be blocked"
+msgstr "כתוב מילים שיהיו חסומות מפני הפעולות שלנו..."
+
+msgid "Skip media (caption and tags) and accounts (username, full name, biography, website) that match any of the selected keywords."
+msgstr "דלג על מדיה (כיתובים וטגיות) ומשתמשים (שם משתמש, שם מלא, ביוגרפיה, אתר) שתואמים למילות המפתח הנ\"ל."
+
+msgid "Use comma <strong>,</strong> to separe the keywords."
+msgstr "השתמש בפסיק (,) כדי להפריד את מילות המפתח"

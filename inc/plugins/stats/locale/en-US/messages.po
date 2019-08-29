@@ -1,0 +1,130 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Modules\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#:
+msgid: "Advanced Analytics"
+msgstr: "Advanced Analytics"
+
+#: 
+msgid "You dont have access to this module."
+msgstr "You dont have access to this module."
+
+#: 
+msgid "Invalid module"
+msgstr "Invalid module"
+
+#: 
+msgid "Module not available"
+msgstr "Module not available"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Changes saved successfully"
+
+#: 
+msgid "Loading"
+msgstr "Loading"
+
+#: 
+msgid "Total Followers"
+msgstr "Total Followers"
+
+#: 
+msgid "Followers"
+msgstr "Followers"
+
+#: 
+msgid "Followings"
+msgstr "Followings"
+
+#: 
+msgid "Posts"
+msgstr "Posts"
+
+#: 
+msgid "Total"
+msgstr "Total"
+
+#: 
+msgid "<span>Select</span> an account"
+msgstr "<span>Select</span> an account"
+
+#: 
+msgid "Last Update"
+msgstr "Last Update"
+
+#: 
+msgid "Click to Refresh"
+msgstr "Click to Refresh"
+
+#: 
+msgid "Submit"
+msgstr "Submit"
+
+#: 
+msgid "<span>Show</span> data from last days"
+msgstr "<span>Show</span> data from last days"
+
+#: 
+msgid "<span>Your</span> Profile"
+msgstr "<span>Your</span> Profile"
+
+#: 
+msgid "Engagement"
+msgstr "Engagement"
+
+#: 
+msgid "<span>Actions</span> running in your account"
+msgstr "<span>Actions</span> running in your account"
+
+#: 
+msgid "<span>Profile</span> Growing Evolution"
+msgstr "<span>Profile</span> Growing Evolution"
+
+#: 
+msgid "<span>New</span> Followers vs Followings"
+msgstr "<span>New</span> Followers vs Followings"
+
+#: 
+msgid "<span>Total</span> Followers vs Followings"
+msgstr "<span>Total</span> Followers vs Followings"
+
+#: 
+msgid "<span>Top 3 Post</span> based on <small>last 10 posts</small>"
+msgstr "<span>Top 3 Post</span> based on <small>last 10 posts</small>"
+
+#: 
+msgid "<span>Daily</span> Stats"
+msgstr "<span>Daily</span> Stats"
+
+#: 
+msgid "Date"
+msgstr "Date"
+
+#: 
+msgid "Average"
+msgstr "Average"
+
+#: 
+msgid "<span>No</span> data"
+msgstr "<span>No</span> data"
+
+#: 
+msgid "We could not retrieve data from your Account"
+msgstr "We could not retrieve data from your Account"
+
+#: 
+msgid "Please, contact the support."
+msgstr "Please, contact the support."
+
+
+#: 
+msgid "<span>Number of</span> result displayed"
+msgstr "<span>Number of</span> result displayed"

@@ -1,0 +1,13 @@
+{
+    "name": "ivoglent/ffmpeg-composer-bin",
+    "description": "A simple repository for FFMPEG binaries lib using PHP composer",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ivoglent Nguyen",
+            "email": "ivoglent@gmail.com"
+        }
+    ],
+    "require": {},
+    "bin": ["bin/ffmpeg", "bin/ffprobe"]
+}

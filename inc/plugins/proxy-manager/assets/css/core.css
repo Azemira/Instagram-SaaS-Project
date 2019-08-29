@@ -1,0 +1,169 @@
+.arp-tab-heads {
+    padding: 0 25px;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #3b7cff;
+    color: #fff; }
+.arp-tab-heads a {
+    float: left;
+    margin-top: 15px;
+    margin-right: 40px;
+    padding: 10px 0;
+    position: relative;
+    color: inherit; }
+.arp-tab-heads a:last-child {
+    margin-right: 0; }
+.arp-tab-heads a.active:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ff3d3d;
+    content: ""; }
+
+.arp-caption-input {
+    min-height: 132px;
+    height: auto; }
+
+/* Log list */
+.arp-log-list-item {
+    position: relative;
+    padding: 12px 44px 12px 128px;
+    border-bottom: 1px solid #e0e0e0;
+    -webkit-transition: all ease 0.2s;
+    -moz-transition: all ease 0.2s;
+    transition: all ease 0.2s; }
+.arp-log-list-item:hover {
+    background-color: rgba(59, 124, 255, 0.1); }
+
+.arp-log-list-item .circle {
+    position: absolute;
+    top: 12px;
+    left: 44px;
+    width: 60px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-transition: all ease 0.2s;
+    -moz-transition: all ease 0.2s;
+    transition: all ease 0.2s; }
+.arp-log-list-item .circle .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-position: center;
+    background-size: cover; }
+.arp-log-list-item .circle .text {
+    color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    margin-top: -9px;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase; }
+
+.arp-log-list-item.error .circle {
+    color: #fff;
+    background-color: #ff3d3d; }
+
+.arp-log-list-item .inner {
+    position: relative;
+    padding-right: 256px;
+    min-height: 60px;
+    font-size: 14px;
+    line-height: 17px;
+    color: #212121; }
+
+.arp-log-list-item .action {
+    margin-top: 9px;
+    white-space: nowrap;
+    line-height: 22px; }
+.arp-log-list-item .action a {
+    font-weight: 500;
+    color: inherit; }
+.arp-log-list-item .action a:hover {
+    color: #3b7cff; }
+.arp-log-list-item .action .date {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #9b9b9b; }
+
+.arp-log-list-item .error-details {
+    margin: 3px 0 10px;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: monospace; }
+
+.arp-log-list-item .meta {
+    margin-top: 3px;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #9b9b9b; }
+.arp-log-list-item .meta .icon {
+    color: #3b7cff; }
+
+.arp-log-list-item a.meta:hover {
+    color: #212121; }
+
+.arp-log-list-item .buttons {
+    position: absolute;
+    top: 9px;
+    right: 0; }
+.arp-log-list-item .buttons .button {
+    float: left;
+    margin-right: 12px; }
+.arp-log-list-item .buttons .button:last-child {
+    margin-right: 0; }
+
+@media screen and (max-width: 768px) {
+    .arp-log-list-item {
+        padding: 12px 26px 12px 110px; }
+    .arp-log-list-item .circle {
+        left: 28px; }
+    .arp-log-list-item .inner {
+        padding-right: 0; }
+    .arp-log-list-item .buttons {
+        position: relative;
+        top: 0;
+        margin-top: 14px; } }
+
+.arp-next-schedule,
+.arp-amount-of-action {
+    padding: 12px;
+    text-align: center;
+    font-size: 12px;
+    color: #9b9b9b;
+    border-bottom: 1px solid #e0e0e0; }
+
+.select2-container {
+    z-index: 9999;
+}
+
+.border {
+    border: 1px solid #dcdcdc;
+}
+
+/* ToMiddle */
+.to-middle {
+    margin: 200px auto 100px;
+    max-width: 400px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.field-tips {
+    text-align: left;
+}
+
+.refresh-country {
+    cursor: pointer;
+}

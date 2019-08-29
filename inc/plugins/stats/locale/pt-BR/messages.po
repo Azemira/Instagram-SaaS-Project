@@ -1,0 +1,145 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Managment Modules\n"
+"Language: pt-br\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#:
+msgid: "Advanced Analytics"
+msgstr: "Estatísticas Avançadas"
+
+#: 
+msgid "You dont have access to this module."
+msgstr "Você não tem acesso a esse módulo."
+
+#: 
+msgid "Invalid module"
+msgstr "Módulo Inválido"
+
+#: 
+msgid "Module not available"
+msgstr "Módulo indisponível"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Alterações salvas com sucesso!"
+
+#: 
+msgid "Loading"
+msgstr "Carregando"
+
+#: 
+msgid "Total Followers"
+msgstr "Total de Seguidores"
+
+#: 
+msgid "Followers"
+msgstr "Seguidores"
+
+#: 
+msgid "Followings"
+msgstr "Você segue"
+
+#: 
+msgid "Posts"
+msgstr "Posts"
+
+#: 
+msgid "Total"
+msgstr "Total"
+
+#: 
+msgid "<span>Select</span> an account"
+msgstr "<span>Selecione</span> uma conta"
+
+#: 
+msgid "Last Update"
+msgstr "Última atualização"
+
+#: 
+msgid "Click to Refresh"
+msgstr "Clique para atualizar"
+
+#: 
+msgid "Submit"
+msgstr "Enviar"
+
+#: 
+msgid "<span>Show</span> data from last days"
+msgstr "<span>Exibir</span> dados dos dias"
+
+#: 
+msgid "<span>Your</span> Profile"
+msgstr "<span>Your</span> Perfil"
+
+#: 
+msgid "Engagement"
+msgstr "Engajamento"
+
+#: 
+msgid "<span>Actions</span> running in your account"
+msgstr "<span>Ações</span> que sua conta executa"
+
+#: 
+msgid "<span>Profile</span> Growing Evolution"
+msgstr "<span>Evolução</span> do crescimento do perfil"
+
+#: 
+msgid "<span>New</span> Followers vs Followings"
+msgstr "<span>Novos</span> Seguidores vs Novos Seguintes"
+
+#: 
+msgid "<span>Total</span> Followers vs Followings"
+msgstr "<span>Total</span> de Seguidores vs Total de Seguintes"
+
+#: 
+msgid "<span>Top 3 Post</span> based on <small>last 10 posts</small>"
+msgstr "<span>Top 3</span> Posts <small>com base nos últimos 10 posts</small>"
+
+#: 
+msgid "<span>Daily</span> Stats"
+msgstr "<span>Estatísticas</span> Diárias"
+
+#: 
+msgid "Date"
+msgstr "Data"
+
+#: 
+msgid "Average"
+msgstr "Média"
+
+
+#: 
+msgid "<span>No</span> data"
+msgstr "<span>Sem</span> dados"
+
+#: 
+msgid "We could not retrieve data from your Account"
+msgstr "Não foi possível buscar dados da sua conta"
+
+#: 
+msgid "<span>Number of</span> result displayed"
+msgstr "<span>Número de</span> registros exibidos"
+
+#: 
+msgid "You need to config this module before enable it. <a href="%s">Click here</a>"
+msgstr "Você precisa configurar esse módulo antes de habilitá-lo. <a href="%s">Clique aqui</a>"
+
+#: 
+msgid "You need to set at least %s targets before enable it. <a href="%s">Click here</a>"
+msgstr "Você precisa configurar ao menos %s alvos antes de habilitar esse módulo. <a href="%s">Clique aqui</a>"
+
+#: 
+msgid "You need to set at least %s comments before enable it. <a href="%s">Click here</a>"
+msgstr "Você precisa configurar ao menos %s comentários antes de habilitar esse módulo. <a href="%s">Clique aqui</a>"
+
+
+#: 
+msgid "You need to set at least %s mensagens before enable it. <a href="%s">Click here</a>"
+msgstr "Você precisa configurar ao menos %s mensagens antes de habilitar esse módulo. <a href="%s">Clique aqui</a>"
+
+

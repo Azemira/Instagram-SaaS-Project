@@ -1,0 +1,259 @@
+.ac-tab-heads {
+  padding: 0 25px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 17px;
+  background-color: #3b7cff;
+  color: #fff; }
+  .ac-tab-heads a {
+    float: left;
+    margin-top: 15px;
+    margin-right: 40px;
+    padding: 10px 0;
+    position: relative;
+    color: inherit; }
+    .ac-tab-heads a:last-child {
+      margin-right: 0; }
+  .ac-tab-heads a.active:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ff3d3d;
+    content: ""; }
+
+.new-comment-input {
+  min-height: 132px;
+  height: auto; }
+
+.ac-comment-list {
+  margin-top: 30px; }
+
+.ac-comment-list-item {
+  float: left;
+  clear: both;
+  position: relative;
+  padding: 16px 21px 16px 48px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #9b9b9b;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px; }
+  .ac-comment-list-item .remove-comment-btn {
+    position: absolute;
+    font-size: 20px;
+    top: 16px;
+    left: 18px;
+    color: #3b7cff; }
+    .ac-comment-list-item .remove-comment-btn:hover {
+      color: #ff3d3d; }
+
+/* Log list */
+.ac-log-list-item {
+  position: relative;
+  padding: 12px 44px 12px 128px;
+  border-bottom: 1px solid #e0e0e0;
+  -webkit-transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+  .ac-log-list-item:hover {
+    background-color: rgba(59, 124, 255, 0.1); }
+
+.ac-log-list-item .circle {
+  position: absolute;
+  top: 12px;
+  left: 44px;
+  width: 60px;
+  height: 60px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-transition: all ease 0.2s;
+  -moz-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+  .ac-log-list-item .circle .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-position: center;
+    background-size: cover; }
+  .ac-log-list-item .circle .text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    margin-top: -9px;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase; }
+
+.ac-log-list-item.error .circle {
+  color: #fff;
+  background-color: #ff3d3d; }
+
+.ac-log-list-item .inner {
+  position: relative;
+  padding-right: 240px;
+  min-height: 60px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #212121; }
+
+.ac-log-list-item .action {
+  margin-top: 9px;
+  line-height: 22px; }
+  .ac-log-list-item .action a {
+    font-weight: 500;
+    color: inherit; }
+    .ac-log-list-item .action a:hover {
+      color: #3b7cff; }
+  .ac-log-list-item .action .date {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #9b9b9b; }
+  .ac-log-list-item .action .comment {
+    margin: 3px 0 10px;
+    max-width: 420px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 300; }
+  .ac-log-list-item .action .error-details {
+    margin: 3px 0 10px;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: monospace; }
+
+.ac-log-list-item .meta {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #9b9b9b; }
+  .ac-log-list-item .meta .icon {
+    color: #3b7cff; }
+  .ac-log-list-item .meta:hover {
+    color: #212121; }
+
+.ac-log-list-item .buttons {
+  position: absolute;
+  top: 9px;
+  right: 0; }
+  .ac-log-list-item .buttons .button {
+    float: left;
+    margin-right: 12px; }
+    .ac-log-list-item .buttons .button:last-child {
+      margin-right: 0; }
+
+@media screen and (max-width: 768px) {
+  .ac-log-list-item {
+    padding: 12px 26px 12px 110px; }
+  .ac-log-list-item .circle {
+    left: 28px; }
+  .ac-log-list-item .inner {
+    padding-right: 0; }
+  .ac-log-list-item .buttons {
+    position: relative;
+    top: 0;
+    margin-top: 14px; } }
+
+.ac-next-schedule,
+.ac-amount-of-action {
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #9b9b9b;
+  border-bottom: 1px solid #e0e0e0; }
+
+
+  /* Style the tab */
+.section-content .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.section-content .tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.section-content .tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.section-content .tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.section-content .tabcontent {
+  display: none;
+  border-top: none;
+}
+  /*duplicate settings css*/
+
+a:hover {
+
+  text-decoration: none !important;
+}
+
+* {
+-webkit-box-sizing: content-box;
+   -moz-box-sizing: content-box;
+        box-sizing: content-box;
+}
+*:before,
+*:after {
+-webkit-box-sizing: content-box;
+   -moz-box-sizing: content-box;
+        box-sizing: content-box;
+}
+
+
+.bootstrap-select .dropdown-toggle .dropdown-menu:focus{
+outline: none !important;
+outline: 0 !important;
+outline-offset: 0 !important;
+}
+
+button.btn.dropdown-toggle.btn-light {
+max-height:20px;
+}
+
+.filter-option {
+  max-height:20px;
+  max-width:220px;
+}
+button.btn.dropdown-toggle.btn-light {
+max-height:20px;
+max-width:220px;
+}
+
+.dropdown-menu.show {
+max-width: 220px;
+width:100%;
+}
+.dropdown-menu.show {
+min-width:246px;
+}
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+padding:0
+}
+
+ul.field-tips.mb-20 {
+padding:0px
+}
