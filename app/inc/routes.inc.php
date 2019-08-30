@@ -63,6 +63,9 @@ App::addRoute("GET|POST", "/accounts/new/?", "Account");
 // Edit Instagram Account
 App::addRoute("GET|POST", "/accounts/[i:id]/?", "Account");
 
+App::addRoute("GET|POST", "/errors-overview/[i:id]/?", "Error");
+
+
 // Caption Templates
 App::addRoute("GET|POST", "/captions/?", "Captions");
 // New Caption Template
