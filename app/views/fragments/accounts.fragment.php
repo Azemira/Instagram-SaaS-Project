@@ -31,6 +31,10 @@
                                             </a>
                                         <?php endif ?>
                                         </div>
+                                        <div class="quick-info">
+
+                                            <a class="color-danger js-re-connect" data-id="<?= $a->get("id") ?>" href="<?= APPURL."/errors-overview/" . $a->get("id")?>"><span class='mdi mdi-information'></span>
+                                            <?= __("Error overview") ?> </a> </div>
                                         <div class="quick-info inactive-plugins">
                                         <?php
 
