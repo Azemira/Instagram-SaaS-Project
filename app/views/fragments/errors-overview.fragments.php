@@ -9,12 +9,12 @@
 
                 // print_r($value);
                 // die();
-
-                echo ' <table class="table table-hover-">
+                echo'<h3 class="error-plugin-title">' .$plugin_name .'</h3>';
+                echo ' <table class="table table-hover table-body-scroll">
                         <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Plugin Name</th>
+                        <!-- <th scope="col">Plugin Name</th> -->
                         <th scope="col">Message</th>
                         <th scope="col">Details</th>
                         <th scope="col">Date</th>
@@ -38,7 +38,7 @@
                         }
                         echo "<tr>";
                         echo "<td>$key</td>";
-                        echo "<td>$plugin_name</td>";
+                        // echo "<td>$plugin_name</td>";
                         echo "<td>$print_message</td>";
                         echo "<td>$details</td>";
                         echo "<td>$value2->date</td>";
@@ -59,8 +59,10 @@
 
                 echo ' </table>';
             }
+            // echo"<div>Chat Bot</div>";
+            echo'<h3 class="error-plugin-title">Chat Bot</h3>';
 
-            echo ' <table class="table table-hover-">
+            echo ' <table class="table table-hover table-body-scroll">
                 <thead>
                 <tr>
                 <th scope="col">#</th>

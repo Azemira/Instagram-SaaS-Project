@@ -31,7 +31,7 @@
                                             </a>
                                         <?php endif ?>
                                         </div>
-                                        <div class="quick-info">
+                                        <div class="quick-info quick-info-error">
 
                                             <a class="color-danger js-re-connect" data-id="<?= $a->get("id") ?>" href="<?= APPURL."/errors-overview/" . $a->get("id")?>"><span class='mdi mdi-information'></span>
                                             <?= __("Error overview") ?> </a> </div>
@@ -40,26 +40,38 @@
 
                                         $are_plugins_activated = $this->checkForActivePluggins($a->get("id"), $AuthUser->get("id"));
                                         $print_inactive  = false;
+                                        $counter = 0;
 
                                         foreach ($are_plugins_activated as $inner_array => $value) {
 
                                             if ($value['active'] == 0) {
-
+                                                $counter++;
                                                 $print_inactive  = true;
                                             }
                                         }
 
                                         if ($print_inactive) {
 
-                                            echo "<span class='color-danger ml-5'><span class='mdi mdi-information' style = 'white-space: normal;'> Inactive plugins</span></span><br>";
-                                             foreach ($are_plugins_activated as $inner_array => $inner_value) {
+                                            
 
+                                            echo "<span class='color-danger ml-5'><span class='mdi mdi-information' style = 'white-space: normal;'> Inactive plugins</span></span><br>";
+                                            echo '<div class="inactivate-plugins-container">'; 
+                                            foreach ($are_plugins_activated as $inner_array => $inner_value) {
+                                                $counter--;
                                                 if ($inner_value['active'] == 0) {
 
-                                                    echo  " <a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a><br>";
+                                                    echo  " <span><a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a></span>";
+                                                    // echo '<span><a href="http://localhost/saas/e/auto-like/63">Auto Like</a></span>';
+                                                    
+                                                    if($counter > 0) {
+                                                        
+                                                        echo " | ";
+                                                    }
+
                                                     
                                                 }
                                             }
+                                            echo "</div>";
                                         } else {
                                             echo "<span class='all-plugins-are-active'>All plugins are active</span>";
                                         }

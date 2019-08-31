@@ -200,7 +200,7 @@ public function reconnect()
             );
         }
 
-        if (!empty($query_auto_follow)) {
+        if (!empty($query_chatboot)) {
 
             $are_plugins_activated['Chatboot'] = array(
 

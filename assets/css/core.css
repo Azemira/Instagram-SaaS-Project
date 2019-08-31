@@ -3133,5 +3133,49 @@ nav {
 
 .quick-info.inactive-plugins {
   overflow: unset;
-  padding-bottom: 70px;
+  padding-bottom: 40px;
+}
+
+.quick-info.inactive-plugins{
+  white-space : unset;
+}
+.quick-info-error:after{
+  height: 2px;
+  background: #D0D0D0;
+  content: '';
+  display: block;
+  border-radius: 2px;
+  bottom: 0px;
+  right: 40px;
+  left: 40px;
+  position: absolute;
+}
+
+.quick-info.quick-info-error {
+  position: relative;
+  padding-bottom: 10px;
+  padding-top: 10px
+
+}
+.inactivate-plugins-container {
+  margin-top: 18px;
+}
+
+/*Error page css*/
+
+.table-body-scroll tbody {
+  display: block;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.table-body-scroll thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-body-scroll th {
+  text-align: left;
 }
