@@ -14,7 +14,6 @@
                         <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <!-- <th scope="col">Plugin Name</th> -->
                         <th scope="col">Message</th>
                         <th scope="col">Details</th>
                         <th scope="col">Date</th>
@@ -38,19 +37,14 @@
                         }
                         echo "<tr>";
                         echo "<td>$key</td>";
-                        // echo "<td>$plugin_name</td>";
                         echo "<td>$print_message</td>";
                         echo "<td>$details</td>";
                         echo "<td>$value2->date</td>";
-
-                        //    echo "<td>details</td>";
-
                         echo "</tr>";
                     }
                 } else {
                     echo "<tr>";
                     echo "<td>0</td>";
-                    echo "<td>$plugin_name</td>";
                     echo "<td>Empty table</td>";
                     echo "<td>Empty table</td>";
                     echo "<td>Empty table</td>";
@@ -66,7 +60,6 @@
                 <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Plugin Name</th>
                 <th scope="col">Message</th>
                 <th scope="col">Details</th>
                 <th scope="col">Date</th>
@@ -88,7 +81,6 @@
 
                     echo "<tr>";
                     echo "<td>$key</td>";
-                    echo "<td>Chat Bot</td>";
                     echo "<td>$print_message</td>";
                     echo "<td>$details</td>";
                     echo "<td>$value2->date</td>";
@@ -98,7 +90,6 @@
             } else {
                 echo "<tr>";
                 echo "<td>0</td>";
-                echo "<td>Chat Bot</td>";
                 echo "<td>Empty table</td>";
                 echo "<td>Empty table</td>";
                 echo "<td>Empty table</td>";
