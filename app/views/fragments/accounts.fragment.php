@@ -63,7 +63,7 @@
                                                     echo  " <span><a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a></span>";
                                                     // echo '<span><a href="http://localhost/saas/e/auto-like/63">Auto Like</a></span>';
                                                     
-                                                    if($counter > 0) {
+                                                    if($counter >= 0) {
                                                         
                                                         echo " | ";
                                                     }
