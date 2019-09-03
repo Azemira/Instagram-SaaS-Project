@@ -51,23 +51,20 @@
                                         }
 
                                         if ($print_inactive) {
-
                                             
-
                                             echo "<span class='color-danger ml-5'><span class='mdi mdi-information' style = 'white-space: normal;'> Inactive plugins</span></span><br>";
                                             echo '<div class="inactivate-plugins-container">'; 
                                             foreach ($are_plugins_activated as $inner_array => $inner_value) {
-                                                $counter--;
                                                 if ($inner_value['active'] == 0) {
-
-                                                    echo  " <span><a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a></span>";
-                                                    // echo '<span><a href="http://localhost/saas/e/auto-like/63">Auto Like</a></span>';
                                                     
-                                                    if($counter >= 0) {
+                                                    echo  " <span><a href=" . APPURL . "/" . $inner_value['url'] . "/" . $a->get("id") . ">" . $inner_array . "</a></span>";
+                                                    
+                                                    if($counter > 1) {
                                                         
                                                         echo " | ";
                                                     }
-
+                                                    
+                                                    $counter--;
                                                     
                                                 }
                                             }
