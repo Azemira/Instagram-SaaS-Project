@@ -61,12 +61,16 @@
                                                 <?php if (!empty($display_num_of_errors)) {
 
                                                             echo "$display_num_of_errors New Erros";
+                                                        }elseif(empty($checkIfErrorAppear[0]->error_count)){
+
+                                                            echo "Enable error tracking";
+
                                                         } else {
 
                                                             echo "Error overview";
                                                         }
 
-                                                        ?>
+                                                ?>
 
                                             </a>
 
