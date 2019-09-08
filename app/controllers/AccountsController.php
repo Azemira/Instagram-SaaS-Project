@@ -217,4 +217,58 @@ public function reconnect()
 
         return $are_plugins_activated;
     }
+
+    function checkIfErrorAppear($account_id, $user_id) {
+
+        $query = \DB::table('np_user_checks')
+        ->where("user_id", "=", $user_id)
+        ->where("value", "=", 'error_checking')
+        ->where("account_id", "=", $account_id)
+        ->select("*")
+        ->get();
+
+
+        return $query;
+
+    }
+
+    public function countErrors($account_id, $user_id) {
+
+             $np_auto_comment_log = \DB::table('np_auto_comment_log')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->where("status", "=", 'error')
+            ->orderBy("date","DESC")
+            ->select("*")
+            ->get();
+
+            $np_auto_follow_log = \DB::table('np_auto_follow_log')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->where("status", "=", 'error')
+            ->orderBy("date","DESC")
+            ->select("*")
+            ->get();
+
+            $np_auto_like_log = \DB::table('np_auto_like_log')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->where("status", "=", 'error')
+            ->orderBy("date","DESC")
+            ->select("*")
+            ->get();
+
+
+            $np_chatbot_error_log = \DB::table('np_chatbot_error_log')
+            ->where("account_id", "=", $account_id)
+            ->where("user_id", "=", $user_id)
+            ->orderBy("date","DESC")
+            ->select("*")
+            ->get();
+
+            $total_errors = count($np_auto_comment_log) + count($np_auto_follow_log) + count($np_auto_like_log) + count($np_chatbot_error_log);
+
+        return $total_errors;
+    }
+
 }

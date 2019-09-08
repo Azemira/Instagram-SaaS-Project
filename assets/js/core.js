@@ -8,10 +8,11 @@ $(function() {
     NextPost.FileManager();
     NextPost.LoadMore();
     NextPost.Popups();
-
     NextPost.RemoveListItem();
     NextPost.AsideList();
     NextPost.ReConnect();
+    // NextPost.ErrorOverview();
+
 });
 
 
@@ -1651,6 +1652,25 @@ NextPost.ReConnect = function()
                     });
                 }
             }
+        }); 
+    });
+}
+
+
+var NextError = {};
+
+NextError.ErrorOverview = function () {
+        $(document).ready(function() { 
+         var url = window.location.href;
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                errors_seen: "errors_seen"
+            }
+        
         }); 
     });
 }
