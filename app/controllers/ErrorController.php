@@ -76,14 +76,17 @@ class ErrorController extends Controller
 
         if (\Input::post("errors_seen") == "errors_seen") {
             $this->save();
-        }
+        }elseif(\Input::request("track_errors") == "track_errors") {
+            $this->trackErrors(); 
 
-        $this->view("errors-overview");
+        }
+    
+    
+    $this->view("errors-overview");
+
     }
 
-
-    public function save()
-    {
+    public function save()    {
 
         $Route = $this->getVariable("Route");
         $Account = \Controller::model("Account", $Route);
@@ -101,6 +104,19 @@ class ErrorController extends Controller
             ->set("value", 'error_checking')
             ->set('date', date("Y-m-d H:i:s"))
             ->save();
+    }
+
+    public function trackErrors()    {
+
+        $this->save();
+
+        $this->resp->result = 0;
+        $Route = $this->getVariable("Route");
+        $Account = \Controller::model("Account", $Route);
+        $error_count = $this->countErrors($Account->get("id"), $Account->get("user_id"));
+
+            $this->resp->result = $error_count;
+            $this->jsonecho();
     }
 
     public function countErrors($account_id, $user_id)

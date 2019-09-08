@@ -11,8 +11,6 @@ $(function() {
     NextPost.RemoveListItem();
     NextPost.AsideList();
     NextPost.ReConnect();
-    // NextPost.ErrorOverview();
-
 });
 
 
@@ -1672,5 +1670,31 @@ NextError.ErrorOverview = function () {
             }
         
         }); 
+    });
+}
+
+NextError.TrackErrors = function () {
+
+    $("body").on("click", "a.enable-errors", function () {
+        var id = $(this).data("id");
+        var url = $(this).data("url");
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'jsonp',
+            data: {
+                track_errors: "track_errors"
+            },
+            success: function (resp) {
+
+                if (resp.result >= 0) {
+                    var link_contaner = jQuery('[data-id=' + id + ' ]a.enable-errors').parent();
+                    jQuery("[data-id='" + id + "' ]a.enable-errors").remove();
+                    jQuery('<a class="color-danger" href= ' + url + '><span class="mdi mdi-information"></span> ' + resp.result + '  Total untracked errors</a>').prependTo(link_contaner).parent();
+                }
+            }
+
+        });
     });
 }

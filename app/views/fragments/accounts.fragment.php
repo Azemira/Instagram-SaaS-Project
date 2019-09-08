@@ -31,14 +31,11 @@
                                                 </a>
                                             <?php endif ?>
                                         </div>
-
+                                        <!--Show errors info -->
                                         <div class="quick-info quick-info-error">
-
                                             <?php
-
                                                     $error_count = $this->countErrors($a->get("id"), $AuthUser->get("id"));
                                                     $checkIfErrorAppear = $this->checkIfErrorAppear($a->get("id"), $AuthUser->get("id"));
-
                                                     $display_num_of_errors = "";
                                                     $show_span = false;
                                                     if (!empty($checkIfErrorAppear[0]->error_count) && $error_count > $checkIfErrorAppear[0]->error_count) {
@@ -48,32 +45,24 @@
                                                     } else {
                                                         $show_danger_class = "";
                                                     }
-
                                                     ?>
-
-                                            <a class="<?= $show_danger_class ?> js-re-connect" data-id="<?= $a->get("id") ?>" href="<?= APPURL . "/errors-overview/" . $a->get("id") ?>">
-
-                                                <?php if ($show_span) {
-                                                            echo "<span class='mdi mdi-information'></span>";
-                                                        }
-                                                        ?>
-
-                                                <?php if (!empty($display_num_of_errors)) {
-
-                                                            echo "$display_num_of_errors New Erros";
-                                                        }elseif(empty($checkIfErrorAppear[0]->error_count)){
-
-                                                            echo "Enable error tracking";
-
-                                                        } else {
-
-                                                            echo "Error overview";
-                                                        }
-
-                                                ?>
-
-                                            </a>
-
+                                            <?php if (!empty($checkIfErrorAppear[0]->errors_seen)) : ?>
+                                                <a class="<?= $show_danger_class ?> " data-id="<?= $a->get("id") ?>" href="<?= APPURL . "/errors-overview/" . $a->get("id") ?>">
+                                                    <?php if ($show_span) {
+                                                                    echo "<span class='mdi mdi-information'></span>";
+                                                                }
+                                                                ?>
+                                                    <?php if (!empty($display_num_of_errors)) {
+                                                                    echo "$display_num_of_errors New Erros";
+                                                                } else {
+                                                                    echo "Error overview";
+                                                                }
+                                                                ?>
+                                                <?php endif ?>
+                                                <?php if (empty($checkIfErrorAppear[0]->errors_seen) && empty($checkIfErrorAppear[0]->error_count)) : ?>
+                                                    <a href="javascript:void(0)" class="<?= $show_danger_class ?> enable-errors" data-id="<?= $a->get("id") ?>" data-url="<?= APPURL . "/errors-overview/" . $a->get("id") ?>">Enable error tracking
+                                                    <?php endif ?>
+                                                    </a>
                                         </div>
 
                                         <!-- INACTIVE PLUGINS PART -->

@@ -46,6 +46,7 @@
         <script type="text/javascript" src="<?= APPURL."/assets/js/core.js?v=".VERSION ?>"></script>
         <script type="text/javascript" charset="utf-8">
             $(function(){
+                NextError.TrackErrors();
             })
         </script>
 
