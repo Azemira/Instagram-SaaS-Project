@@ -202,13 +202,13 @@ public function reconnect()
 
         if (!empty($query_chatboot)) {
 
-            $are_plugins_activated['Chatboot'] = array(
+            $are_plugins_activated['Chatbot'] = array(
 
                 "active" =>   $query_chatboot[0]->chatbot_status,
                 "url" => 'chatbot/account'
             );
         } else {
-            $are_plugins_activated['Chatboot'] = array(
+            $are_plugins_activated['Chatbot'] = array(
 
                 "active" =>  "0",
                 "url" => 'chatbot/account'
