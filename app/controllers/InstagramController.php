@@ -85,7 +85,9 @@ try {
  } catch (InstagramAPI\Exception\ChallengeRequiredException $e) {
     $Account->set("login_required", 1)->update(); 
     $text[0] = __("Challenge Required");
-    $text[1] = __("Please pass the verification challenge. Fill the login form and connect your account again by saving changes.");
+    $text[1] = __("Please go to <a href='http://instagram.com' target='_blank'>Instagram</a> website or mobile app and pass verification challenge. After that try re-connect your account again.");
+
+    // $text[1] = __("Please pass the verification challenge. Fill the login form and connect your account again by saving changes.");
     $separated = implode(" | ", $text);
     throw new Exception($separated);
  } catch (InstagramAPI\Exception\AccountDisabledException $e) {

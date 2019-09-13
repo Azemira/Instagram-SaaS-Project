@@ -1,10 +1,6 @@
 <?php 
 // Used for cache control
-define("VERSION", "040215"); 
-
-
-
-
+define("VERSION", "040223"); 
 
 // Application version name
 define("APP_VERSION", "4.2.0"); 

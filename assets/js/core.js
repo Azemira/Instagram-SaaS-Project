@@ -8,7 +8,6 @@ $(function() {
     NextPost.FileManager();
     NextPost.LoadMore();
     NextPost.Popups();
-
     NextPost.RemoveListItem();
     NextPost.AsideList();
     NextPost.ReConnect();
@@ -1652,5 +1651,50 @@ NextPost.ReConnect = function()
                 }
             }
         }); 
+    });
+}
+
+
+var NextError = {};
+
+NextError.ErrorOverview = function () {
+        $(document).ready(function() { 
+         var url = window.location.href;
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                errors_seen: "errors_seen"
+            }
+        
+        }); 
+    });
+}
+
+NextError.TrackErrors = function () {
+
+    $("body").on("click", "a.enable-errors", function () {
+        var id = $(this).data("id");
+        var url = $(this).data("url");
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'jsonp',
+            data: {
+                track_errors: "track_errors"
+            },
+            success: function (resp) {
+
+                if (resp.result >= 0) {
+                    var link_contaner = jQuery('[data-id=' + id + ' ]a.enable-errors').parent();
+                    jQuery("[data-id='" + id + "' ]a.enable-errors").remove();
+                    jQuery('<a class="color-danger" href= ' + url + '><span class="mdi mdi-information"></span> ' + resp.result + '  Total untracked errors</a>').prependTo(link_contaner).parent();
+                }
+            }
+
+        });
     });
 }
