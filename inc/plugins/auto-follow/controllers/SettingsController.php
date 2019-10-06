@@ -37,6 +37,8 @@ class SettingsController extends \Controller
         // Plugin settings
         $this->setVariable("Settings", namespace\settings());
 
+        $SpeedSettings = $this->getSpeedSettings();
+        $this->setVariable("SpeedSettings", $SpeedSettings);
         // Actions
         if (\Input::post("action") == "save") {
             $this->save();
@@ -52,10 +54,11 @@ class SettingsController extends \Controller
      */
     private function save()
     {  
+        $this->updateSettings();
         $Settings = $this->getVariable("Settings");
         if (!$Settings->isAvailable()) {
             // Settings is not available yet
-            $Settings->set("name", "plugin-auto-follow-settings");
+            $Settings->set("name", "plugin-".self::IDNAME."-settings");
         }
 
         $speeds = [
@@ -77,9 +80,30 @@ class SettingsController extends \Controller
         }
 
 
+      // Timeline settings
+      $timeline_refresh_interval = (int)\Input::post("timeline-refresh-interval");
+      $timeline_max_comment = (int)\Input::post("timeline-max-comment");
+
+      if ($timeline_refresh_interval < 0) {
+          $timeline_refresh_interval = 1800;
+      }
+
+      if ($timeline_max_comment < 0) {
+          $timeline_max_comment = 1;
+      }
+
+      $timeline_settings = [
+          "refresh_interval" => $timeline_refresh_interval,
+          "max_comment" => $timeline_max_comment
+      ];
+
+
+      // Other settings
         $random_delay = (bool)\Input::post("random_delay");
+    
         
         $Settings->set("data.speeds", $speeds)
+                 ->set("data.timeline", $timeline_settings)
                  ->set("data.random_delay", $random_delay)
                  ->save();
 
@@ -88,5 +112,65 @@ class SettingsController extends \Controller
         $this->jsonecho();
 
         return $this;
+    }
+    private function updateSettings(){
+
+        $json_data = '[{ 
+            "very-slow" : {
+                "wait-from": '.$this->validateInput(\Input::post("very-slow-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("very-slow-wait-to")).',
+                "comment-limit-min": '.\Input::post("very-slow-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("very-slow-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("very-slow-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("very-slow-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("very-slow-comment-per-day-limit").'
+            },
+            "slow" : {
+                "wait-from": '.$this->validateInput(\Input::post("slow-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("slow-wait-to")).',
+                "comment-limit-min": '.\Input::post("slow-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("slow-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("slow-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("slow-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("slow-comment-per-day-limit").'
+            },
+            "medium" : {
+                "wait-from": '.$this->validateInput(\Input::post("medium-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("medium-wait-to")).',
+                "comment-limit-min": '.\Input::post("medium-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("medium-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("medium-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("medium-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("medium-comment-per-day-limit").'
+            },
+            "fast" : {
+                "wait-from": '.$this->validateInput(\Input::post("fast-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("fast-wait-to")).',
+                "comment-limit-min": '.\Input::post("fast-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("fast-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("fast-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("fast-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("fast-comment-per-day-limit").'
+            },
+            "very-fast" : {
+                "wait-from": '.$this->validateInput(\Input::post("very-fast-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("very-fast-wait-to")).',
+                "comment-limit-min": '.\Input::post("very-fast-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("very-fast-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("very-fast-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("very-fast-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("very-fast-comment-per-day-limit").'
+            }
+        }]';
+
+          file_put_contents(PLUGINS_PATH."/".self::IDNAME."/assets/json/speed-settings.json", $json_data);
+    }   
+
+    public function validateInput($input){
+      return intval($input) > 0 ? $input : 0;
+    }
+    private function getSpeedSettings(){
+        $json = file_get_contents(PLUGINS_PATH."/".self::IDNAME."/assets/json/speed-settings.json");
+        return json_decode($json, true)[0];
     }
 }
