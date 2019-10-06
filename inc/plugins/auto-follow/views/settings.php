@@ -39,7 +39,7 @@
         <script type="text/javascript" src="<?= APPURL."/assets/js/plugins.js?v=".VERSION ?>"></script>
         <?php require_once(APPPATH.'/inc/js-locale.inc.php'); ?>
         <script type="text/javascript" src="<?= APPURL."/assets/js/core.js?v=".VERSION ?>"></script>
-        <script type="text/javascript" src="<?= PLUGINS_URL."/".$idname."/assets/js/core.js?v=20".VERSION ?>"></script>
+        <script type="text/javascript" src="<?= PLUGINS_URL."/".$idname."/assets/js/core.js?v=22".VERSION ?>"></script>
         <script type="text/javascript" charset="utf-8">
             $(function(){
             })
