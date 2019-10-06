@@ -426,12 +426,12 @@ function settings()
     return $settings;
 }
 function getSpeedsSettings(){
-    $json = file_get_contents(PLUGINS_PATH."/auto-comment/assets/json/speed-settings.json");
+    $json = file_get_contents(PLUGINS_PATH."/auto-follow/assets/json/speed-settings.json");
     return json_decode($json, true)[0];
 }
 
 function  getAccountSentComments($account_id){
-    $query = \DB::table('np_auto_like_log')
+    $query = \DB::table('np_auto_follow_log')
     ->where("account_id", "=",$account_id)
     ->where("date", ">=", date("Y-m-d 00:00:00")) 
     ->select("*")
