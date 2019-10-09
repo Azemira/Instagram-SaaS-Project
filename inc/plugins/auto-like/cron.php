@@ -21,7 +21,7 @@ function addCronTask()
     require_once __DIR__."/models/SchedulesModel.php";
     require_once __DIR__."/models/LogModel.php";
 
-
+    $speedSettings = getSpeedsSettings();    
     // Get auto like schedules
     $Schedules = new SchedulesModel;
     $Schedules->where("is_active", "=", 1)
