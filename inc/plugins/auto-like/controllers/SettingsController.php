@@ -25,6 +25,9 @@ class SettingsController extends \Controller
         $AuthUser = $this->getVariable("AuthUser");
         $this->setVariable("idname", self::IDNAME);
 
+        $SpeedSettings = $this->getSpeedSettings();
+        $this->setVariable("SpeedSettings", $SpeedSettings);
+
         // Auth
         if (!$AuthUser || !$AuthUser->isAdmin()){
             header("Location: ".APPURL."/login");
@@ -111,5 +114,65 @@ class SettingsController extends \Controller
         $this->jsonecho();
 
         return $this;
+    }
+    private function updateSettings(){
+
+        $json_data = '[{ 
+            "very-slow" : {
+                "wait-from": '.$this->validateInput(\Input::post("very-slow-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("very-slow-wait-to")).',
+                "comment-limit-min": '.\Input::post("very-slow-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("very-slow-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("very-slow-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("very-slow-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("very-slow-comment-per-day-limit").'
+            },
+            "slow" : {
+                "wait-from": '.$this->validateInput(\Input::post("slow-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("slow-wait-to")).',
+                "comment-limit-min": '.\Input::post("slow-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("slow-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("slow-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("slow-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("slow-comment-per-day-limit").'
+            },
+            "medium" : {
+                "wait-from": '.$this->validateInput(\Input::post("medium-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("medium-wait-to")).',
+                "comment-limit-min": '.\Input::post("medium-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("medium-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("medium-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("medium-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("medium-comment-per-day-limit").'
+            },
+            "fast" : {
+                "wait-from": '.$this->validateInput(\Input::post("fast-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("fast-wait-to")).',
+                "comment-limit-min": '.\Input::post("fast-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("fast-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("fast-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("fast-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("fast-comment-per-day-limit").'
+            },
+            "very-fast" : {
+                "wait-from": '.$this->validateInput(\Input::post("very-fast-wait-from")).',
+                "wait-to": '.$this->validateInput(\Input::post("very-fast-wait-to")).',
+                "comment-limit-min": '.\Input::post("very-fast-comment-limit-min").',
+                "comment-limit-max": '.\Input::post("very-fast-comment-limit-max").',
+                "delay-secconds-from": '.\Input::post("very-fast-delay-secconds-from").',
+                "delay-secconds-to": '.\Input::post("very-fast-delay-secconds-to").',
+                "comment-per-day-limit": '.\Input::post("very-fast-comment-per-day-limit").'
+            }
+        }]';
+
+          file_put_contents(PLUGINS_PATH."/".self::IDNAME."/assets/json/speed-settings.json", $json_data);
+    }   
+
+    public function validateInput($input){
+      return intval($input) > 0 ? $input : 0;
+    }
+    private function getSpeedSettings(){
+        $json = file_get_contents(PLUGINS_PATH."/".self::IDNAME."/assets/json/speed-settings.json");
+        return json_decode($json, true)[0];
     }
 }

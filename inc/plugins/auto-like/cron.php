@@ -41,10 +41,10 @@ function addCronTask()
     $settings = namespace\settings();
 
     // Random delays between actions
-    $random_delay = 0;
-    if ($settings->get("data.random_delay")) {
-        $random_delay = rand(0, 300);
-    }
+    // $random_delay = 0;
+    // if ($settings->get("data.random_delay")) {
+    //     $random_delay = rand(0, 300);
+    // }
 
     // Speeds
     $default_speeds = [
@@ -65,6 +65,13 @@ function addCronTask()
 
     $as = [__DIR__."/models/ScheduleModel.php", __NAMESPACE__."\ScheduleModel"];
     foreach ($Schedules->getDataAs($as) as $sc) {
+        $speedCategotry = str_replace("_", "-", $sc->get("speed"));
+        $randomWait = rand(intval($speedSettings[$speedCategotry]['wait-from']),intval($speedSettings[$speedCategotry]['wait-to']));
+        
+        // Random delays between actions
+
+        $random_delay = (int)$randomWait * 60;
+
         $Log = new LogModel;
         $Account = \Controller::model("Account", $sc->get("account_id"));
         $User = \Controller::model("User", $sc->get("user_id"));
@@ -604,4 +611,9 @@ function _get_media_thumb_igitem($item)
     }    
 
     return $media_thumb;
+}
+function getSpeedsSettings(){
+  
+    $json = file_get_contents(PLUGINS_PATH."/auto-like/assets/json/speed-settings.json");
+    return json_decode($json, true)[0];
 }

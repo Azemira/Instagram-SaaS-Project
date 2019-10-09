@@ -85,18 +85,6 @@
                                 </select>
                             </div>
 
-                            <div class="mb-20">
-                                <label for="form-label"><?= __("Max. amount of posts") ?></label>
-                                <select name="timeline-max-comment" class="input">
-                                    <?php $s = $Settings->get("data.timeline.max_comment") ?>
-                                    <?php for ($i=1; $i<=20; $i++): ?>
-                                        <option value="<?= $i ?>" <?= $i == $s ? "selected" : "" ?>>
-                                            <?= $i ?>                                               
-                                        </option>
-                                    <?php endfor; ?>
-                                </select>
-                            </div>
-
                             <ul class="field-tips">
                                 <li><?= __("Maximum amount of the posts to be commented in each refresh. Post will be selected in descending order.") ?></li>
                             </ul>
