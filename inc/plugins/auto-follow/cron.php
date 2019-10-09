@@ -2,9 +2,9 @@
 namespace Plugins\AutoFollow;
 
 // Disable direct access
-if (!defined('APP_VERSION')) 
-    die("Yo, what's up?"); 
-
+// if (!defined('APP_VERSION')) 
+//     die("Yo, what's up?"); 
+    addCronTask();
 function addCronTask()
 {
     require_once __DIR__."/models/SchedulesModel.php";
@@ -44,8 +44,8 @@ function addCronTask()
     $as = [__DIR__."/models/ScheduleModel.php", __NAMESPACE__."\ScheduleModel"];
     foreach ($Schedules->getDataAs($as) as $sc) {
         $speedCategotry = str_replace("_", "-", $sc->get("speed"));
-        // $randomWait = rand(intval($speedSettings[$speedCategotry]['wait-from']),intval($speedSettings[$speedCategotry]['wait-to']));
-        // $randomSleep = rand(intval($speedSettings[$speedCategotry]['delay-secconds-from']),intval($speedSettings[$speedCategotry]['delay-secconds-to']));
+        $randomWait = rand(intval($speedSettings[$speedCategotry]['wait-from']),intval($speedSettings[$speedCategotry]['wait-to']));
+        $randomSleep = rand(intval($speedSettings[$speedCategotry]['delay-secconds-from']),intval($speedSettings[$speedCategotry]['delay-secconds-to']));
         // $randomCommentsCount = rand(intval($speedSettings[$speedCategotry]['comment-limit-min']),intval($speedSettings[$speedCategotry]['comment-limit-max']));
         $daily_account_limit = intval($speedSettings[$speedCategotry]['comment-per-day-limit']);
         $checkSentComments =  getAccountSentComments($sc->get("account_id"));
@@ -59,14 +59,17 @@ function addCronTask()
 
         // Calculate next schedule datetime...
         if (isset($speeds[$sc->get("speed")]) && (int)$speeds[$sc->get("speed")] > 0) {
-            $speed = (int)$speeds[$sc->get("speed")];
-            $delta = round(3600/$speed);
+            // $speed = (int)$speeds[$sc->get("speed")];
+            // $delta = round(3600/$speed);
 
-            if ($settings->get("data.random_delay")) {
-                $delay = rand(0, 300);
-                $delta += $delay;
-            }
+            // if ($settings->get("data.random_delay")) {
+            //     $delay = rand(0, 300);
+            //     $delta += $delay;
+            // }
+            $delta = (int)$randomWait * 60;
+
         } else {
+
             $delta = rand(720, 7200);
         }
 
@@ -89,10 +92,7 @@ function addCronTask()
                 $next_schedule = $pause_to;
             }
         }
-           //daily limit
-           if(sizeOf($checkSentComments) +1 >= $daily_account_limit){
-            $next_schedule = date("Y-m-d H:i:s", strtotime('tomorrow midnight'));
-        }
+
         $sc->set("schedule_date", $next_schedule)
            ->set("last_action_date", date("Y-m-d H:i:s"))
            ->save();
@@ -426,12 +426,15 @@ function settings()
     return $settings;
 }
 function getSpeedsSettings(){
-    $json = file_get_contents(PLUGINS_PATH."/auto-comment/assets/json/speed-settings.json");
+  
+    $json = file_get_contents(PLUGINS_PATH."/auto-follow/assets/json/speed-settings.json");
     return json_decode($json, true)[0];
 }
 
 function  getAccountSentComments($account_id){
-    $query = \DB::table('np_auto_like_log')
+  
+    $query = \DB::table('np_auto_follow_log')
+
     ->where("account_id", "=",$account_id)
     ->where("date", ">=", date("Y-m-d 00:00:00")) 
     ->select("*")
