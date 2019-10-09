@@ -2,9 +2,8 @@
 namespace Plugins\AutoFollow;
 
 // Disable direct access
-// if (!defined('APP_VERSION')) 
-//     die("Yo, what's up?"); 
-    addCronTask();
+ if (!defined('APP_VERSION')) 
+     die("Yo, what's up?"); 
 function addCronTask()
 {
     require_once __DIR__."/models/SchedulesModel.php";
