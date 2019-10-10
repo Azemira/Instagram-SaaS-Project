@@ -44,13 +44,6 @@ function addCronTask()
     foreach ($Schedules->getDataAs($as) as $sc) {
         $speedCategotry = str_replace("_", "-", $sc->get("speed"));
         $randomWait = rand(intval($speedSettings[$speedCategotry]['wait-from']),intval($speedSettings[$speedCategotry]['wait-to']));
-        $randomSleep = rand(intval($speedSettings[$speedCategotry]['delay-secconds-from']),intval($speedSettings[$speedCategotry]['delay-secconds-to']));
-        // $randomCommentsCount = rand(intval($speedSettings[$speedCategotry]['comment-limit-min']),intval($speedSettings[$speedCategotry]['comment-limit-max']));
-        $daily_account_limit = intval($speedSettings[$speedCategotry]['comment-per-day-limit']);
-        $checkSentComments =  getAccountSentComments($sc->get("account_id"));
-        // $last_action_date = new \DateTime(date('Y-m-d h:i:s', strtotime($sc->get("last_action_date"))));
-        // $last_action_date_diff = $last_action_date->diff(new \DateTime(date('Y-m-d h:i:s')));
-        // $last_action_min = $last_action_date_diff->i;
         $operation = 'new';
         $Log = new LogModel;
         $Account = \Controller::model("Account", $sc->get("account_id"));
@@ -58,13 +51,7 @@ function addCronTask()
 
         // Calculate next schedule datetime...
         if (isset($speeds[$sc->get("speed")]) && (int)$speeds[$sc->get("speed")] > 0) {
-            // $speed = (int)$speeds[$sc->get("speed")];
-            // $delta = round(3600/$speed);
-
-            // if ($settings->get("data.random_delay")) {
-            //     $delay = rand(0, 300);
-            //     $delta += $delay;
-            // }
+         
             $delta = (int)$randomWait * 60;
 
         } else {
