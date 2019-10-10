@@ -1,47 +1,22 @@
 [{ 
-    "very-slow" : {
-        "wait-from": 20,
-        "wait-to": 120,
-        "comment-limit-min": 1,
-        "comment-limit-max": 4,
-        "delay-secconds-from": 10,
-        "delay-secconds-to": 120,
-        "comment-per-day-limit": 30
-    },
-    "slow" : {
-        "wait-from": 1,
-        "wait-to": 5,
-        "comment-limit-min": 1,
-        "comment-limit-max": 1,
-        "delay-secconds-from": 1,
-        "delay-secconds-to": 1,
-        "comment-per-day-limit": 1
-    },
-    "medium" : {
-        "wait-from": 2,
-        "wait-to": 6,
-        "comment-limit-min": 1,
-        "comment-limit-max": 1,
-        "delay-secconds-from": 1,
-        "delay-secconds-to": 1,
-        "comment-per-day-limit": 1
-    },
-    "fast" : {
-        "wait-from": 55,
-        "wait-to": 56,
-        "comment-limit-min": 1,
-        "comment-limit-max": 1,
-        "delay-secconds-from": 1,
-        "delay-secconds-to": 1,
-        "comment-per-day-limit": 1
-    },
-    "very-fast" : {
-        "wait-from": 5,
-        "wait-to": 15,
-        "comment-limit-min": 13,
-        "comment-limit-max": 58,
-        "delay-secconds-from": 1,
-        "delay-secconds-to": 1,
-        "comment-per-day-limit": 1
-    }
-}]
+            "very-slow" : {
+                "wait-from": 20,
+                "wait-to": 120
+            },
+            "slow" : {
+                "wait-from": 1,
+                "wait-to": 5
+            },
+            "medium" : {
+                "wait-from": 2,
+                "wait-to": 6
+            },
+            "fast" : {
+                "wait-from": 55,
+                "wait-to": 56
+            },
+            "very-fast" : {
+                "wait-from": 1,
+                "wait-to": 1
+            }
+        }]

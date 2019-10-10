@@ -118,48 +118,23 @@ class SettingsController extends \Controller
         $json_data = '[{ 
             "very-slow" : {
                 "wait-from": '.$this->validateInput(\Input::post("very-slow-wait-from")).',
-                "wait-to": '.$this->validateInput(\Input::post("very-slow-wait-to")).',
-                "comment-limit-min": '.\Input::post("very-slow-comment-limit-min").',
-                "comment-limit-max": '.\Input::post("very-slow-comment-limit-max").',
-                "delay-secconds-from": '.\Input::post("very-slow-delay-secconds-from").',
-                "delay-secconds-to": '.\Input::post("very-slow-delay-secconds-to").',
-                "comment-per-day-limit": '.\Input::post("very-slow-comment-per-day-limit").'
+                "wait-to": '.$this->validateInput(\Input::post("very-slow-wait-to")).'
             },
             "slow" : {
                 "wait-from": '.$this->validateInput(\Input::post("slow-wait-from")).',
-                "wait-to": '.$this->validateInput(\Input::post("slow-wait-to")).',
-                "comment-limit-min": '.\Input::post("slow-comment-limit-min").',
-                "comment-limit-max": '.\Input::post("slow-comment-limit-max").',
-                "delay-secconds-from": '.\Input::post("slow-delay-secconds-from").',
-                "delay-secconds-to": '.\Input::post("slow-delay-secconds-to").',
-                "comment-per-day-limit": '.\Input::post("slow-comment-per-day-limit").'
+                "wait-to": '.$this->validateInput(\Input::post("slow-wait-to")).'
             },
             "medium" : {
                 "wait-from": '.$this->validateInput(\Input::post("medium-wait-from")).',
-                "wait-to": '.$this->validateInput(\Input::post("medium-wait-to")).',
-                "comment-limit-min": '.\Input::post("medium-comment-limit-min").',
-                "comment-limit-max": '.\Input::post("medium-comment-limit-max").',
-                "delay-secconds-from": '.\Input::post("medium-delay-secconds-from").',
-                "delay-secconds-to": '.\Input::post("medium-delay-secconds-to").',
-                "comment-per-day-limit": '.\Input::post("medium-comment-per-day-limit").'
+                "wait-to": '.$this->validateInput(\Input::post("medium-wait-to")).'
             },
             "fast" : {
                 "wait-from": '.$this->validateInput(\Input::post("fast-wait-from")).',
-                "wait-to": '.$this->validateInput(\Input::post("fast-wait-to")).',
-                "comment-limit-min": '.\Input::post("fast-comment-limit-min").',
-                "comment-limit-max": '.\Input::post("fast-comment-limit-max").',
-                "delay-secconds-from": '.\Input::post("fast-delay-secconds-from").',
-                "delay-secconds-to": '.\Input::post("fast-delay-secconds-to").',
-                "comment-per-day-limit": '.\Input::post("fast-comment-per-day-limit").'
+                "wait-to": '.$this->validateInput(\Input::post("fast-wait-to")).'
             },
             "very-fast" : {
                 "wait-from": '.$this->validateInput(\Input::post("very-fast-wait-from")).',
-                "wait-to": '.$this->validateInput(\Input::post("very-fast-wait-to")).',
-                "comment-limit-min": '.\Input::post("very-fast-comment-limit-min").',
-                "comment-limit-max": '.\Input::post("very-fast-comment-limit-max").',
-                "delay-secconds-from": '.\Input::post("very-fast-delay-secconds-from").',
-                "delay-secconds-to": '.\Input::post("very-fast-delay-secconds-to").',
-                "comment-per-day-limit": '.\Input::post("very-fast-comment-per-day-limit").'
+                "wait-to": '.$this->validateInput(\Input::post("very-fast-wait-to")).'
             }
         }]';
 
