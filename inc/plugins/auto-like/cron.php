@@ -71,6 +71,8 @@ function addCronTask()
         // Random delays between actions
 
         $random_delay = (int)$randomWait * 60;
+        // $random_delay = 12;
+        // error_log("random", $random_delay);
 
         $Log = new LogModel;
         $Account = \Controller::model("Account", $sc->get("account_id"));
@@ -162,13 +164,14 @@ function addCronTask()
 
 
         // Calculate next schedule datetime...
-        if (isset($speeds[$sc->get("speed")]) && (int)$speeds[$sc->get("speed")] > 0) {
-            $speed = (int)$speeds[$sc->get("speed")];
-            $delta = round(3600/$speed) + $random_delay;
-        } else {
-            $delta = rand(720, 7200);
-        }
+        // if (isset($speeds[$sc->get("speed")]) && (int)$speeds[$sc->get("speed")] > 0) {
+        //     $speed = (int)$speeds[$sc->get("speed")];
+        //     $delta = round(3600/$speed) + $random_delay;
+        // } else {
+        //     $delta = rand(720, 7200);
+        // }
 
+        $delta = (int)$randomWait * 60;
         $next_schedule = date("Y-m-d H:i:s", time() + $delta);
         if ($feed_type == "target" && !empty($tf_schedule) && $tf_schedule < $next_schedule) {
             // Next schedule is for timeline feed
